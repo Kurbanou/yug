@@ -98,7 +98,7 @@ function display_sidebar() {
  * Theme assets
  */
 function assets() {
-  wp_enqueue_style('sage/css', Assets\asset_path('styles/main.css'), false, null);
+  // wp_enqueue_style('sage/css', Assets\asset_path('styles/main.css'), false, null);
 
   // Отключаем стили и скрипты CF 7
   wp_deregister_script('contact-form-7');
@@ -108,7 +108,7 @@ function assets() {
 //    wp_enqueue_script('comment-reply');
 //  }
 
-  wp_enqueue_script('potaga/main', Assets\asset_path('scripts/main.js'), ['jquery'], null, true);
-  wp_enqueue_script('potaga/form', Assets\asset_path('scripts/form.js'), ['jquery'], null, true);
+  // wp_enqueue_script('potaga/main', Assets\asset_path('scripts/main.js'), ['jquery'], null, true);
+  // wp_enqueue_script('potaga/form', Assets\asset_path('scripts/form.js'), ['jquery'], null, true);
 }
 add_action('wp_enqueue_scripts', __NAMESPACE__ . '\\assets', 100);
