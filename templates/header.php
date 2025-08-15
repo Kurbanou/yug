@@ -1,45 +1,56 @@
-<header class="header" role="banner">
+<!DOCTYPE html>
+<html <?php language_attributes(); ?>>
 
-  <div class="navbar navbar--default navbar--fixed-top" id="navbar">
-    <div class="navbar__body">
+<head>
+  <meta charset="<?php bloginfo('charset'); ?>">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap&subset=cyrillic" rel="stylesheet">
+  <?php wp_head(); ?>
+</head>
 
-      <div class="navbar__header">
-        <button class="navbar__toggle collapsed" type="button" data-toggle="collapse" data-target="#navbar-collapse">
-<!--          <span class="sr-only">Toggle navigation</span>-->
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar__brand" href="<?= esc_url(home_url('/')); ?>">
-        <?php if (get_current_blog_id() == 1 ) : ?>
-          <div>
-            <img src="<?php echo esc_url( bloginfo('template_directory') ); ?>/dist/images/logo.svg" alt="<?php bloginfo('name'); ?>">
-          </div>
-          <h1><?php bloginfo('name'); ?><br>
-            <small><?php bloginfo('description'); ?></small>
-          </h1>
-        <?php elseif (get_current_blog_id() == 2) : ?>
-            <div>
-                <img src="<?php echo esc_url( bloginfo('template_directory') ); ?>/dist/images/logo-steelprom.png" alt="<?php bloginfo('name'); ?>">
-            </div>
-        <?php endif; ?>
-        </a>
-      </div>
-
-      <div class="navbar__collapse collapse" id="navbar-collapse">
-        <ul class="navbar__menu nav navbar__menu--right">
-          <li class="active"><a data-target="#about" href="<?php if(!is_front_page()) { echo '/'; } ?>#about">О компании</a></li>
-          <li><a data-target="#services" href="<?php if(!is_front_page()) { echo '/'; } ?>#services">Услуги</a></li>
-          <li><a data-target="#projects" href="<?php if(!is_front_page()) { echo '/'; } ?>#projects">Проекты</a></li>
-          <li><a data-target="#articles" href="<?php if(!is_front_page()) { echo '/'; } ?>#articles">Статьи</a></li>
-          <li><a data-target="#gallery" href="<?php if(!is_front_page()) { echo '/'; } ?>#gallery">Фотогалерея</a></li>
-          <li><a data-target="#video" href="<?php if(!is_front_page()) { echo '/'; } ?>#video">Видео</a></li>
-          <li><a data-target="#clients" href="<?php if(!is_front_page()) { echo '/'; } ?>#clients">Клиенты</a></li>
-          <li><a data-target="#contacts" href="<?php if(!is_front_page()) { echo '/'; } ?>#contacts">Контакты</a></li>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <div class="logo"></div>
+      <nav class="main-nav" aria-label="Главное меню">
+        <ul class="main-nav__list">
+          <li class="main-nav__item">
+            <a href="<?php echo esc_url(home_url('#about')); ?>" data-target="#about" class="main-nav__link">О компании</a>
+          </li>
+          <li class="main-nav__item">
+            <a href="<?php echo esc_url(home_url('#services')); ?>" data-target="#services" class="main-nav__link">Услуги</a>
+          </li>
+          <li class="main-nav__item">
+            <a href="<?php echo esc_url(home_url('#projects')); ?>" data-target="#projects" class="main-nav__link">Проекты</a>
+          </li>
+          <li class="main-nav__item">
+            <a href="<?php echo esc_url(home_url('#articles')); ?>" data-target="#articles" class="main-nav__link">Статьи</a>
+          </li>
+          <li class="main-nav__item">
+            <a href="<?php echo esc_url(home_url('#gallery')); ?>" data-target="#gallery" class="main-nav__link">Фотогалерея</a>
+          </li>
+          <li class="main-nav__item">
+            <a href="<?php echo esc_url(home_url('#video')); ?>" data-target="#video" class="main-nav__link">Видео</a>
+          </li>
+          <li class="main-nav__item">
+            <a href="<?php echo esc_url(home_url('#clients')); ?>" data-target="#clients" class="main-nav__link">Клиенты</a>
+          </li>
+          <li class="main-nav__item">
+            <a href="<?php echo esc_url(home_url('#contacts')); ?>" data-target="#contacts" class="main-nav__link">Контакты</a>
+          </li>
         </ul>
+      </nav>
+      <button>связаться
+        <svg class="btn_svg" width="25" height="24" viewBox="0 0 25 24">
+          <path d="M13.8717 6.1162C13.8934 6.03498 13.9309 5.95883 13.9821 5.89211C14.0332 5.82539 14.0971 5.76941 14.1699 5.72736C14.2427 5.68531 14.323 5.65802 14.4064 5.64704C14.4898 5.63607 14.5745 5.64162 14.6557 5.6634C15.8421 5.97296 16.9246 6.5932 17.7917 7.46024C18.6587 8.32729 19.279 9.40978 19.5885 10.5962C19.6103 10.6775 19.6158 10.7622 19.6049 10.8455C19.5939 10.9289 19.5666 11.0093 19.5246 11.0821C19.4825 11.1549 19.4265 11.2187 19.3598 11.2698C19.2931 11.321 19.2169 11.3585 19.1357 11.3803C19.0817 11.3945 19.026 11.4017 18.9701 11.4019C18.8292 11.4019 18.6922 11.3554 18.5804 11.2696C18.4685 11.1839 18.3882 11.0636 18.3517 10.9274C18.0994 9.95875 17.5932 9.07488 16.8855 8.36698C16.1777 7.65907 15.2939 7.15275 14.3253 6.90021C14.244 6.87857 14.1678 6.84112 14.1009 6.78999C14.0341 6.73886 13.9781 6.67507 13.9359 6.60225C13.8938 6.52943 13.8664 6.44902 13.8554 6.36562C13.8444 6.28222 13.8499 6.19747 13.8717 6.1162ZM13.6853 9.46023C14.7885 9.75464 15.4973 10.4642 15.7917 11.5675C15.8282 11.7036 15.9085 11.8239 16.0203 11.9096C16.1322 11.9954 16.2692 12.0419 16.4101 12.0419C16.466 12.0417 16.5216 12.0345 16.5757 12.0203C16.6569 11.9985 16.7331 11.961 16.7998 11.9099C16.8665 11.8587 16.9225 11.7949 16.9645 11.7221C17.0066 11.6493 17.0339 11.5689 17.0449 11.4855C17.0558 11.4022 17.0503 11.3175 17.0285 11.2363C16.6189 9.70344 15.5485 8.63303 14.0157 8.22342C13.8517 8.17961 13.677 8.20274 13.53 8.28773C13.3831 8.37273 13.2759 8.51262 13.2321 8.67663C13.1883 8.84064 13.2114 9.01534 13.2964 9.16229C13.3814 9.30925 13.5213 9.41642 13.6853 9.46023ZM19.4797 15.7587L15.7109 14.0699L15.7005 14.0651C15.5048 13.9814 15.2914 13.9478 15.0795 13.9674C14.8676 13.9869 14.6639 14.059 14.4869 14.1771C14.466 14.1908 14.446 14.2058 14.4269 14.2219L12.4797 15.8819C11.2461 15.2827 9.97245 14.0187 9.37324 12.8011L11.0357 10.8242C11.0517 10.8042 11.0669 10.7842 11.0813 10.7626C11.1968 10.5861 11.2669 10.3837 11.2853 10.1735C11.3037 9.9633 11.2699 9.7518 11.1869 9.55784V9.54824L9.49324 5.773C9.38344 5.51961 9.19462 5.30853 8.95499 5.17126C8.71536 5.034 8.43776 4.97792 8.16363 5.01139C7.0796 5.15404 6.08456 5.68641 5.36436 6.50908C4.64416 7.33175 4.24805 8.38846 4.25001 9.48183C4.25001 15.8339 9.41804 21.0019 15.7701 21.0019C16.8635 21.0039 17.9202 20.6078 18.7428 19.8876C19.5655 19.1674 20.0979 18.1723 20.2405 17.0883C20.2741 16.8143 20.2181 16.5367 20.081 16.2971C19.9439 16.0575 19.733 15.8686 19.4797 15.7587Z" />
+        </svg>
+      </button>
+      <div class="burger">
+        <span></span>
+        <span></span>
+        <span></span>
       </div>
-
     </div>
-  </div>
-
-</header>
+  </header>
