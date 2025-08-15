@@ -102,17 +102,14 @@ function display_sidebar()
  */
 function assets()
 {
-  // wp_enqueue_style('sage/css', Assets\asset_path('styles/main.css'), false, null);
-
-  // Отключаем стили и скрипты CF 7
+  // Отключаем CF7, если не используешь
   wp_deregister_script('contact-form-7');
   wp_deregister_style('contact-form-7');
 
-  //  if (is_single() && comments_open() && get_option('thread_comments')) {
-  //    wp_enqueue_script('comment-reply');
-  //  }
+  // Загружаем основной CSS
+  wp_enqueue_style('sage/css', Assets\asset_path('styles/main-style.css'), false, null);
 
-  // wp_enqueue_script('potaga/main', Assets\asset_path('scripts/main.js'), ['jquery'], null, true);
-  // wp_enqueue_script('potaga/form', Assets\asset_path('scripts/form.js'), ['jquery'], null, true);
+  // Загружаем основной JS
+  wp_enqueue_script('potaga/main', Assets\asset_path('scripts/app.js'), null, null, true);
 }
 add_action('wp_enqueue_scripts', __NAMESPACE__ . '\\assets', 100);
