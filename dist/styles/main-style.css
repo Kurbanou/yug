@@ -1,3 +1,9 @@
+:root {
+  --link-color: rgba(255, 95, 61, 1);
+  --fontcolor: rgba(53, 59, 85, 1);
+  --whitecolor: rgba(255, 255, 255, 1);
+}
+
 /* === Base Reset === */
 *,
 *::before,
@@ -11,13 +17,6 @@
 html {
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
-}
-
-body {
-  line-height: 1.5;
-  font-family: system-ui, sans-serif;
-  background-color: #fff;
-  color: #000;
 }
 
 /* === Media === */
@@ -79,13 +78,95 @@ body {
   font-size: 16px;
   line-height: 1.5; /* 24px / 16px */
   letter-spacing: 0;
-  color: rgba(53, 59, 85, 1);
+  color: var(--fontcolor);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 a {
-  color: rgba(255, 95, 61, 1);
+  color: (var(--link-color));
+}
+
+.container {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1160px;
+  padding: 0 20px;
+}
+
+@media (max-width: 375px) {
+  .container {
+    padding: 0 10px;
+  }
+}
+
+button {
+  height: 52px;
+  text-transform: uppercase;
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 16px;
+  line-height: 1;
+  letter-spacing: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: 2px solid var(--link-color);
+  border-radius: 12px;
+  color: var(--whitecolor);
+  fill: var(--whitecolor);
+  cursor: pointer;
+  transition: all 0.3s linear;
+  background-color: var(--link-color);
+  padding: 14px 30px;
+}
+button:hover {
+  background-color: var(--whitecolor);
+  color: var(--link-color);
+  fill: var(--link-color);
+}
+
+button svg {
+  width: 24px;
+}
+
+.icon-svg {
+  background-color: transparent;
+  width: 46px;
+  height: 46px;
+  border: 2px solid var(--link-color);
+  border-radius: 100px;
+  fill: var(--link-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* header */
+.headersite-header {
+  padding: 20px 0;
+  display: flex;
+  justify-content: space-between;
+}
+.site-header .logo img {
+  display: block;
+  width: 36px;
+}
+
+.site-header .logo {
+  max-width: 243px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 18px;
+  line-height: 1;
+  letter-spacing: 0;
+}
+.site-header .logo span {
+  font-weight: 400;
+  font-size: 14px;
+}
