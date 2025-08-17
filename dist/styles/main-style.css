@@ -17,6 +17,7 @@
 html {
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
+  scrollbar-gutter: stable;
 }
 
 /* === Media === */
@@ -176,7 +177,6 @@ button:hover {
 }
 
 .logo {
-  width: 277px;
   display: flex;
   gap: 10px;
   justify-content: space-between;
@@ -234,51 +234,6 @@ button:hover {
 .site-header .contacts__block,
 .site-header .burger {
   display: none;
-}
-
-.burger {
-  position: relative;
-  flex-shrink: 0;
-  background-color: var(--link-color);
-  border-radius: 100px;
-  width: 40px;
-  height: 40px;
-  cursor: pointer;
-  transition: all 0.3s linear;
-  user-select: none;
-  z-index: 10;
-}
-.burger span {
-  position: relative;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  height: 3px;
-  width: 18px;
-  background-color: var(--whitecolor);
-  border-radius: 3px;
-  transition: all 0.3s linear;
-}
-
-.burger span::after,
-.burger span::before {
-  content: "";
-  position: absolute;
-  background-color: var(--whitecolor);
-  height: 3px;
-  border-radius: 3px;
-  transition: all 0.3s linear;
-}
-
-.burger span::after {
-  top: 6px;
-  width: 12px;
-}
-
-.burger span::before {
-  bottom: 6px;
-  width: 14px;
 }
 
 .main-nav__link {
@@ -349,5 +304,65 @@ button:hover {
     align-items: flex-start;
     gap: 22px;
     width: 100%;
+  }
+  .burger {
+    position: relative;
+    flex-shrink: 0;
+    background-color: var(--link-color);
+    border-radius: 100px;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    transition: all 0.3s linear;
+    user-select: none;
+    z-index: 10;
+  }
+  .burger span {
+    position: relative;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    height: 3px;
+    width: 18px;
+    background-color: var(--whitecolor);
+    border-radius: 3px;
+    transition: all 0.3s linear;
+  }
+
+  .burger span::after,
+  .burger span::before {
+    content: "";
+    position: absolute;
+    background-color: var(--whitecolor);
+    height: 3px;
+    border-radius: 3px;
+    transition: all 0.3s linear;
+  }
+
+  .burger span::after {
+    top: 6px;
+    width: 12px;
+  }
+
+  .burger span::before {
+    bottom: 6px;
+    width: 14px;
+  }
+
+  .site-header.open .burger span {
+    background-color: var(--link-color);
+  }
+  .site-header.open .burger span::after {
+    width: 18px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-45deg);
+  }
+  .site-header.open .burger span::before {
+    width: 18px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
   }
 }
