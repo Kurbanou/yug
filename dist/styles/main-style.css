@@ -83,7 +83,12 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-a {
+.no-scroll {
+  overflow: hidden;
+  height: 100vh; /* предотвращает прокрутку на мобильных */
+}
+
+a:hover {
   color: (var(--link-color));
 }
 
@@ -121,30 +126,88 @@ button {
   background-color: var(--link-color);
   padding: 14px 30px;
 }
+
+button svg {
+  width: 24px;
+  flex-shrink: 0;
+}
+
+button.has-icon {
+  padding: 14px 26px 14px 30px;
+}
+
+button.lite {
+  border: 2px solid var(--whitecolor);
+  background-color: transparent;
+}
+
 button:hover {
   background-color: var(--whitecolor);
   color: var(--link-color);
   fill: var(--link-color);
 }
 
-button svg {
-  width: 24px;
-}
-
-.icon-svg {
+.contacts_icon {
   background-color: transparent;
   width: 46px;
   height: 46px;
   border: 2px solid var(--link-color);
   border-radius: 100px;
-  fill: var(--link-color);
   display: flex;
   align-items: center;
   justify-content: center;
+  fill: var(--link-color);
+}
+
+.contacts {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.contacts_icon svg {
+  display: block;
+  fill: var(--link-color);
+  width: 24px;
+}
+
+.logo {
+  width: 243px;
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+  align-items: center;
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 18px;
+  line-height: 1;
+  letter-spacing: 0;
+  flex-shrink: 0;
+  cursor: pointer;
+  z-index: 10;
+  background-color: var(--whitecolor);
+}
+.logo span {
+  font-weight: 400;
+  font-size: 14px;
+  opacity: 0.6;
 }
 
 /* header */
-.headersite-header {
+.site-header {
+  background-color: var(--whitecolor);
+  box-shadow: 0px 4px 30px 10px rgba(0, 0, 0, 0.4);
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+  transition: all 0.6s linear;
+}
+.site-header_content {
+  position: relative;
   padding: 20px 0;
   display: flex;
   justify-content: space-between;
@@ -154,19 +217,139 @@ button svg {
   width: 36px;
 }
 
-.site-header .logo {
-  max-width: 243px;
+.main-nav {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  transition: all 0.3s ease-in;
+}
+
+.main-nav__list {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+
+.site-header .contacts__block,
+.site-header .burger {
+  display: none;
+}
+
+.burger {
+  position: relative;
+  flex-shrink: 0;
+  background-color: var(--link-color);
+  border-radius: 100px;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  transition: all 0.3s linear;
+  user-select: none;
+  z-index: 10;
+}
+.burger span {
+  position: relative;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  height: 3px;
+  width: 18px;
+  background-color: var(--whitecolor);
+  border-radius: 3px;
+  transition: all 0.3s linear;
+}
+
+.burger span::after,
+.burger span::before {
+  content: "";
+  position: absolute;
+  background-color: var(--whitecolor);
+  height: 3px;
+  border-radius: 3px;
+  transition: all 0.3s linear;
+}
+
+.burger span::after {
+  top: 6px;
+  width: 12px;
+}
+
+.burger span::before {
+  bottom: 6px;
+  width: 14px;
+}
+
+.main-nav__link {
   font-family: "Ubuntu", sans-serif;
-  font-weight: 700;
+  font-weight: 400;
   font-style: normal;
-  font-size: 18px;
+  font-size: 14px;
   line-height: 1;
   letter-spacing: 0;
+  color: var(--fontcolor);
+  transition: all 0.3s linear;
+  cursor: pointer;
 }
-.site-header .logo span {
-  font-weight: 400;
-  font-size: 14px;
+
+.main-nav__link:hover {
+  color: var(--link-color);
+}
+
+@media (max-width: 1160px) {
+  .site-header button {
+    display: none;
+  }
+}
+
+@media (max-width: 1000px) {
+  .site-header.open {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    overflow-y: auto;
+  }
+  .site-header .burger {
+    display: block;
+  }
+
+  .site-header.open .contacts__block {
+    padding-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+    align-items: flex-start;
+  }
+
+  .main-nav {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--whitecolor);
+    width: 100%;
+    position: absolute;
+    padding-top: 109px;
+    top: 0px;
+    left: 0;
+    transform: translateX(-200%);
+    align-items: center;
+    opacity: 0;
+  }
+
+  .site-header.open .main-nav {
+    transform: translateX(0);
+    padding-bottom: 30px;
+    opacity: 1;
+  }
+
+  .site-header.open .main-nav__list {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 22px;
+    width: 100%;
+  }
 }

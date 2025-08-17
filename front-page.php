@@ -2,7 +2,8 @@
 /**
  * Template for custom homepage
  */
-get_header(); ?>
+get_template_part('head');
+get_template_part('header'); ?>
 
 <main class="homepage">
   <section class="hero">
