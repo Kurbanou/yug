@@ -69,14 +69,7 @@
               >Клиенты</a
             >
           </li>
-          <li class="main-nav__item">
-            <a
-              href="<?php echo esc_url(home_url('#contacts')); ?>"
-              data-target="#contacts"
-              class="main-nav__link"
-              >Контакты</a
-            >
-          </li>
+       
         </ul>
         <div class="contacts__block">
           <div class="contacts tel">
