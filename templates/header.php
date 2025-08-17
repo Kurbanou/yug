@@ -7,8 +7,8 @@
           alt="logo"
         />
         <div>
-          Юг-ПневмоТранспорт <br />
-          <span>Системы пневмотранспорта</span>
+          <div>Юг-ПневмоТранспорт</div>
+          <div class="span">Системы пневмотранспорта</div>
         </div>
       </a>
       <nav class="main-nav">

@@ -192,10 +192,11 @@ button:hover {
   z-index: 10;
   background-color: var(--whitecolor);
 }
-.logo span {
+.logo .span {
   font-weight: 400;
   font-size: 14px;
   opacity: 0.6;
+  margin-top: 9px;
 }
 
 /* header */
