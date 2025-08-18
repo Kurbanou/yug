@@ -1,5 +1,5 @@
 <section class="jumbotron" id="jumbotron">
-    <div class="container-fluid">
+    <div class="container">
         <div class="jumbotron__body">
             <h1 class="jumbotron__title"><?php the_sub_field( 'jumbotron-title' ); ?></h1>
             <?php the_sub_field( 'jumbotron-description' ); ?>
