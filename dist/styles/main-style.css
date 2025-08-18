@@ -97,6 +97,39 @@ a:hover {
   color: (var(--link-color));
 }
 
+h1 {
+  font-weight: 700;
+  font-style: normal;
+  line-height: 44px;
+  letter-spacing: 0;
+  text-transform: capitalize;
+}
+
+h1 {
+  font-size: 38px;
+}
+
+@media (max-width: 450px) {
+  h1 {
+    font-size: 38px;
+    word-break: break-word;
+    hyphens: auto;
+  }
+}
+
+@media (min-width: 768px) {
+  h1 {
+    font-size: 64px;
+    line-height: 114%;
+  }
+}
+
+@media (min-width: 1200px) {
+  h1 {
+    font-size: 82px;
+  }
+}
+
 .container {
   margin: 0 auto;
   width: 100%;
@@ -126,6 +159,7 @@ button {
   border-radius: 12px;
   color: var(--whitecolor);
   fill: var(--whitecolor);
+  stroke: var(--whitecolor);
   cursor: pointer;
   transition: all 0.3s linear;
   background-color: var(--link-color);
@@ -150,6 +184,10 @@ button:hover {
   background-color: var(--whitecolor);
   color: var(--link-color);
   fill: var(--link-color);
+}
+
+button:hover svg path {
+  stroke: var(--link-color);
 }
 
 .contacts_icon {
@@ -207,6 +245,9 @@ button:hover {
 
 /* header */
 .site-header {
+  position: absolute;
+  top: 0;
+  width: 100%;
   background-color: var(--whitecolor);
   box-shadow: 0px 4px 30px 10px rgba(0, 0, 0, 0.4);
   border-bottom-left-radius: 30px;
@@ -408,4 +449,43 @@ button:hover {
 /* ************************************** */
 
 .jumbotron {
+  background: url(../images/bg-jumbotron.jpg) no-repeat top center;
+  background-size: cover;
+  background-color: #ff5f3d;
+  background-blend-mode: multiply;
+  padding: 160px 0 60px 0;
+  color: var(--whitecolor);
+  text-align: center;
+}
+
+.jumbotron .container {
+  max-width: 1195px;
+}
+.jumbotron-description {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+
+  max-width: 887px;
+  margin: 0 auto;
+  margin-top: 14px;
+}
+
+.jumbotron__badge {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 13px;
+}
+
+@media (min-width: 768px) {
+  .jumbotron-description {
+    font-size: 22px;
+    line-height: 32px;
+  }
+  .jumbotron__badge {
+    margin-top: 60px;
+  }
 }
