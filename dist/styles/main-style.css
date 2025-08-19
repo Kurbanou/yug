@@ -77,7 +77,7 @@ body {
   font-weight: 400;
   font-style: normal;
   font-size: 16px;
-  line-height: 1.5; /* 24px / 16px */
+  line-height: 24px;
   letter-spacing: 0;
   color: var(--fontcolor);
   -webkit-font-smoothing: antialiased;
@@ -109,22 +109,31 @@ h1 {
   font-size: 38px;
 }
 
+h2 {
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 40px;
+  line-height: 44px;
+  letter-spacing: 0;
+}
+
 .section-title {
   display: flex;
   align-items: center;
   gap: 8px;
   font-weight: 700;
   flex-shrink: 0;
-  font-family: "NEXT ART", sans-serif;
   font-size: 22px;
   line-height: 32px;
   letter-spacing: 0;
   text-align: center;
   color: var(--link-color);
   text-transform: uppercase;
+  font-family: "NEXT ART", sans-serif;
 }
 .section-title_icon {
-  background-color: transparent;
+  background: rgba(255, 95, 61, 0.05);
   width: 46px;
   height: 46px;
   border: 2px solid var(--link-color);
@@ -145,10 +154,24 @@ h1 {
   font-family: "Ubuntu", sans-serif;
   font-weight: 400;
   font-style: normal;
-  font-size: 16px;
+
   line-height: 24px;
   letter-spacing: 0;
   color: var(--link-color);
+
+  font-size: 22px;
+
+  text-decoration: underline;
+  text-decoration-style: solid;
+  text-decoration-thickness: 1.5px;
+  text-decoration-skip-ink: auto;
+
+  text-underline-offset: 1.5px;
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: 1.5rem;
 }
 
 @media (max-width: 450px) {
@@ -353,6 +376,13 @@ button:hover svg path {
 }
 
 @media (max-width: 1000px) {
+  .site-header .logo img {
+    width: 36px;
+  }
+
+  .site-header {
+    height: 80px;
+  }
   .logo {
     padding-right: 0;
     letter-spacing: 0;
@@ -495,7 +525,7 @@ button:hover svg path {
   background-size: cover;
   background-color: #ff5f3d;
   background-blend-mode: multiply;
-  padding: 160px 0 60px 0;
+  padding: 104px 0 24px 0;
   color: var(--whitecolor);
   text-align: center;
 }
@@ -525,6 +555,9 @@ button:hover svg path {
 }
 
 @media (min-width: 768px) {
+  .jumbotron {
+    padding: 160px 0 60px 0;
+  }
   .jumbotron-description {
     font-size: 22px;
     line-height: 32px;
@@ -533,6 +566,17 @@ button:hover svg path {
     margin-top: 60px;
   }
 }
+
+@media (max-width: 480px) {
+  .jumbotron__btns button {
+    width: 213px;
+    justify-content: center;
+  }
+  .jumbotron p {
+    margin-bottom: 0.5em;
+  }
+}
+
 /* ******************** */
 /* about */
 .about {
@@ -646,7 +690,35 @@ button:hover svg path {
   margin-top: 10px;
 }
 
+.about-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 160px;
+  gap: 40px;
+}
+
+.about-content_text {
+  max-width: 620px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.about-content h2 {
+  margin: 10px 0 33px 0;
+  text-align: center;
+}
+
+.about-content button {
+  margin-top: 17px;
+}
+
 @media (min-width: 1160px) {
+  .about-content {
+    margin-top: 120px;
+    gap: 30px;
+  }
   .block-stats {
     grid-template-columns: repeat(4, 1fr);
     gap: 40px;
@@ -657,8 +729,15 @@ button:hover svg path {
 }
 
 @media (min-width: 768px) {
+  .about-content_text {
+    align-items: flex-start;
+  }
   .about {
     padding: 60px 0 120px 0;
+  }
+
+  .about-content h2 {
+    text-align: left;
   }
 }
 
