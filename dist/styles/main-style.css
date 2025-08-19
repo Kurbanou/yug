@@ -109,6 +109,48 @@ h1 {
   font-size: 38px;
 }
 
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+  flex-shrink: 0;
+  font-family: "NEXT ART", sans-serif;
+  font-size: 22px;
+  line-height: 32px;
+  letter-spacing: 0;
+  text-align: center;
+  color: var(--link-color);
+  text-transform: uppercase;
+}
+.section-title_icon {
+  background-color: transparent;
+  width: 46px;
+  height: 46px;
+  border: 2px solid var(--link-color);
+  border-radius: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  fill: var(--link-color);
+}
+
+.section-title svg {
+  display: block;
+  fill: var(--link-color);
+  width: 24px;
+}
+
+.text-note {
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0;
+  color: var(--link-color);
+}
+
 @media (max-width: 450px) {
   h1 {
     font-size: 38px;
@@ -447,7 +489,7 @@ button:hover svg path {
 }
 
 /* ************************************** */
-
+/* banner */
 .jumbotron {
   background: url(../images/bg-jumbotron.jpg) no-repeat top center;
   background-size: cover;
@@ -471,8 +513,10 @@ button:hover svg path {
   margin-top: 14px;
 }
 
-.jumbotron__badge {
+.jumbotron__btns {
   margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -485,7 +529,142 @@ button:hover svg path {
     font-size: 22px;
     line-height: 32px;
   }
-  .jumbotron__badge {
+  .jumbotron__btns {
     margin-top: 60px;
+  }
+}
+/* ******************** */
+/* about */
+.about {
+  padding: 24px 0 80px 0;
+}
+
+.block-stats {
+  width: fit-content;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  row-gap: 30px;
+  column-gap: 24px;
+}
+.block-stats_item {
+  transition: all 0.3s ease-in;
+  position: relative;
+  user-select: none;
+  height: 271px;
+  width: 208px;
+  background: rgba(242, 244, 236, 1);
+  overflow: hidden;
+}
+.block-stats_icon {
+  transition: all 0.3s ease-in;
+  position: relative;
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  background-color: var(--whitecolor);
+  fill: var(--link-color);
+  margin-top: 40px;
+  margin-left: auto;
+  margin-right: auto;
+  z-index: 1;
+}
+
+.block-stats_item::before,
+.block-stats_item::after {
+  position: absolute;
+  content: "";
+  width: 400px;
+  height: 400px;
+  top: 0;
+  left: 0;
+  transition: all 0.3s ease-in;
+  z-index: 0;
+}
+.block-stats_item::before {
+  transform: translate(90px, 90px) rotate(45deg);
+  background: rgba(235, 237, 229, 1);
+}
+.block-stats_item:hover::before {
+  transform: translate(-60px, -60px) rotate(45deg);
+}
+
+.block-stats_item::after {
+  transform: translate(210px, 210px) rotate(45deg);
+  background: rgba(255, 95, 61, 1);
+}
+
+.block-stats_item:hover::after {
+  transform: translate(170px, 170px) rotate(45deg);
+}
+
+.block-stats_item:hover .block-stats_icon {
+  background-color: var(--link-color);
+  fill: var(--whitecolor);
+}
+
+.block-stats_icon .icon {
+  width: 44px;
+  height: 44px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.block-stats_icon .border {
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+}
+
+.block-stats_stat {
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 60px;
+  line-height: 1;
+  letter-spacing: 0;
+  text-align: center;
+  margin-top: 18px;
+  position: relative;
+  z-index: 1;
+}
+
+.block-stats_text {
+  position: relative;
+  z-index: 1;
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 16px;
+  line-height: 1;
+  letter-spacing: 0;
+  text-align: center;
+  text-transform: capitalize;
+  margin-top: 10px;
+}
+
+@media (min-width: 1160px) {
+  .block-stats {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+  }
+  .block-stats_item {
+    width: 250px;
+  }
+}
+
+@media (min-width: 768px) {
+  .about {
+    padding: 60px 0 120px 0;
+  }
+}
+
+@media (max-width: 479.9px) {
+  .block-stats {
+    grid-template-columns: 1fr;
+    gap: 30px;
   }
 }

@@ -1,6 +1,10 @@
 <?php
 $layouts = [
   'ptg-jumbotron'   => 'banner',
+  'ptg-about'       => 'about',
+
+
+
   // 'ptg-incut'       => 'incut',
   // 'ptg-text'        => 'text',
   // 'ptg-spoiler'     => 'spoiler',
@@ -14,7 +18,7 @@ $layouts = [
   // 'ptg-clients'     => 'clients',
   // 'ptg-gallery'     => 'photo-gallery',
   // 'ptg-alert'       => 'alert',
-  // 'ptg-about'       => 'about',
+  
   // 'ptg-discover'    => 'discover',
 ];
 
