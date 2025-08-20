@@ -714,6 +714,81 @@ button:hover svg path {
   margin-top: 17px;
 }
 
+.about-content_img img {
+  max-width: 470px;
+}
+
+.decor-img {
+  margin-left: 10%;
+  position: relative;
+}
+
+.decor-img img {
+  border-top-right-radius: 90px;
+  border-bottom-right-radius: 90px;
+  position: relative;
+  z-index: 1;
+  width: 100%;
+}
+
+.decor-img::after {
+  z-index: 0;
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 17px;
+  background-color: var(--link-color);
+  transition: all 0.3s linear;
+  width: 40%;
+  height: 88%;
+  transform: rotate(-5.5deg);
+  transform-origin: right bottom;
+}
+
+.decor-img::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 0;
+  z-index: 2;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.2) 100%
+  );
+  /* background-color: #ff5f3d; */
+}
+
+.decor-img:hover::before {
+  animation: shine 0.3s ease-in-out;
+}
+
+@keyframes shine {
+  0% {
+    height: 30%;
+    top: 0;
+  }
+
+  99% {
+    top: 70%;
+    height: 30%;
+  }
+
+  100% {
+    top: 100%;
+    height: 0;
+  }
+}
+
+@media (min-width: 1360px) {
+  .decor-img {
+    margin-left: 0;
+  }
+}
+
 @media (min-width: 1160px) {
   .about-content {
     margin-top: 120px;
@@ -729,6 +804,12 @@ button:hover svg path {
 }
 
 @media (min-width: 768px) {
+  .decor-img:hover::after {
+    transform: rotate(-9deg);
+  }
+  .decor-img::after {
+    transform: rotate(-5.8deg);
+  }
   .about-content_text {
     align-items: flex-start;
   }
@@ -738,6 +819,10 @@ button:hover svg path {
 
   .about-content h2 {
     text-align: left;
+  }
+  .decor-img img {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
   }
 }
 

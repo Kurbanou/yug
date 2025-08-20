@@ -84,10 +84,11 @@
         </div>
         <div class="about-content">
             <?php if ($img = get_sub_field('about-img')): ?>
-                <div class="about-content_img">
-                    <img src="<?php echo esc_url($img); ?>" alt="">
+                <div class="about-content_img decor-img">
+                    <img src="<?php echo esc_url($img); ?>" alt="foto">
                 </div>
             <?php endif; ?>
+            
             <div class="about-content_text">
                 <div class="section-title">
                     <div class="section-title_icon">
