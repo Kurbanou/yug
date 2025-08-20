@@ -2,6 +2,7 @@
 $layouts = [
   'ptg-jumbotron'   => 'banner',
   'ptg-about'       => 'about',
+  'ptg-services'  => is_front_page() ? 'services-home' : 'services',
 
 
 
@@ -9,7 +10,7 @@ $layouts = [
   // 'ptg-text'        => 'text',
   // 'ptg-spoiler'     => 'spoiler',
   // 'ptg-articles'    => 'articles',
-  // 'ptg-services'    => 'services',
+  
   // 'ptg-projects'    => 'projects',
   // 'ptg-contacts'    => 'contacts',
   // 'ptg-video'       => 'video-gallery',

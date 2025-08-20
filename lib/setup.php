@@ -7,8 +7,7 @@ use Roots\Sage\Assets;
 /**
  * Theme setup
  */
-function setup()
-{
+function setup() {
   // Enable features from Soil when plugin is activated
   // https://roots.io/plugins/soil/
   add_theme_support('soil-clean-up');
@@ -19,7 +18,7 @@ function setup()
 
   // Make theme available for translation
   // Community translations can be found at https://github.com/roots/sage-translations
-  //  load_theme_textdomain('sage', get_template_directory() . '/lang');
+//  load_theme_textdomain('sage', get_template_directory() . '/lang');
 
   // Enable plugins to manage the document title
   // http://codex.wordpress.org/Function_Reference/add_theme_support#Title_Tag
@@ -36,9 +35,9 @@ function setup()
   // http://codex.wordpress.org/Function_Reference/set_post_thumbnail_size
   // http://codex.wordpress.org/Function_Reference/add_image_size
   add_theme_support('post-thumbnails');
-  add_image_size('ptg-gallery', 300, 200, true);
-  add_image_size('ptg-slider', 700, 400, true);
-  add_image_size('ptg-carousel', 540, 350, true);
+  add_image_size( 'ptg-gallery', 300, 200, true );
+  add_image_size( 'ptg-slider', 700, 400, true );
+  add_image_size( 'ptg-carousel', 540, 350, true );
 
   // Enable post formats
   // http://codex.wordpress.org/Post_Formats
@@ -57,8 +56,7 @@ add_action('after_setup_theme', __NAMESPACE__ . '\\setup');
 /**
  * Register sidebars
  */
-function widgets_init()
-{
+function widgets_init() {
   register_sidebar([
     'name'          => __('Primary', 'sage'),
     'id'            => 'sidebar-primary',
@@ -82,8 +80,7 @@ add_action('widgets_init', __NAMESPACE__ . '\\widgets_init');
 /**
  * Determine which pages should NOT display the sidebar
  */
-function display_sidebar()
-{
+function display_sidebar() {
   static $display;
 
   isset($display) || $display = !in_array(true, [
@@ -104,12 +101,28 @@ function assets()
 {
   // Отключаем CF7, если не используешь
   wp_deregister_script('contact-form-7');
-  wp_deregister_style('contact-form-7');
+  wp_deregister_style('contact-form-7'); 
+
+  if (is_front_page()) {
+    // Главная страница
+    wp_enqueue_style('sage/css', Assets\asset_path('styles/main-style.css'), false, null);
+    wp_enqueue_script('potaga/main', Assets\asset_path('scripts/app.js'), null, null, true);
+  
+  // } elseif (is_page_template('template-blog.php')) {
+    // Страница постов (блог)
+    // wp_enqueue_style('sage/css', Assets\asset_path('styles/blog.css'), false, null);
+    // wp_enqueue_script('potaga/blog', Assets\asset_path('scripts/blog.js'), ['jquery'], null, true);
+  } else {
+    // Все остальные страницы
+    wp_enqueue_style('sage/css', Assets\asset_path('styles/main.css'), false, null);
+    wp_enqueue_script('potaga/main', Assets\asset_path('scripts/main.js'), ['jquery'], null, true);
+    wp_enqueue_script('potaga/form', Assets\asset_path('scripts/form.js'), ['jquery'], null, true); 
+  }
 
   // Загружаем основной CSS
-  wp_enqueue_style('sage/css', Assets\asset_path('styles/main-style.css'), false, null);
+  // wp_enqueue_style('sage/css', Assets\asset_path('styles/main-style.css'), false, null);
 
   // Загружаем основной JS
-  wp_enqueue_script('potaga/main', Assets\asset_path('scripts/app.js'), null, null, true);
+  // wp_enqueue_script('potaga/main', Assets\asset_path('scripts/app.js'), null, null, true);
 }
 add_action('wp_enqueue_scripts', __NAMESPACE__ . '\\assets', 100);
