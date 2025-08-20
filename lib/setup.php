@@ -108,21 +108,17 @@ function assets()
     wp_enqueue_style('sage/css', Assets\asset_path('styles/main-style.css'), false, null);
     wp_enqueue_script('potaga/main', Assets\asset_path('scripts/app.js'), null, null, true);
   
-  // } elseif (is_page_template('template-blog.php')) {
-    // Страница постов (блог)
-    // wp_enqueue_style('sage/css', Assets\asset_path('styles/blog.css'), false, null);
-    // wp_enqueue_script('potaga/blog', Assets\asset_path('scripts/blog.js'), ['jquery'], null, true);
-  } else {
-    // Все остальные страницы
-    wp_enqueue_style('sage/css', Assets\asset_path('styles/main.css'), false, null);
-    wp_enqueue_script('potaga/main', Assets\asset_path('scripts/main.js'), ['jquery'], null, true);
-    wp_enqueue_script('potaga/form', Assets\asset_path('scripts/form.js'), ['jquery'], null, true); 
-  }
+ 
 
-  // Загружаем основной CSS
-  // wp_enqueue_style('sage/css', Assets\asset_path('styles/main-style.css'), false, null);
+} else {
+  // Все остальные страницы
+  wp_enqueue_style('sage/main', Assets\asset_path('styles/main.css'), false, null);
+  wp_enqueue_script('potaga/main', Assets\asset_path('scripts/main.js'), ['jquery'], null, true);
+  wp_enqueue_script('potaga/form', Assets\asset_path('scripts/form.js'), ['jquery'], null, true);
 
-  // Загружаем основной JS
-  // wp_enqueue_script('potaga/main', Assets\asset_path('scripts/app.js'), null, null, true);
+  wp_enqueue_style('sage/extra', Assets\asset_path('styles/main-style.css'), false, null);
+  wp_enqueue_script('potaga/app', Assets\asset_path('scripts/app.js'), null, null, true);
+}
+
 }
 add_action('wp_enqueue_scripts', __NAMESPACE__ . '\\assets', 100);

@@ -319,6 +319,10 @@ button:hover svg path {
   border-bottom-right-radius: 30px;
   transition: all 0.3s linear;
   height: 100px;
+  z-index: 2;
+}
+main {
+  padding-top: 100px;
 }
 .site-header_content {
   position: relative;
@@ -382,6 +386,9 @@ button:hover svg path {
 
   .site-header {
     height: 80px;
+  }
+  main {
+    padding-top: 80px;
   }
   .logo {
     padding-right: 0;
@@ -528,6 +535,7 @@ button:hover svg path {
   padding: 104px 0 24px 0;
   color: var(--whitecolor);
   text-align: center;
+  margin-top: -100px;
 }
 
 .jumbotron .container {
