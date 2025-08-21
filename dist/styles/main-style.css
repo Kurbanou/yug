@@ -86,6 +86,15 @@ body {
   display: flex;
   flex-direction: column;
 }
+main {
+  padding-top: 100px;
+}
+
+@media (max-width: 768px) {
+  main {
+    padding-top: 80px;
+  }
+}
 
 .no-scroll {
   overflow: hidden;
@@ -141,6 +150,7 @@ h2 {
   white-space: normal;
   word-break: break-word;
   hyphens: auto;
+  letter-spacing: 1.2px;
 }
 
 .section-title {
@@ -308,6 +318,7 @@ button:hover svg path {
 }
 
 .logo {
+  width: fit-content;
   display: flex;
   gap: 10px;
   justify-content: space-between;
@@ -322,7 +333,6 @@ button:hover svg path {
   cursor: pointer;
   z-index: 10;
   background-color: var(--whitecolor);
-  padding-right: 30px;
 }
 .logo .span {
   font-weight: 400;
@@ -330,6 +340,17 @@ button:hover svg path {
   opacity: 0.6;
   margin-top: 9px;
   letter-spacing: 0;
+}
+
+.logo img {
+  display: block;
+  width: 48px;
+}
+
+@media (max-width: 768px) {
+  .logo img {
+    width: 36px;
+  }
 }
 
 /* header */
@@ -345,8 +366,9 @@ button:hover svg path {
   height: 100px;
   z-index: 2;
 }
-main {
-  padding-top: 100px;
+
+.site-header .logo {
+  padding-right: 30px;
 }
 .site-header_content {
   position: relative;
@@ -358,10 +380,6 @@ main {
 .site-header_content button,
 .site-header_content .burger {
   margin-left: auto;
-}
-.site-header .logo img {
-  display: block;
-  width: 48px;
 }
 
 .main-nav {
@@ -404,7 +422,7 @@ main {
 }
 
 @media (max-width: 1000px) {
-  .site-header .logo img {
+  .logo img {
     width: 36px;
   }
 
@@ -588,7 +606,7 @@ main {
 
 @media (min-width: 768px) {
   .jumbotron {
-    padding: 160px 0 60px 0;
+    padding: 140px 0 60px 0;
   }
   .jumbotron-description {
     font-size: 22px;
@@ -738,7 +756,7 @@ main {
 }
 
 .about-content h2 {
-  margin: 10px 0 40px 0;
+  margin: 10px 0 32px 0;
   text-align: center;
 }
 
@@ -1004,4 +1022,38 @@ main {
   .services {
     padding: 120px 0;
   }
+}
+/* ************************* */
+/* incut */
+.incut__content {
+  position: relative;
+  display: flex;
+  height: 152px;
+  align-items: center;
+}
+
+.incut__content span {
+  max-width: 350px;
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0;
+}
+
+.lage img {
+  width: 67px;
+}
+
+.lage {
+  font-size: 24px;
+}
+
+.lage .span {
+  font-size: 18px;
+}
+
+.incut__content button {
+  margin-left: auto;
 }

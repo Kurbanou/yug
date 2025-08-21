@@ -2,11 +2,8 @@
 $layouts = [
   'ptg-jumbotron'   => 'banner',
   'ptg-about'       => 'about',
-  'ptg-services'  => 'services-home',
-
-
-
-  // 'ptg-incut'       => 'incut',
+  'ptg-services'    => 'services-home',
+  'ptg-incut'       => 'incut-home',
   // 'ptg-text'        => 'text',
   // 'ptg-spoiler'     => 'spoiler',
   // 'ptg-articles'    => 'articles',

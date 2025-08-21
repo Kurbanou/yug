@@ -2,15 +2,11 @@
 $layouts = [
   'ptg-jumbotron'   => 'banner',
   'ptg-about'       => 'about',
-  'ptg-services'  => is_front_page() ? 'services-home' : 'services',
-
-
-
+  'ptg-services'    => 'services',
   'ptg-incut'       => 'incut',
   'ptg-text'        => 'text',
   'ptg-spoiler'     => 'spoiler',
-  'ptg-articles'    => 'articles',
-  
+  'ptg-articles'    => 'articles',  
   'ptg-projects'    => 'projects',
   'ptg-contacts'    => 'contacts',
   'ptg-video'       => 'video-gallery',
@@ -18,8 +14,7 @@ $layouts = [
   'ptg-partners'    => 'partners',
   'ptg-clients'     => 'clients',
   'ptg-gallery'     => 'photo-gallery',
-  'ptg-alert'       => 'alert',
-  
+  'ptg-alert'       => 'alert',  
   'ptg-discover'    => 'discover',
 ];
 
