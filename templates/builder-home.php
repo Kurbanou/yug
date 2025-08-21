@@ -8,7 +8,7 @@ $layouts = [
   // 'ptg-spoiler'     => 'spoiler',
   // 'ptg-articles'    => 'articles',
   
-  // 'ptg-projects'    => 'projects',
+  'ptg-projects'    => 'projects',
   // 'ptg-contacts'    => 'contacts',
   // 'ptg-video'       => 'video-gallery',
   // 'ptg-feedback'    => 'feedback',

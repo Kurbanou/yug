@@ -163,9 +163,11 @@ h2 {
   line-height: 32px;
   letter-spacing: 0;
   text-align: center;
+  justify-content: center;
   color: var(--link-color);
   text-transform: uppercase;
   font-family: "NEXT ART", sans-serif;
+  margin-bottom: 14px;
 }
 .section-title_icon {
   background: rgba(255, 95, 61, 0.05);
@@ -208,6 +210,16 @@ p {
   margin-bottom: 1.5rem;
 }
 
+section {
+  padding: 80px 0;
+}
+
+.section-button {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 40px;
+}
+
 @media (max-width: 450px) {
   h1 {
     font-size: 38px;
@@ -223,6 +235,12 @@ p {
   }
   h2 {
     letter-spacing: 1.2px;
+  }
+  section {
+    padding: 120px 0;
+  }
+  .section-button {
+    margin-top: 80px;
   }
 }
 
@@ -266,6 +284,7 @@ button {
   transition: all 0.3s linear;
   background-color: var(--link-color);
   padding: 14px 30px;
+  user-select: none;
 }
 
 button svg {
@@ -762,7 +781,7 @@ button:hover svg path {
 }
 
 .about-content h2 {
-  margin: 10px 0 40px 0;
+  margin: 0 0 40px 0;
   text-align: center;
 }
 
@@ -875,7 +894,7 @@ button:hover svg path {
 
   .about-content h2 {
     text-align: left;
-    margin: 10px 0 32px 0;
+    margin: 0 0 32px 0;
   }
   .decor-img img {
     border-top-right-radius: 0;
@@ -897,10 +916,6 @@ button:hover svg path {
   background: url(../images/services-bg.jpg) no-repeat top center;
   background-size: cover;
   color: var(--whitecolor);
-  padding: 80px 0;
-}
-.services .section-title {
-  justify-content: center;
 }
 
 .services h2 {
@@ -977,7 +992,7 @@ button:hover svg path {
   height: 0;
   left: 0;
   top: 0;
-  background: var(--link-color);
+  background: rgba(255, 121, 92, 1);
   z-index: -1;
 }
 
@@ -1026,12 +1041,13 @@ button:hover svg path {
     margin-top: 80px;
     padding-left: 0;
   }
-  .services {
-    padding: 120px 0;
-  }
 }
 /* ************************* */
 /* incut */
+
+.incut {
+  padding: 0;
+}
 .incut__content {
   position: relative;
   display: flex;
@@ -1091,5 +1107,178 @@ button:hover svg path {
 
   .lage .span {
     font-size: 18px;
+  }
+}
+/* ********************** */
+/* projects */
+.projects {
+  background: url(../images/services-bg.jpg) no-repeat top center;
+  background-size: cover;
+  color: var(--whitecolor);
+  overflow: hidden;
+}
+
+.projects h2 {
+  text-align: center;
+}
+
+.project__image {
+  position: relative;
+  width: 357px;
+  height: 456px;
+  flex-shrink: 0;
+}
+
+.project__caption {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 266px;
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 32px;
+  letter-spacing: 0;
+  text-align: center;
+  z-index: 3;
+}
+
+.decor {
+  position: relative;
+  user-select: none;
+  overflow: hidden;
+  border-radius: 8px;
+  transition: all 0.3s linear;
+  z-index: 1;
+}
+.decor img {
+  position: relative;
+  z-index: 1;
+  width: 357px;
+  transition: all 0.3s linear;
+}
+
+.decor::before {
+  position: absolute;
+  content: "";
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.9) 0%,
+    rgba(0, 0, 0, 0) 25%
+  );
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: all 0.3s linear;
+  z-index: 2;
+}
+
+.decor:hover::before {
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.4) 0%,
+    rgba(0, 0, 0, 0.6) 60%,
+    rgba(0, 0, 0, 0.4) 100%
+  );
+}
+.decor:hover img {
+  scale: 1.2;
+}
+
+.project__more {
+  height: 90px;
+  width: 100%;
+  position: absolute;
+  bottom: -90px;
+  background-color: var(--link-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 32px;
+  letter-spacing: 0;
+  text-align: center;
+  gap: 8px;
+  transition: all 0.3s linear;
+  cursor: pointer;
+  z-index: 3;
+}
+.project__more .icon {
+  padding: 12px;
+  border: 1px solid var(--whitecolor);
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  fill: var(--whitecolor);
+  background-color: transparent;
+  transition: all 0.3s linear;
+}
+
+.project__more:hover {
+  background: rgba(255, 120, 92, 1);
+}
+.project__more:hover .icon {
+  fill: var(--link-color);
+  background-color: var(--whitecolor);
+}
+
+.decor:hover .project__more {
+  bottom: 0;
+}
+
+.projects__content {
+  margin-top: 40px;
+  display: flex;
+  overflow-x: auto;
+  gap: 34px;
+}
+
+@media (min-width: 1556px) {
+  .pagination {
+    width: 100%;
+    display: flex;
+    margin-top: 88px;
+    justify-content: center;
+    align-items: flex-end;
+    height: 16px;
+
+    gap: 9px;
+  }
+  .pagination span {
+    display: block;
+    width: 60px;
+    height: 8px;
+    user-select: none;
+    cursor: pointer;
+    transition: all 0.3s linear;
+    background: rgba(255, 255, 255, 0.5);
+  }
+  .pagination span.active {
+    height: 16px;
+    background-color: var(--link-color);
+  }
+
+  .projects__content {
+    overflow-x: hidden;
+    transition: transform 0.5s ease;
+    will-change: transform;
+    width: fit-content;
+  }
+  .wide {
+    padding: 0;
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+@media (min-width: 768px) {
+  .projects__content {
+    margin-top: 80px;
   }
 }

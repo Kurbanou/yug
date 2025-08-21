@@ -19,3 +19,24 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+  const pagination = document.querySelector(".pagination");
+  const slider = document.querySelector(".projects__content");
+  if (!pagination || !slider) return;
+
+  const paginations = pagination.querySelectorAll("span");
+  const cardWidth = 357;
+  const gap = 34;
+  const cardsPerPage = 4;
+  const offsetPerPage = cardsPerPage * cardWidth + (cardsPerPage - 1) * gap;
+
+  paginations.forEach((element, index) => {
+    element.addEventListener("click", () => {
+      paginations.forEach((el) => el.classList.remove("active"));
+      element.classList.add("active");
+
+      slider.style.transform = `translateX(-${index * offsetPerPage}px)`;
+    });
+  });
+});
