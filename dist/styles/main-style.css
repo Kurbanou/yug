@@ -1243,7 +1243,7 @@ button:hover svg path {
   .pagination {
     width: 100%;
     display: flex;
-    margin-top: 88px;
+    margin-top: 80px;
     justify-content: center;
     align-items: flex-end;
     height: 16px;
@@ -1280,5 +1280,12 @@ button:hover svg path {
 @media (min-width: 768px) {
   .projects__content {
     margin-top: 80px;
+  }
+}
+
+@media (max-width: 560px) {
+  .projects h2 {
+    max-width: 480px;
+    hyphens: none;
   }
 }
