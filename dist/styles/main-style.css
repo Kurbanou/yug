@@ -1268,6 +1268,8 @@ button:hover svg path {
     transition: transform 0.5s ease;
     will-change: transform;
     width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
   }
   .wide {
     padding: 0;
