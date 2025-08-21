@@ -1247,7 +1247,6 @@ button:hover svg path {
     justify-content: center;
     align-items: flex-end;
     height: 16px;
-
     gap: 9px;
   }
   .pagination span {
