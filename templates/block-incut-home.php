@@ -11,7 +11,7 @@
                 <div class="span">Системы пневмотранспорта</div>
                 </div>
             </a>
-            <svg width="119" height="152" viewBox="0 0 119 152" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg class="line" width="119" height="152" viewBox="0 0 119 152" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M84.3914 0.00366211H118.5L34.1086 152.004H0L84.3914 0.00366211Z" fill="#FF5F3D"/>
             </svg>
             <span>Хотите надёжную систему - начните с заявки. Мы свяжемся и предложим лучшее решение.</span>

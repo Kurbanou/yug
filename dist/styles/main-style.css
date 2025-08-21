@@ -150,7 +150,7 @@ h2 {
   white-space: normal;
   word-break: break-word;
   hyphens: auto;
-  letter-spacing: 1.2px;
+  letter-spacing: 0;
 }
 
 .section-title {
@@ -220,6 +220,9 @@ p {
   h1 {
     font-size: 64px;
     line-height: 114%;
+  }
+  h2 {
+    letter-spacing: 1.2px;
   }
 }
 
@@ -347,7 +350,7 @@ button:hover svg path {
   width: 48px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 480px) {
   .logo img {
     width: 36px;
   }
@@ -367,9 +370,6 @@ button:hover svg path {
   z-index: 2;
 }
 
-.site-header .logo {
-  padding-right: 30px;
-}
 .site-header_content {
   position: relative;
   padding: 20px 0;
@@ -413,6 +413,12 @@ button:hover svg path {
 
 .main-nav__link:hover {
   color: var(--link-color);
+}
+
+@media (min-width: 768px) {
+  .site-header .logo {
+    padding-right: 30px;
+  }
 }
 
 @media (max-width: 1160px) {
@@ -756,7 +762,7 @@ button:hover svg path {
 }
 
 .about-content h2 {
-  margin: 10px 0 32px 0;
+  margin: 10px 0 40px 0;
   text-align: center;
 }
 
@@ -869,6 +875,7 @@ button:hover svg path {
 
   .about-content h2 {
     text-align: left;
+    margin: 10px 0 32px 0;
   }
   .decor-img img {
     border-top-right-radius: 0;
@@ -1033,6 +1040,7 @@ button:hover svg path {
 }
 
 .incut__content span {
+  width: 100%;
   max-width: 350px;
   font-family: "Ubuntu", sans-serif;
   font-weight: 700;
@@ -1042,18 +1050,46 @@ button:hover svg path {
   letter-spacing: 0;
 }
 
-.lage img {
-  width: 67px;
-}
-
-.lage {
-  font-size: 24px;
-}
-
-.lage .span {
-  font-size: 18px;
-}
-
 .incut__content button {
   margin-left: auto;
+}
+
+@media (max-width: 1160px) {
+  .incut__content .logo {
+    margin-bottom: 14px;
+  }
+  .incut__content {
+    height: auto;
+    padding: 80px 0;
+  }
+  .incut__content {
+    flex-direction: column;
+
+    align-items: center;
+  }
+  .incut__content .line {
+    display: none;
+  }
+  .incut__content button {
+    margin-left: 0;
+    margin-top: 40px;
+  }
+  .incut__content span {
+    max-width: 100%;
+    text-align: center;
+  }
+}
+
+@media (min-width: 478px) {
+  .lage img {
+    width: 67px;
+  }
+
+  .lage {
+    font-size: 24px;
+  }
+
+  .lage .span {
+    font-size: 18px;
+  }
 }
