@@ -1,4 +1,4 @@
-<section class="services" id="services">
+<section class="services blick" id="services">
     <div class="container">
         <div class="services__title">
             <div class="section-title">
@@ -21,6 +21,7 @@
         </div>
 
         <div class="services__content">
+            
 
             <?php $query = new WP_Query([
                 'post_type' => 'service',
@@ -38,6 +39,9 @@
                         <a href="<?php the_permalink(); ?>">
                             <?php the_title(); ?>
                         </a>
+                        <svg width="25" height="24" viewBox="0 0 25 24" >
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M8.0077 17.6604L15.1994 10.4687L15.1994 15.1256L17.1992 15.1256L17.1992 7.05468L9.12858 7.05501L9.12858 9.05482L13.7851 9.05452L6.59347 16.2462L8.0077 17.6604Z" />
+                        </svg>
                     </div>
 
                     <?php

@@ -89,8 +89,30 @@ body {
 
 .no-scroll {
   overflow: hidden;
-  height: 100vh; /* предотвращает прокрутку на мобильных */
+  height: 100vh;
   display: block;
+}
+
+@media (min-width: 1360px) {
+  .blick {
+    position: relative;
+    z-index: 1;
+  }
+
+  .blick::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    height: 200px;
+    border-radius: 1px;
+    box-shadow: 0 0 300px 200px rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.2);
+    z-index: 0;
+    pointer-events: none;
+  }
 }
 
 a:hover {
@@ -113,9 +135,12 @@ h2 {
   font-family: "Ubuntu", sans-serif;
   font-weight: 700;
   font-style: normal;
-  font-size: 40px;
+  font-size: 38px;
   line-height: 44px;
   letter-spacing: 0;
+  white-space: normal;
+  word-break: break-word;
+  hyphens: auto;
 }
 
 .section-title {
@@ -154,18 +179,17 @@ h2 {
   font-family: "Ubuntu", sans-serif;
   font-weight: 400;
   font-style: normal;
-
+  white-space: normal;
+  word-break: break-word;
+  hyphens: auto;
   line-height: 24px;
   letter-spacing: 0;
   color: var(--link-color);
-
   font-size: 22px;
-
   text-decoration: underline;
   text-decoration-style: solid;
   text-decoration-thickness: 1.5px;
   text-decoration-skip-ink: auto;
-
   text-underline-offset: 1.5px;
 }
 
@@ -535,7 +559,7 @@ main {
   padding: 104px 0 24px 0;
   color: var(--whitecolor);
   text-align: center;
-  margin-top: -100px;
+  margin-top: -80px;
 }
 
 .jumbotron .container {
@@ -714,7 +738,7 @@ main {
 }
 
 .about-content h2 {
-  margin: 10px 0 33px 0;
+  margin: 10px 0 40px 0;
   text-align: center;
 }
 
@@ -861,10 +885,14 @@ main {
 
 .services__content {
   margin-top: 40px;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  display: flex;
   gap: 30px;
-  width: 1120px;
+  overflow-x: auto;
+  padding-left: calc(50vw - 150px);
+}
+.service-block {
+  width: 257px;
+  flex-shrink: 0;
 }
 
 .service-block_img {
@@ -877,9 +905,11 @@ main {
 .service-block_img img {
   height: 188px;
   width: auto;
+  transition: all 0.3s linear;
 }
 
 .service-block_title {
+  position: relative;
   text-align: center;
   padding: 0 12px;
   font-family: "Ubuntu", sans-serif;
@@ -896,6 +926,38 @@ main {
   align-items: center;
   margin-top: 30px;
   margin-bottom: 24px;
+  z-index: 1;
+}
+
+.service-block_title svg {
+  position: absolute;
+  width: 24px;
+  right: 4px;
+  top: 4px;
+  fill: transparent;
+  transition: all 0.3s linear;
+  transform: rotate(90deg);
+}
+
+.service-block_title:hover svg {
+  fill: var(--whitecolor);
+  transform: rotate(0deg);
+}
+
+.service-block_title::before {
+  position: absolute;
+  transition: all 0.3s linear;
+  content: "";
+  width: 100%;
+  height: 0;
+  left: 0;
+  top: 0;
+  background: var(--link-color);
+  z-index: -1;
+}
+
+.service-block_title:hover::before {
+  height: 100%;
 }
 
 .service-block ul {
@@ -930,10 +992,14 @@ main {
 .service-block:hover li {
   opacity: 1;
 }
+.service-block:hover .service-block_img img {
+  scale: 1.2;
+}
 
 @media (min-width: 768px) {
   .services__content {
     margin-top: 80px;
+    padding-left: 0;
   }
   .services {
     padding: 120px 0;
