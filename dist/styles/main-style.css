@@ -1441,9 +1441,6 @@ button:hover svg path {
   transition: all 0.3s linear;
 }
 
-.article-card:hover .article-card__image::after {
-  /* background: transparent; */
-}
 .article__more:hover {
   background: rgba(255, 120, 92, 1);
 }
