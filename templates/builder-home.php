@@ -4,10 +4,9 @@ $layouts = [
   'ptg-about'       => 'about',
   'ptg-services'    => 'services-home',
   'ptg-incut'       => 'incut-home',
-  // 'ptg-text'        => 'text',
-  // 'ptg-spoiler'     => 'spoiler',
-  // 'ptg-articles'    => 'articles',
-  
+  'ptg-text'        => 'text',
+  'ptg-spoiler'     => 'spoiler',
+  'ptg-articles'    => 'articles',  
   'ptg-projects'    => 'projects',
   // 'ptg-contacts'    => 'contacts',
   // 'ptg-video'       => 'video-gallery',
@@ -15,8 +14,7 @@ $layouts = [
   // 'ptg-partners'    => 'partners',
   // 'ptg-clients'     => 'clients',
   // 'ptg-gallery'     => 'photo-gallery',
-  // 'ptg-alert'       => 'alert',
-  
+  // 'ptg-alert'       => 'alert',  
   // 'ptg-discover'    => 'discover',
 ];
 
