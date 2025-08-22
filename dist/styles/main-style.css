@@ -912,43 +912,43 @@ button:hover svg path {
 /* ****************************** */
 /* services */
 
-.services {
+.serv {
   background: url(../images/services-bg.jpg) no-repeat top center;
   background-size: cover;
   color: var(--whitecolor);
 }
 
-.services h2 {
+.serv h2 {
   margin-top: 14px;
   text-align: center;
 }
 
-.services__content {
+.serv__content {
   margin-top: 40px;
   display: flex;
   gap: 30px;
   overflow-x: auto;
   padding-left: calc(50vw - 150px);
 }
-.service-block {
+.serv-block {
   width: 257px;
   flex-shrink: 0;
 }
 
-.service-block_img {
+.serv-block_img {
   display: flex;
   align-items: center;
   justify-content: center;
   height: 225px;
   opacity: 0.6;
 }
-.service-block_img img {
+.serv-block_img img {
   height: 188px;
   width: auto;
   transition: all 0.3s linear;
 }
 
-.service-block_title {
+.serv-block_title {
   position: relative;
   text-align: center;
   padding: 0 12px;
@@ -969,7 +969,7 @@ button:hover svg path {
   z-index: 1;
 }
 
-.service-block_title svg {
+.serv-block_title svg {
   position: absolute;
   width: 24px;
   right: 4px;
@@ -979,12 +979,12 @@ button:hover svg path {
   transform: rotate(90deg);
 }
 
-.service-block_title:hover svg {
+.serv-block_title:hover svg {
   fill: var(--whitecolor);
   transform: rotate(0deg);
 }
 
-.service-block_title::before {
+.serv-block_title::before {
   position: absolute;
   transition: all 0.3s linear;
   content: "";
@@ -996,17 +996,17 @@ button:hover svg path {
   z-index: -1;
 }
 
-.service-block_title:hover::before {
+.serv-block_title:hover::before {
   height: 100%;
 }
 
-.service-block ul {
+.serv-block ul {
   display: flex;
   flex-direction: column;
   gap: 16px;
 }
 
-.service-block li {
+.serv-block li {
   font-family: "Ubuntu", sans-serif;
   font-weight: 400;
   font-style: normal;
@@ -1017,7 +1017,7 @@ button:hover svg path {
   padding-left: 19px;
   position: relative;
 }
-.services__content li::before {
+.serv__content li::before {
   content: "";
   width: 6px;
   height: 6px;
@@ -1028,16 +1028,16 @@ button:hover svg path {
   top: 11px;
 }
 
-.service-block:hover .service-block_img,
-.service-block:hover li {
+.serv-block:hover .serv-block_img,
+.serv-block:hover li {
   opacity: 1;
 }
-.service-block:hover .service-block_img img {
+.serv-block:hover .serv-block_img img {
   scale: 1.2;
 }
 
 @media (min-width: 768px) {
-  .services__content {
+  .serv__content {
     margin-top: 80px;
     padding-left: 0;
   }
@@ -1232,7 +1232,7 @@ button:hover svg path {
   bottom: 0;
 }
 
-.projects__content {
+.proj__content {
   margin-top: 40px;
   display: flex;
   overflow-x: auto;
@@ -1240,7 +1240,7 @@ button:hover svg path {
 }
 
 @media (min-width: 1556px) {
-  .pagination {
+  .pag-proj {
     width: 100%;
     display: flex;
     margin-top: 80px;
@@ -1249,7 +1249,7 @@ button:hover svg path {
     height: 16px;
     gap: 9px;
   }
-  .pagination span {
+  .pag-proj span {
     display: block;
     width: 60px;
     height: 8px;
@@ -1258,12 +1258,12 @@ button:hover svg path {
     transition: all 0.3s linear;
     background: rgba(255, 255, 255, 0.5);
   }
-  .pagination span.active {
+  .pag-proj span.active {
     height: 16px;
     background-color: var(--link-color);
   }
 
-  .projects__content {
+  .proj__content {
     overflow-x: hidden;
     transition: transform 0.5s ease;
     will-change: transform;
@@ -1279,7 +1279,7 @@ button:hover svg path {
 }
 
 @media (min-width: 768px) {
-  .projects__content {
+  .proj__content {
     margin-top: 80px;
   }
 }
@@ -1458,5 +1458,28 @@ button:hover svg path {
   }
   .article-card__tags {
     order: unset;
+  }
+}
+/* ********************* */
+/* gallery */
+.gallery-sec {
+  background: url(../images/services-bg.jpg) no-repeat top center;
+  background-size: cover;
+  color: var(--whitecolor);
+  overflow: hidden;
+}
+
+.gallery_content {
+  display: flex;
+  gap: 24px;
+  overflow-x: auto;
+  padding-left: 20px;
+}
+
+@media (min-width: 1160px) {
+  .gallery_content {
+    padding-left: calc((100vw - 1160px) / 2 + 20px);
+    overflow: hidden;
+    width: fit-content;
   }
 }

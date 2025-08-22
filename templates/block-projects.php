@@ -13,7 +13,7 @@
     </div> 
   
     <div class="container wide">
-        <div class="projects__content">
+        <div class="proj__content">
 
             <?php
                 // Получаем 4 оригинальных записи типа project
@@ -77,7 +77,7 @@
         </div>
     </div>
 
-    <div class="pagination">
+    <div class="pag-proj">
         <span class="active"></span>
         <span></span>
         <span></span>

@@ -5,7 +5,7 @@ $layouts = [
   'ptg-services'    => 'services-home',
   'ptg-incut'       => 'incut-home',
   'ptg-text'        => 'text',
-  // 'ptg-spoiler'     => 'spoiler',
+  'ptg-spoiler'     => 'spoiler',
   'ptg-articles'    => 'articles-home',  
   'ptg-projects'    => 'projects',
   // 'ptg-contacts'    => 'contacts',
@@ -13,7 +13,7 @@ $layouts = [
   // 'ptg-feedback'    => 'feedback',
   // 'ptg-partners'    => 'partners',
   // 'ptg-clients'     => 'clients',
-  // 'ptg-gallery'     => 'photo-gallery',
+  'ptg-gallery'     => 'photo-gallery-home',
   // 'ptg-alert'       => 'alert',  
   // 'ptg-discover'    => 'discover',
 ];

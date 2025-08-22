@@ -1,4 +1,4 @@
-<section class="services blick" id="services">
+<section class="serv blick" id="services">
     <div class="container">
         
         <div class="section-title">
@@ -14,7 +14,7 @@
         </h2>          
        
 
-        <div class="services__content">
+        <div class="serv__content">
             
 
             <?php $query = new WP_Query([
@@ -24,12 +24,12 @@
 
             <?php if ($query->have_posts()) : ?>
             <?php while ($query->have_posts()) : $query->the_post(); ?>
-                <div class="service-block">
-                    <div class="service-block_img">
+                <div class="serv-block">
+                    <div class="serv-block_img">
                         <img src="<?php echo esc_url(get_field('ptg-service-image') ?: '#'); ?>" alt="serv-img">
                      </div>   
-                    <!-- <div class="service-block_title"><?php the_title(); ?></div> -->
-                    <div class="service-block_title">
+                    <!-- <div class="serv-block_title"><?php the_title(); ?></div> -->
+                    <div class="serv-block_title">
                         <a href="<?php the_permalink(); ?>">
                             <?php the_title(); ?>
                         </a>

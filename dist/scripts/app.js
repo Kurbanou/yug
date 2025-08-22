@@ -21,8 +21,8 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 document.addEventListener("DOMContentLoaded", function () {
-  const pagination = document.querySelector(".pagination");
-  const slider = document.querySelector(".projects__content");
+  const pagination = document.querySelector(".pag-proj");
+  const slider = document.querySelector(".proj__content");
   if (!pagination || !slider) return;
 
   const paginations = pagination.querySelectorAll("span");
