@@ -54,11 +54,11 @@
                 ?>
 
                
-                    <figure class="project__image decor">                    
+                    <div class="project__image decor">                    
                     <img src="<?php echo esc_url($img_url); ?>" alt="<?php echo esc_attr($img_alt); ?>" loading="lazy">
-                    <figcaption class="project__caption"><?php echo esc_html($title); ?></figcaption>
+                    <div class="project__caption"><?php echo esc_html($title); ?></div>
                     <a class="project" href="<?php echo esc_url($link); ?>">
-                        <figcaption class="project__more">
+                        <div class="project__more">
                             Подробнее
                             <div class="icon">
                                 <svg width="12" height="11" viewBox="0 0 12 11" >
@@ -66,9 +66,9 @@
                             </svg>
                             </div>
                         
-                        </figcaption>
+                        </div>
                     </a>
-                    </figure>
+                    </div>
                 
 
                 <?php endforeach; ?>

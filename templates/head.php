@@ -7,4 +7,3 @@
   <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap&subset=cyrillic" rel="stylesheet">
   <?php wp_head(); ?>
 </head>
-<body>

@@ -1,4 +1,5 @@
 <section class="incut">
+    <h2 style="display:none;">title</h2>
     <div class="container">
         <div class="incut__content">
             <a href="<?php echo home_url(); ?>" class="logo lage">
@@ -20,9 +21,6 @@
                     <path d="M15.525 12.4787L11.775 8.70371L14.55 5.95371L13.825 5.22871L8.35 10.7037L6.95 9.30371L13.825 2.42871L15.95 4.55371L17.925 2.57871L21.675 6.32871L15.525 12.4787ZM7 21.0037H3.25V17.2537L10.35 10.1287L14.125 13.8787L7 21.0037Z"/>
                 </svg>
             </button>
-        </div>
-
-        
-        
+        </div>  
     </div>
 </section>

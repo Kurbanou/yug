@@ -1,4 +1,4 @@
-<section class="articles" id="articles">
+<section class="articles" id="articles">  
   <div class="container">
     <div class="articles__title">
       <div class="section-title">
@@ -24,7 +24,7 @@
       ?>
 
       <?php while ($query->have_posts()) : $query->the_post(); ?>
-        <article class="article-card">
+        <div class="article-card">
             <?php
                     // Изображение записи
                     if (has_post_thumbnail()) :
@@ -102,7 +102,7 @@
                     </div>
                 </div>
             </a>
-        </article>
+        </div>
       <?php endwhile; ?>
       <?php wp_reset_postdata(); ?>
     </div>
