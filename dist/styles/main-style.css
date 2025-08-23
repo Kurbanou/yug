@@ -1047,6 +1047,8 @@ button:hover svg path {
 
 .incut {
   padding: 0;
+  background: url(../images/incut-bg.jpg) no-repeat top center;
+  background-size: cover;
 }
 .incut__content {
   position: relative;
