@@ -128,3 +128,67 @@ document.addEventListener("DOMContentLoaded", function () {
 
   updateButtons(); // ← вызов при инициализации
 });
+
+// карта
+
+async function initMap() {
+  const { Map, InfoWindow } = await google.maps.importLibrary("maps");
+  const { LatLngBounds } = await google.maps.importLibrary("core");
+  const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
+
+  const maps = document.querySelectorAll(".map");
+
+  maps.forEach((mapElement) => {
+    const markerElements = mapElement.querySelectorAll(".marker");
+
+    const map = new Map(mapElement, {
+      zoom: 16,
+      center: { lat: 0, lng: 0 },
+      mapTypeId: "terrain",
+      mapId: "8e0a97af9386fef", // ← обязательно для AdvancedMarkerElement
+      scrollwheel: false,
+      zoomControl: false,
+      streetViewControl: false,
+    });
+
+    const bounds = new LatLngBounds();
+
+    markerElements.forEach((el) => {
+      const lat = parseFloat(el.dataset.lat);
+      const lng = parseFloat(el.dataset.lng);
+      const position = { lat, lng };
+
+      const iconUrl = document.body.classList.contains("theme--green")
+        ? "/wp-content/themes/potaga/dist/images/pin-green.png"
+        : "/wp-content/themes/potaga/dist/images/pin.png";
+
+      const img = document.createElement("img");
+      img.src = iconUrl;
+      img.style.width = "16vw";
+      img.style.minWidth = "160px";
+
+      const marker = new AdvancedMarkerElement({
+        map,
+        position,
+        title: el.textContent.trim(),
+        content: img,
+      });
+
+      bounds.extend(position);
+
+      if (el.innerHTML.trim()) {
+        const infoWindow = new InfoWindow({ content: el.innerHTML });
+        marker.addListener("click", () => infoWindow.open(map, marker));
+      }
+    });
+
+    if (markerElements.length === 1) {
+      map.setCenter(bounds.getCenter());
+      map.setZoom(16);
+    } else {
+      map.fitBounds(bounds);
+    }
+  });
+}
+
+initMap();
