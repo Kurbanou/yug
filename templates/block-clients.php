@@ -1,5 +1,5 @@
-<section class="clients" id="clients">
-      <div class="container">
+<section class="clients " id="clients">
+      <div class="container wide">
         <div class="clients__title">
             <div class="section-title">
                 <div class="section-title_icon">
@@ -9,21 +9,26 @@
                     />
                 </svg>
                 </div>
-                наш блог
+                наши клиенты и партнеры
             </div>
             <h2>
-                <?php the_sub_field( 'articles-title' ); ?>
+                <?php the_sub_field( 'clients-title' ); ?>
             </h2>
         </div>
         <?php
-        $images = get_sub_field( 'clients-images' );
+        $images = get_sub_field('clients-images');
+        $images = array_merge($images, $images, $images, $images); //4x
         if ( $images ) :
             ?>
             <div class="clients__carousel">
                 <?php foreach ( $images as $image ) : ?>
-                    <div class="item"><img src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt']; ?>"></div>
+                    <div class="clients__carousel_item"><img src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt']; ?>"></div>
                 <?php endforeach; ?>
             </div>
         <?php endif; ?>
     </div>
 </section>
+
+
+
+

@@ -179,6 +179,7 @@ h2 {
   align-items: center;
   justify-content: center;
   fill: var(--link-color);
+  flex-shrink: 0;
 }
 
 .section-title svg {
@@ -1522,6 +1523,7 @@ button:hover svg path {
   overflow: hidden;
   transition: all 0.3s linear;
   border-radius: 8px;
+  flex-shrink: 0;
 }
 .gallery-sec__content_item__figure {
   width: 100%;
@@ -1616,5 +1618,59 @@ button:hover svg path {
     margin: 0 0 80px 0;
     margin-left: auto;
     margin-right: auto;
+  }
+}
+/* **************** */
+/* clients */
+
+.clients {
+  overflow: hidden;
+}
+
+.clients h2 {
+  text-align: center;
+}
+
+.clients__carousel {
+  margin-top: 80px;
+  display: flex;
+  gap: 24px;
+  width: fit-content;
+  padding: 12px 0;
+  animation: scroll 20s linear infinite;
+}
+
+.clients__carousel_item {
+  flex-shrink: 0;
+  width: 201px;
+  height: 127px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.clients__carousel_item img {
+  filter: grayscale(100%);
+  transition: filter 0.3s ease;
+}
+
+.clients__carousel_item:hover img {
+  filter: grayscale(0%);
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-25%);
+  }
+}
+
+@media (max-width: 480px) {
+  .clients h2 {
+    width: 100%;
+    max-width: 420px;
+    hyphens: none;
   }
 }
