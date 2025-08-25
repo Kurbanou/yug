@@ -32,15 +32,14 @@
                         </a>
                     <?php endif; ?>
                     <div class="video-card__title"><?php echo esc_html($title); ?></div> 
-                    <svg class="video-card__icon" width="71" height="71" viewBox="0 0 71 71" >
-                        <mask id="mask0_989_4815" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="4" y="4" width="63" height="63">
-                        <path d="M35.5 65.0876C51.8388 65.0876 65.0833 51.8431 65.0833 35.5042C65.0833 19.1654 51.8388 5.9209 35.5 5.9209C19.1611 5.9209 5.91663 19.1654 5.91663 35.5042C5.91663 51.8431 19.1611 65.0876 35.5 65.0876Z" fill="white" stroke="white" stroke-width="2" stroke-linejoin="round"/>
-                        <path d="M29.5833 35.5045V25.2568L38.4583 30.3807L47.3333 35.5045L38.4583 40.6283L29.5833 45.7522V35.5045Z" fill="black" stroke="black" stroke-width="2" stroke-linejoin="round"/>
-                        </mask>
-                        <g mask="url(#mask0_989_4815)">
-                        <path d="M0 0.00390625H71V71.0039H0V0.00390625Z" />
-                        </g>
-                    </svg>
+                
+                        <svg class="video-card__icon" version="1.1"  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                            viewBox="0 0 71 71" style="enable-background:new 0 0 71 71;" xml:space="preserve">
+
+                        <path class="st0" d="M35.5,3.5c-17.7,0-32,14.3-32,32c0,17.7,14.3,32,32,32s32-14.3,32-32C67.5,17.8,53.2,3.5,35.5,3.5z M29,47V24
+                            l19,11.5L29,47z"/>
+                        </svg>
+
                 </div>
             <?php
             endwhile;

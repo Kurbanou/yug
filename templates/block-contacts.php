@@ -1,4 +1,5 @@
 <section class="contacts-sec" id="contacts">
+    <h2 style="display:none;">title</h2>
     <div class="contacts-sec__block">
         <div class="contacts__block_item tel">
             <div class="contacts_icon">

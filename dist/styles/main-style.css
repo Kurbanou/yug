@@ -1971,6 +1971,7 @@ span.wpcf7-not-valid-tip {
 }
 
 .video-card__icon {
+  width: 71px;
   fill: var(--whitecolor);
   position: absolute;
   top: 50%;
