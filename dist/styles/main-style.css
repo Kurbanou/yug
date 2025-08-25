@@ -13,6 +13,17 @@
   padding: 0;
 }
 
+svg path {
+  fill: unset !important;
+  stroke: unset !important;
+  stroke-width: unset !important;
+  stroke-dasharray: unset !important;
+  stroke-dashoffset: unset !important;
+  -webkit-animation: unset !important;
+  -o-animation: unset !important;
+  animation: unset !important;
+}
+
 /* === HTML & Body === */
 html {
   scroll-behavior: smooth;
@@ -584,7 +595,8 @@ button:hover svg path {
 /* ******************* */
 /* footer */
 .footer {
-  background: #2d3037 url(../images/bg-footer.png) no-repeat 50% 95%;
+  background: rgba(53, 59, 85, 1) url(../images/bg-footer.png) no-repeat 50% 95%;
+
   text-align: center;
   color: var(--whitecolor);
   display: flex;
@@ -2004,5 +2016,31 @@ span.wpcf7-not-valid-tip {
   .video-gallery__block_item {
     width: 550px;
     height: 395px;
+  }
+}
+/* ***************** */
+/* arhiv_blog */
+
+.arhiv_blog {
+  background: url(../images/blog-bg.jpg) top center;
+  color: var(--whitecolor);
+  overflow: hidden;
+}
+
+.arhiv_blog__title h2 {
+  text-align: center;
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 30px;
+  line-height: 36px;
+  letter-spacing: 0;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+@media (min-width: 768px) {
+  .arhiv_blog__title h2 {
+    margin-bottom: 80px;
   }
 }

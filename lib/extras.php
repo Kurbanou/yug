@@ -22,7 +22,7 @@ function body_class($classes) {
 
   return $classes;
 }
-add_filter('body_class', __NAMESPACE__ . '\\body_class');
+// add_filter('body_class', __NAMESPACE__ . '\\body_class');
 
 /**
  * Clean up the_excerpt()
@@ -30,7 +30,7 @@ add_filter('body_class', __NAMESPACE__ . '\\body_class');
 function excerpt_more() {
   return ' &hellip; <a href="' . get_permalink() . '">' . __('Continued', 'sage') . '</a>';
 }
-add_filter('excerpt_more', __NAMESPACE__ . '\\excerpt_more');
+// add_filter('excerpt_more', __NAMESPACE__ . '\\excerpt_more');
 
 /**
  * Ajax пагинация записей
@@ -52,8 +52,8 @@ function ptg_load_more(){
   die();
 }
 
-add_action('wp_ajax_loadmore', __NAMESPACE__ . '\\ptg_load_more');
-add_action('wp_ajax_nopriv_loadmore', __NAMESPACE__ . '\\ptg_load_more');
+// add_action('wp_ajax_loadmore', __NAMESPACE__ . '\\ptg_load_more');
+// add_action('wp_ajax_nopriv_loadmore', __NAMESPACE__ . '\\ptg_load_more');
 
 /**
  * Изменение вывода галереи через шоткод
@@ -101,7 +101,7 @@ function ptg_gallery_output($output, $attr)
   return $out;
 }
 
-add_filter('post_gallery', __NAMESPACE__ . '\\ptg_gallery_output', 10, 2);
+// add_filter('post_gallery', __NAMESPACE__ . '\\ptg_gallery_output', 10, 2);
 
 /**
  * Отключаем Emoji
