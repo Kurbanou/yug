@@ -9,13 +9,13 @@ $layouts = [
   'ptg-articles'    => 'articles-home',  
   'ptg-projects'    => 'projects',
   'ptg-contacts'    => 'contacts',
-  // 'ptg-video'       => 'video-gallery',
+  'ptg-video'       => 'video-gallery',
   'ptg-feedback'    => 'feedback',
-  // 'ptg-partners'    => 'partners',
+  'ptg-partners'    => 'partners',
   'ptg-clients'     => 'clients',
   'ptg-gallery'     => 'photo-gallery-home',
-  // 'ptg-alert'       => 'alert',  
-  // 'ptg-discover'    => 'discover',
+  'ptg-alert'       => 'alert',  
+  'ptg-discover'    => 'discover',
 ];
 
 $layout = get_row_layout();
