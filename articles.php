@@ -9,7 +9,7 @@ $query = new WP_Query( [
     'post_type'      =>
 'post', 'posts_per_page' => 12 ] ); ?>
 
-<section class="arhiv_blog blick">
+<section class="arhiv_blog ">
   <div class="container">
     <div class="arhiv_blog__title">
       <div class="section-title">
@@ -45,13 +45,8 @@ $query = new WP_Query( [
                         $img_url = get_the_post_thumbnail_url(get_the_ID(), 'full');
                         $img_alt = get_the_title();
                     ?>
-        <div class="article-card__image">
-          <img
-            src="<?php echo esc_url($img_url); ?>"
-            alt="<?php echo esc_attr($img_alt); ?>"
-            loading="lazy"
-          />
-        </div>
+     <div class="article-card__image" style="background-image: url('<?php echo esc_url($img_url); ?>');">
+</div>
         <?php endif; ?>
 
         <div class="article-card__content">
