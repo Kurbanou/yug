@@ -100,8 +100,8 @@ function display_sidebar() {
 function assets()
 {
   // Отключаем CF7, если не используешь
-  wp_deregister_script('contact-form-7');
-  wp_deregister_style('contact-form-7'); 
+  // wp_deregister_script('contact-form-7');
+  // wp_deregister_style('contact-form-7'); 
 
   if (is_front_page()) {
     // Главная страница
@@ -114,7 +114,7 @@ function assets()
   // Все остальные страницы
   wp_enqueue_style('sage/main', Assets\asset_path('styles/main.css'), false, null);
   wp_enqueue_script('potaga/main', Assets\asset_path('scripts/main.js'), ['jquery'], null, true);
-  wp_enqueue_script('potaga/form', Assets\asset_path('scripts/form.js'), ['jquery'], null, true);
+  // wp_enqueue_script('potaga/form', Assets\asset_path('scripts/form.js'), ['jquery'], null, true);
 
   wp_enqueue_style('sage/extra', Assets\asset_path('styles/main-style.css'), false, null);
   wp_enqueue_script('potaga/app', Assets\asset_path('scripts/app.js'), null, null, true);

@@ -264,7 +264,8 @@ section {
   }
 }
 
-button {
+button,
+input[type="submit"].button {
   height: 52px;
   text-transform: uppercase;
   font-family: "Ubuntu", sans-serif;
@@ -302,7 +303,8 @@ button.lite {
   background-color: transparent;
 }
 
-button:hover {
+button:hover,
+input[type="submit"].button:hover {
   background-color: var(--whitecolor);
   color: var(--link-color);
   fill: var(--link-color);
@@ -1680,7 +1682,8 @@ button:hover svg path {
 /* contacts */
 .contacts-sec {
   position: relative;
-  padding: 0;
+  /* padding-top: 0;
+  padding-bottom: 0; */
 }
 
 .contacts-sec__block {
@@ -1690,7 +1693,6 @@ button:hover svg path {
   border-bottom-left-radius: 30px;
   border-bottom-right-radius: 30px;
   background-color: var(--whitecolor);
-  padding: 80px 0 30px 0;
   width: 100%;
   height: fit-content;
   display: flex;
@@ -1701,12 +1703,13 @@ button:hover svg path {
   z-index: 2;
   border-bottom-left-radius: 30px;
   border-bottom-right-radius: 30px;
+  padding-bottom: 30px;
 }
 
 .container_logo {
   position: relative;
   background-color: var(--whitecolor);
-  box-shadow: -10px 10px 20px 10px rgba(0, 0, 0, 0.4);
+  box-shadow: 0px -10px 20px -10px rgba(0, 0, 0, 0.4);
   background-color: var(--whitecolor);
   width: 100%;
   display: flex;
@@ -1736,11 +1739,150 @@ button:hover svg path {
   max-width: 100%;
 }
 @media (min-width: 1100px) {
+  .contacts-sec {
+    padding: 0;
+  }
   .contacts-sec__block {
     height: 100px;
     flex-direction: row;
     gap: 90px;
-    padding: 0;
+    height: 100px;
+    padding-bottom: 0;
+
     align-items: center;
+  }
+}
+/* ******************** */
+/* forma */
+
+/* section.feedback {
+  padding: 120px 0;
+} */
+
+.feedback h2 {
+  margin-bottom: 30px;
+  text-align: center;
+  hyphens: none;
+}
+
+form br {
+  display: none;
+}
+
+form .button {
+  margin-top: 40px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.form-row {
+  width: 100%;
+  display: flex;
+  row-gap: 24px;
+  column-gap: 24px;
+  margin-bottom: 24px;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.form-field {
+  flex: 1 1 100%;
+}
+
+.form-field label {
+  display: block;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 22px;
+  line-height: 1;
+  letter-spacing: 0;
+  color: rgba(0, 0, 0, 0.5);
+  margin-bottom: 8px;
+  padding: 0;
+}
+
+.form-input {
+  width: 100%;
+  height: 54px;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  box-sizing: border-box;
+  padding: 20px 18px;
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 16px;
+  line-height: 1;
+  letter-spacing: 0;
+}
+
+.form-input::placeholder,
+textarea::placeholder {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+textarea {
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 16px;
+  line-height: 1;
+  letter-spacing: 0;
+  width: 100%;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  box-sizing: border-box;
+  padding: 20px 18px;
+  width: 100%;
+  aspect-ratio: 3.4;
+  min-height: 114px;
+  max-height: 305px;
+  resize: none;
+}
+
+/* Общее сообщение об ошибке */
+.wpcf7 form.invalid .wpcf7-response-output {
+  color: #d93025;
+  background-color: #ffe6e6;
+  border: 1px solid #d93025;
+  padding: 12px;
+  margin-top: 16px;
+  border-radius: 4px;
+}
+
+/* Успешная отправка */
+.wpcf7 form.sent .wpcf7-response-output {
+  color: #2e7d32;
+  background-color: #e6f4ea;
+  border: 1px solid #2e7d32;
+  padding: 12px;
+  margin-top: 16px;
+  border-radius: 4px;
+}
+
+/* Ошибка в конкретном поле */
+span.wpcf7-not-valid-tip {
+  display: block;
+  margin-top: 6px;
+  font-size: 13px;
+  color: #d93025;
+}
+
+/* Подсветка поля с ошибкой */
+.form-input.wpcf7-not-valid {
+  border-color: #d93025;
+  background-color: #fff5f5;
+}
+
+@media (min-width: 768px) {
+  form .button {
+    margin-top: 80px;
+  }
+  .form-row {
+    row-gap: 17px;
+    margin-bottom: 17px;
+  }
+  .form-field {
+    flex: 1 1 48%;
   }
 }

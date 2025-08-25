@@ -192,3 +192,5 @@ async function initMap() {
 }
 
 initMap();
+
+// форма
