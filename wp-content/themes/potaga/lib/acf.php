@@ -1,5 +1,86 @@
 <?php
 if( function_exists('acf_add_local_field_group') ):
+    acf_add_local_field_group([
+        'key' => 'group_post_accordion',
+        'title' => 'Аккордеоны в записи',
+        'fields' => [
+            [
+            'key' => 'field_post_accordion_blocks',
+            'label' => 'Аккордеоны',
+            'name' => 'accordion_blocks',
+            'type' => 'flexible_content',
+            'layouts' => [
+                [
+                'key' => 'layout_accordion_item',
+                'name' => 'accordion_item',
+                'label' => 'Блок аккордеона',
+                'display' => 'block',
+                'sub_fields' => [
+                    [
+                    'key' => 'field_accordion_title',
+                    'label' => 'Заголовок',
+                    'name' => 'title',
+                    'type' => 'text',
+                    ],
+                    [
+                    'key' => 'field_accordion_content',
+                    'label' => 'Содержимое',
+                    'name' => 'content',
+                    'type' => 'wysiwyg',
+                    ],
+                ],
+                ],
+            ],
+            'button_label' => 'Добавить аккордеон',
+            ],
+        ],
+        'location' => [
+            [
+            [
+                'param' => 'post_type',
+                'operator' => '==',
+                'value' => 'post',
+            ],
+            ],
+        ],
+    ]);
+    acf_add_local_field_group([
+        'key' => 'group_author_avatar',
+        'title' => 'Фото автора',
+        'fields' => [
+            [
+            'key' => 'field_author_avatar',
+            'label' => 'Фото',
+            'name' => 'profile_image',
+            'type' => 'image',
+            'return_format' => 'array',
+            'preview_size' => 'thumbnail',
+            ],
+            [
+            'key' => 'field_author_full_name',
+            'label' => 'ФИО',
+            'name' => 'full_name',
+            'type' => 'text',
+            ],
+            [
+            'key' => 'field_author_position',
+            'label' => 'Должность',
+            'name' => 'position',
+            'type' => 'text',
+            ],
+        ],
+        'location' => [
+            [
+            [
+                'param' => 'user_role',
+                'operator' => '==',
+                'value' => 'author',
+            ],
+            ],
+        ],
+    ]);
+
+
 
     acf_add_local_field_group(array (
         'key' => 'group_55ebc364bb613',

@@ -2117,3 +2117,140 @@ span.wpcf7-not-valid-tip {
     margin-bottom: 80px;
   }
 }
+/* ************** */
+/* singl post */
+.singl-post__top {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 300px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem;
+  overflow: hidden;
+}
+
+.singl-post__top::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.2) 7.25%,
+    rgba(0, 0, 0, 0.85) 86.1%
+  );
+  z-index: 1;
+}
+
+.singl-post__top_content {
+  color: #fff;
+  position: relative;
+  z-index: 2;
+}
+
+/* галерея */
+.wp-block-gallery {
+  display: grid !important;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.wp-block-gallery .blocks-gallery-item {
+  margin: 0 !important;
+  width: 100% !important;
+}
+
+.wp-block-gallery .blocks-gallery-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+/* Планшеты: 2 изображения в ряд */
+@media (max-width: 1024px) {
+  .wp-block-gallery {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Мобильные: 1 изображение в ряд */
+@media (max-width: 600px) {
+  .wp-block-gallery {
+    grid-template-columns: 1fr;
+  }
+}
+
+.accordion {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #fce4ec;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  transition: background 0.3s ease;
+}
+
+.accordion[open] {
+  background-color: #fff;
+}
+
+.accordion-title {
+  font-weight: bold;
+  cursor: pointer;
+  position: relative;
+  padding-right: 2rem;
+}
+
+.accordion-title::after {
+  content: "▼";
+  position: absolute;
+  right: 0;
+  top: 0;
+  font-size: 1rem;
+  transform: rotate(0deg);
+  transition: transform 0.3s ease;
+}
+
+.accordion[open] .accordion-title::after {
+  transform: rotate(180deg);
+}
+
+.accordion-content {
+  margin-top: 1rem;
+}
+/* содержание постов */
+.post-toc {
+  border: 1px solid #ddd;
+  padding: 1rem;
+  margin-bottom: 2rem;
+  background: #f9f9f9;
+  border-radius: 6px;
+}
+
+.post-toc h3 {
+  margin-top: 0;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.post-toc ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.post-toc li {
+  margin-bottom: 0.5rem;
+  text-decoration: underline;
+}
+
+.post-toc li.toc-sub {
+  margin-left: 1rem;
+  font-size: 0.95rem;
+}

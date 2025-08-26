@@ -193,4 +193,17 @@ async function initMap() {
 
 initMap();
 
-// форма
+// аккардеон
+document.addEventListener("DOMContentLoaded", function () {
+  const accordions = document.querySelectorAll("details.accordion");
+
+  accordions.forEach((accordion) => {
+    accordion.addEventListener("click", function () {
+      accordions.forEach((other) => {
+        if (other !== accordion) {
+          other.removeAttribute("open");
+        }
+      });
+    });
+  });
+});

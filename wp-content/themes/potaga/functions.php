@@ -202,3 +202,31 @@ if (!is_admin()) {
   add_filter('show_admin_bar', '__return_false');
 }
 
+
+function generate_toc($content) {
+  $matches = [];
+  preg_match_all('/<h([2-6])[^>]*>(.*?)<\/h\1>/', $content, $matches, PREG_SET_ORDER);
+
+  if (!$matches) return $content;
+
+  $toc = '<div class="post-toc"><h3>Содержание</h3><ul>';
+  $i = 0;
+
+  foreach ($matches as $match) {
+    $level = $match[1];
+    $title = strip_tags($match[2]);
+    $anchor = 'toc-' . $i;
+
+    // Добавляем якорь
+    $content = str_replace($match[0], '<h' . $level . ' id="' . $anchor . '">' . $match[2] . '</h' . $level . '>', $content);
+
+    // Добавляем пункт в TOC
+    $indent = ($level > 2) ? ' class="toc-sub"' : '';
+    $toc .= '<li' . $indent . '><a href="#' . $anchor . '">' . esc_html($title) . '</a></li>';
+    $i++;
+  }
+
+  $toc .= '</ul></div>';
+  return $toc . $content;
+}
+add_filter('the_content', 'generate_toc');
