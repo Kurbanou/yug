@@ -93,5 +93,5 @@
     
 </section>
 <?php get_template_part('templates/block-services'); ?>
-
+<?php get_template_part('templates/block-connect'); ?>
 
