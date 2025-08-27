@@ -13,6 +13,27 @@
   padding: 0;
 }
 
+.container::after,
+.container::before {
+  content: none;
+}
+
+ol,
+ul {
+  margin-bottom: 0;
+}
+blockquote {
+  padding: unset;
+  margin: unset;
+  font-size: inherit;
+  border-left: unset;
+}
+
+blockquote ol:last-child,
+blockquote p:last-child,
+blockquote ul:last-child {
+  margin-bottom: unset;
+}
 svg path {
   fill: unset !important;
   stroke: unset !important;
@@ -2169,19 +2190,143 @@ span.wpcf7-not-valid-tip {
 }
 /* ************** */
 /* singl post */
+.singl-post {
+  padding: 0;
+  margin-top: -80px;
+}
+
+.singl-post h1 {
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 60px;
+  line-height: 1;
+  letter-spacing: 0;
+  text-transform: none !important;
+  text-align: center;
+  hyphens: none;
+  word-break: normal;
+}
+
+.singl-post__content h2 {
+  hyphens: none;
+  word-break: normal;
+}
+
+.singl-post__content h3 {
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0;
+  text-transform: uppercase;
+  margin-top: 12px;
+  hyphens: none;
+  word-break: normal;
+}
+
+.singl-post__content p {
+  margin: 24px 0;
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0;
+}
+
+.tag-first {
+  font-family: "NEXT ART", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 22px;
+  line-height: 32px;
+  letter-spacing: 0;
+  color: var(--link-color);
+  text-transform: uppercase;
+}
+
+.singl-post .article-card__tags {
+  align-items: center;
+  margin-top: 5px;
+}
+
+.singl-post__top_content_meta {
+  max-width: 590px;
+}
 .singl-post__top {
   position: relative;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  min-height: 300px;
+  padding: 150px 0 20px 0;
+}
 
+.data__autor {
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  font-size: 14px;
+}
+.singl-post__top_content_autor {
+  display: flex;
+
+  gap: 13px;
+  flex-wrap: wrap;
   justify-content: center;
-  text-align: center;
-  padding: 2rem;
-  overflow: hidden;
+  align-items: center;
+}
+.data__autor .fio {
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 32px;
+  letter-spacing: 0;
+}
+
+.foto__autor {
+  flex-shrink: 0;
+}
+
+.singl-post__top_content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  color: #fff;
+  position: relative;
+  z-index: 2;
+  row-gap: 30px;
+}
+@media (min-width: 1100px) {
+  .singl-post__top {
+    padding: 440px 0 20px 0;
+  }
+  .singl-post__top_content {
+    align-items: flex-end;
+    flex-direction: row;
+    display: flex;
+    justify-content: space-between;
+    color: #fff;
+    position: relative;
+    z-index: 2;
+  }
+  .singl-post__top_content_autor {
+    display: flex;
+    gap: 13px;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-end;
+  }
+  .singl-post h1 {
+    text-align: left;
+  }
+}
+
+@media (min-width: 768px) {
+  .singl-post {
+    margin-top: -100px;
+  }
 }
 
 .singl-post__top::before {
@@ -2196,19 +2341,13 @@ span.wpcf7-not-valid-tip {
   z-index: 1;
 }
 
-.singl-post__top_content {
-  color: #fff;
-  position: relative;
-  z-index: 2;
-}
-
 /* галерея */
 .wp-block-gallery {
   display: grid !important;
   grid-template-columns: repeat(4, 1fr);
   gap: 24px;
   list-style: none;
-  padding: 0;
+  padding: 12px 0;
   margin: 0;
 }
 
@@ -2224,83 +2363,229 @@ span.wpcf7-not-valid-tip {
   object-fit: cover;
 }
 
-/* Планшеты: 2 изображения в ряд */
 @media (max-width: 1024px) {
   .wp-block-gallery {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-/* Мобильные: 1 изображение в ряд */
 @media (max-width: 600px) {
   .wp-block-gallery {
     grid-template-columns: 1fr;
   }
 }
 
+/* accordion */
 .accordion {
-  border: 1px solid #ccc;
   border-radius: 8px;
-  background-color: #fce4ec;
-  padding: 1rem;
-  margin-bottom: 1rem;
-  transition: background 0.3s ease;
-}
+  background: rgba(255, 95, 61, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  position: relative;
+  transition: all 0.3s ease;
 
-.accordion[open] {
-  background-color: #fff;
+  padding: 20px;
+  margin-bottom: 1rem;
 }
 
 .accordion-title {
-  font-weight: bold;
   cursor: pointer;
   position: relative;
   padding-right: 2rem;
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 700;
+
+  font-size: 16px;
+  line-height: 2.15;
+  letter-spacing: 0;
+  text-transform: uppercase;
 }
 
-.accordion-title::after {
-  content: "▼";
+.accordion::after {
+  content: "";
   position: absolute;
-  right: 0;
-  top: 0;
-  font-size: 1rem;
-  transform: rotate(0deg);
-  transition: transform 0.3s ease;
+  right: 20px;
+  top: 20px;
+  transform: rotate(180deg);
+  transition: all 0.3s ease;
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+  background-image: url("../images/Vector.png");
+  background-color: rgba(255, 95, 61, 1);
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
-.accordion[open] .accordion-title::after {
-  transform: rotate(180deg);
+.accordion[open]::after {
+  transform: rotate(0deg);
 }
 
 .accordion-content {
   margin-top: 1rem;
-}
-/* содержание постов */
-.post-toc {
-  border: 1px solid #ddd;
-  padding: 1rem;
-  margin-bottom: 2rem;
-  background: #f9f9f9;
-  border-radius: 6px;
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 400;
+  font-style: normal; /* 'Regular' → невалидное значение */
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0;
+  padding-right: 45px;
 }
 
-.post-toc h3 {
-  margin-top: 0;
-  font-size: 1.2rem;
-  font-weight: bold;
+/* краткое содержание новости */
+.post-toc {
+  width: 100%;
+  max-width: 337px;
+  padding: 20px;
+  background: rgba(242, 242, 242, 1);
+  border-radius: 8px;
+  color: rgba(53, 59, 85, 0.6);
+  float: left;
+  margin-right: 50px;
+  margin-bottom: 40px;
+}
+
+.post-toc .sub {
+  margin-left: 30px; /* или больше, например 2rem */
+}
+.singl-post__content {
+  overflow: hidden;
+}
+
+.singl-post__content a {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  line-height: 1.2;
+}
+
+.post-toc_title {
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 700;
+  font-style: normal; /* 'Bold' → невалидно, используем 'normal' */
+  font-size: 22px;
+  line-height: 32px;
+  letter-spacing: 0; /* проценты не поддерживаются */
+  margin-bottom: 20px;
 }
 
 .post-toc ul {
   list-style: none;
   padding-left: 0;
-}
-
-.post-toc li {
-  margin-bottom: 0.5rem;
-  text-decoration: underline;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .post-toc li.toc-sub {
-  margin-left: 1rem;
-  font-size: 0.95rem;
+  margin-left: 0;
+  font-size: 16px;
+  line-height: 1;
+  letter-spacing: 0;
+  opacity: 0.6;
+}
+/* wp-block-quote */
+
+.wp-block-quote {
+  padding: 12px 0;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  width: 100vw;
+  background: rgba(255, 95, 61, 0.1);
+}
+
+.wp-block-quote p {
+  width: 100%;
+  max-width: 1150px;
+  padding: 0 20px;
+  margin-top: 24px;
+  margin-bottom: 24px !important;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+}
+.wp-block-quote p::before {
+  content: "";
+  float: left;
+  width: 61px;
+  height: 48px;
+  background-image: url("../images/blockquote.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin-right: 24px;
+  margin-top: 4px;
+}
+
+/* wp-block-separator */
+.wp-block-separator {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 120px;
+  border: none;
+}
+
+@media (max-width: 768px) {
+  .wp-block-separator {
+    height: 80px;
+  }
+}
+.wp-block-image .alignright {
+  float: right;
+  margin-left: 50px;
+}
+
+/* ************ */
+/* tables */
+
+.wp-block-table {
+  width: 100%;
+  max-width: 1120px;
+  margin: 40px auto;
+  border-collapse: collapse;
+  font-family: "Ubuntu", sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--fontcolor);
+  background-color: #fff;
+  /* box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05); */
+
+  display: block;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.wp-block-table tbody {
+  width: 100%;
+}
+
+.wp-block-table tr:first-child {
+  background-color: rgba(255, 95, 61, 0.1);
+}
+
+.wp-block-table td:first-child {
+  font-weight: 700;
+  /* color: var(--link-color); */
+  text-align: center;
+}
+
+.wp-block-table td {
+  padding: 16px 20px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.wp-block-table tr:nth-child(even) {
+  background-color: #fafafa;
+}
+.wp-block-table td span {
+  font-weight: 600;
+  color: var(--link-color);
+}
+
+.wp-block-table table {
+  min-width: 700px;
+  width: 100%;
+  width: max-content;
+  border-collapse: collapse;
 }

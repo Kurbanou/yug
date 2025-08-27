@@ -203,30 +203,42 @@ if (!is_admin()) {
 }
 
 
+
 function generate_toc($content) {
   $matches = [];
   preg_match_all('/<h([2-6])[^>]*>(.*?)<\/h\1>/', $content, $matches, PREG_SET_ORDER);
 
   if (!$matches) return $content;
 
-  $toc = '<div class="post-toc"><h3>Содержание</h3><ul>';
+  $toc = '<div class="post-toc"><div class="post-toc_title">Содержание</div><ul>';
+  $prev_level = 2;
   $i = 0;
 
   foreach ($matches as $match) {
-    $level = $match[1];
+    $level = (int)$match[1];
     $title = strip_tags($match[2]);
     $anchor = 'toc-' . $i;
 
-    // Добавляем якорь
+    // Вставляем якорь в заголовок
     $content = str_replace($match[0], '<h' . $level . ' id="' . $anchor . '">' . $match[2] . '</h' . $level . '>', $content);
 
-    // Добавляем пункт в TOC
-    $indent = ($level > 2) ? ' class="toc-sub"' : '';
-    $toc .= '<li' . $indent . '><a href="#' . $anchor . '">' . esc_html($title) . '</a></li>';
+    // Управляем вложенностью
+    if ($level > $prev_level) {
+      $toc .= str_repeat('<ul class="sub">', $level - $prev_level);
+    } elseif ($level < $prev_level) {
+      $toc .= str_repeat('</ul>', $prev_level - $level);
+    }
+
+    $toc .= '<li><a href="#' . $anchor . '">' . esc_html($title) . '</a></li>';
+    $prev_level = $level;
     $i++;
   }
 
+  // Закрываем оставшиеся списки
+  $toc .= str_repeat('</ul>', $prev_level - 2);
   $toc .= '</ul></div>';
+
   return $toc . $content;
 }
+
 add_filter('the_content', 'generate_toc');
