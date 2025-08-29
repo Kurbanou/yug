@@ -33,10 +33,10 @@
                 }
                 wp_reset_postdata();
 
-                // Генерируем 20 карточек
+                // Генерируем 25 карточек
                 shuffle($projects);
 
-                for ($i = 0; $i < 20; $i++) {
+                for ($i = 0; $i < 25; $i++) {
                 $repeated_projects[] = $projects[$i % count($projects)];
                 }
 
