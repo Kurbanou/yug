@@ -289,21 +289,33 @@ document.addEventListener("DOMContentLoaded", function () {
         const btn = document.createElement("span");
         pagination.appendChild(btn);
       }
+
       const paginations = pagination.querySelectorAll("span");
       paginations[0].classList.add("active");
 
-      const cardWidth = 357;
+      let screenWidth = window.innerWidth;
       const gap = 34;
-      const cardsPerPage = 4;
-      const offsetPerPage = cardsPerPage * cardWidth + (cardsPerPage - 1) * gap;
+      let currentIndex = 0;
+
+      function updateOffset() {
+        const offset = currentIndex * (screenWidth + gap);
+        slider.style.transform = `translateX(-${offset}px)`;
+      }
 
       paginations.forEach((element, index) => {
         element.addEventListener("click", () => {
           paginations.forEach((el) => el.classList.remove("active"));
           element.classList.add("active");
 
-          slider.style.transform = `translateX(-${index * offsetPerPage}px)`;
+          currentIndex = index;
+          screenWidth = window.innerWidth;
+          updateOffset();
         });
+      });
+
+      window.addEventListener("resize", () => {
+        screenWidth = window.innerWidth;
+        updateOffset();
       });
     }
   }

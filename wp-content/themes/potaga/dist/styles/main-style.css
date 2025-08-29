@@ -428,7 +428,7 @@ button:hover svg path {
 /* header */
 .site-header {
   position: absolute;
-  position: fixed;
+  /* position: fixed; */
   top: 0;
   width: 100%;
   background-color: var(--whitecolor);
@@ -1314,17 +1314,24 @@ button:hover svg path {
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   gap: 34px;
-  padding-right: 34px;
+  padding: 20px 0;
 }
 .project__image {
   position: relative;
-  flex: 0 0 calc((100vw - 4 * 34px) / 5); /* ширина 1 карточки */
+  width: 357px;
   scroll-snap-align: start;
   height: 456px;
   flex-shrink: 0;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1024px) {
+  .project__image {
+    position: relative;
+    flex: 0 0 calc((100vw - 4 * 34px) / 5); /* ширина 1 карточки */
+    scroll-snap-align: start;
+    height: 456px;
+    flex-shrink: 0;
+  }
   .proj__content {
     overflow-x: hidden;
     transition: transform 0.5s ease;
@@ -1332,6 +1339,7 @@ button:hover svg path {
     width: fit-content;
     margin-left: auto;
     margin-right: auto;
+    padding: 0;
   }
   .pag-proj {
     width: 100%;
@@ -1356,14 +1364,6 @@ button:hover svg path {
     background-color: var(--link-color);
   }
 
-  .proj__content {
-    overflow-x: hidden;
-    transition: transform 0.5s ease;
-    will-change: transform;
-    width: fit-content;
-    margin-left: auto;
-    margin-right: auto;
-  }
   .wide {
     padding: 0;
     width: 100%;
