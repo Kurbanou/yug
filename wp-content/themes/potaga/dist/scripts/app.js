@@ -209,3 +209,35 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 });
+
+// img lightbox
+document.addEventListener("DOMContentLoaded", function () {
+  const body = document.body;
+  const overlay = document.createElement("div");
+  overlay.id = "lightbox-overlay";
+  overlay.innerHTML = `
+    <div class="lightbox-content">
+      <img src="" alt="">
+      <div class="caption"></div>
+    </div>
+  `;
+  document.body.appendChild(overlay);
+
+  document.querySelectorAll("[data-lightbox]").forEach((item) => {
+    item.addEventListener("click", function (e) {
+      e.preventDefault();
+      const imgSrc = this.getAttribute("data-lightbox");
+      const title = this.getAttribute("data-title");
+      overlay.querySelector("img").src = imgSrc;
+      overlay.querySelector(".caption").textContent = title;
+      overlay.style.display = "flex";
+      body.classList.toggle("no-scroll");
+    });
+  });
+
+  overlay.addEventListener("click", function () {
+    overlay.style.display = "none";
+    overlay.querySelector("img").src = "";
+    body.classList.remove("no-scroll");
+  });
+});
