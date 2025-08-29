@@ -113,6 +113,28 @@ $query = new WP_Query( [
       <?php endwhile; ?>
       <?php wp_reset_postdata(); ?>
     </div>
+      <?php
+          $pagination_links = paginate_links([
+            'total'     => $query->max_num_pages,
+            'current'   => $paged,
+            'prev_text' => '<svg width="8" height="12" viewBox="0 0 8 12" fill="none" >
+                              <path fill-rule="evenodd" clip-rule="evenodd" d="M5.25067 5.70679L0.628891 9.99952L2.04297 11.4136L7.75 5.70656L2.04297 -2.49462e-07L0.628891 1.41408L5.25067 5.70679Z" fill="white"/>
+                            </svg>',
+            'next_text' => '<svg width="8" height="12" viewBox="0 0 8 12" fill="none" >
+                              <path fill-rule="evenodd" clip-rule="evenodd" d="M5.25067 5.70679L0.628891 9.99952L2.04297 11.4136L7.75 5.70656L2.04297 -2.49462e-07L0.628891 1.41408L5.25067 5.70679Z" fill="white"/>
+                            </svg>',
+            'type'      => 'array'  
+          ]);
+
+          if ($pagination_links) :
+          ?>
+            <ul class="custom-pagination">
+              <?php foreach ($pagination_links as $link) : ?>
+                <li class="custom-pagination__item"><?php echo $link; ?></li>
+              <?php endforeach; ?>
+            </ul>
+      <?php endif; ?>
+   
   </div>
 </section>
 
