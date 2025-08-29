@@ -199,9 +199,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
   accordions.forEach((accordion) => {
     accordion.addEventListener("click", function () {
+      accordion.classList.toggle("open");
       accordions.forEach((other) => {
         if (other !== accordion) {
           other.removeAttribute("open");
+          other.classList.remove("open");
         }
       });
     });
