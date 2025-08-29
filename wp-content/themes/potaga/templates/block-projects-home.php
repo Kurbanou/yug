@@ -12,7 +12,7 @@
         <h2><?php the_sub_field('projects-title'); ?></h2> 
     </div> 
   
-    <div class="container wide">
+    <div class="container wide slider-over">
         <div class="projects__content">
 
             <?php

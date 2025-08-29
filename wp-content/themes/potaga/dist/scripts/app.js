@@ -68,27 +68,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // **************
 
-document.addEventListener("DOMContentLoaded", function () {
-  const pagination = document.querySelector(".pag-proj");
-  const slider = document.querySelector(".proj__content");
-  if (!pagination || !slider) return;
-
-  const paginations = pagination.querySelectorAll("span");
-  const cardWidth = 357;
-  const gap = 34;
-  const cardsPerPage = 4;
-  const offsetPerPage = cardsPerPage * cardWidth + (cardsPerPage - 1) * gap;
-
-  paginations.forEach((element, index) => {
-    element.addEventListener("click", () => {
-      paginations.forEach((el) => el.classList.remove("active"));
-      element.classList.add("active");
-
-      slider.style.transform = `translateX(-${index * offsetPerPage}px)`;
-    });
-  });
-});
-
+// galery
 document.addEventListener("DOMContentLoaded", function () {
   const slider = document.querySelector(".gallery-sec__content");
   const leftBtn = document.querySelector(".left");
@@ -177,8 +157,7 @@ document.addEventListener("DOMContentLoaded", function () {
   updateButtons(); // ← вызов при инициализации
 });
 
-// карта
-
+// map
 async function initMap() {
   const { Map, InfoWindow } = await google.maps.importLibrary("maps");
   const { LatLngBounds } = await google.maps.importLibrary("core");
@@ -288,4 +267,44 @@ document.addEventListener("DOMContentLoaded", function () {
     overlay.querySelector("img").src = "";
     body.classList.remove("no-scroll");
   });
+});
+
+// slider projects
+
+document.addEventListener("DOMContentLoaded", function () {
+  if (window.innerWidth >= 1024) {
+    const slider = document.querySelector(".proj__content");
+    const container = document.querySelector(".slider-over");
+    const slides = slider.querySelectorAll(".project__image");
+    const slidesPerPage = 5;
+    const totalPages = Math.ceil(slides.length / slidesPerPage);
+    if (!slider || !container) return;
+
+    if (totalPages > 1) {
+      const pagination = document.createElement("div");
+      pagination.className = "pag-proj";
+      container.insertAdjacentElement("afterend", pagination);
+
+      for (let i = 1; i <= totalPages; i++) {
+        const btn = document.createElement("span");
+        pagination.appendChild(btn);
+      }
+      const paginations = pagination.querySelectorAll("span");
+      paginations[0].classList.add("active");
+
+      const cardWidth = 357;
+      const gap = 34;
+      const cardsPerPage = 4;
+      const offsetPerPage = cardsPerPage * cardWidth + (cardsPerPage - 1) * gap;
+
+      paginations.forEach((element, index) => {
+        element.addEventListener("click", () => {
+          paginations.forEach((el) => el.classList.remove("active"));
+          element.classList.add("active");
+
+          slider.style.transform = `translateX(-${index * offsetPerPage}px)`;
+        });
+      });
+    }
+  }
 });

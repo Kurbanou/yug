@@ -12,7 +12,7 @@
         <h2><?php the_sub_field('projects-title'); ?></h2> 
     </div> 
   
-    <div class="container wide">
+    <div class="container wide slider-over">
         <div class="proj__content">
 
             <?php
@@ -54,8 +54,10 @@
                 ?>
 
                
-                    <div class="project__image decor">                    
-                    <img src="<?php echo esc_url($img_url); ?>" alt="<?php echo esc_attr($img_alt); ?>" loading="lazy">
+                     
+                    <div class="project__image decor" style="background-image: url('<?php echo esc_url($img_url); ?>');" role="img" aria-label="<?php echo esc_attr($img_alt); ?>">
+                
+                   
                     <div class="project__caption"><?php echo esc_html($title); ?></div>
                     <a class="project" href="<?php echo esc_url($link); ?>">
                         <div class="project__more">
@@ -77,13 +79,13 @@
         </div>
     </div>
 
-    <div class="pag-proj">
+    <!-- <div class="pag-proj">
         <span class="active"></span>
         <span></span>
         <span></span>
         <span></span>
         <span></span>
-    </div>
+    </div> -->
 
         
 
