@@ -1,24 +1,72 @@
+// nav
 document.addEventListener("DOMContentLoaded", function () {
   const burger = document.querySelector(".burger");
   const nav = document.querySelector(".site-header");
   const body = document.body;
+  const navLinks = document.querySelectorAll(".main-nav__link");
+  const sections = document.querySelectorAll("section[id]");
 
   if (!burger || !nav) return;
 
-  const navLinks = nav.querySelectorAll("a");
-
+  // Бургер-меню
   burger.addEventListener("click", function () {
     nav.classList.toggle("open");
     body.classList.toggle("no-scroll");
   });
 
-  navLinks.forEach(function (link) {
+  // Клик по ссылке
+  navLinks.forEach((link) => {
     link.addEventListener("click", function () {
       nav.classList.remove("open");
       body.classList.remove("no-scroll");
+
+      const target = this.dataset.target;
+      const isAnchor = target && target.startsWith("#");
+      const section = isAnchor ? document.querySelector(target) : null;
+
+      if (!section) {
+        // Внешняя ссылка — просто выделяем
+        navLinks.forEach((l) => l.classList.remove("is-active"));
+        this.classList.add("is-active");
+      }
     });
   });
+
+  // Скролл — активный якорь
+  function activateMenuItem() {
+    let scrollY = window.pageYOffset;
+
+    sections.forEach((section) => {
+      const sectionTop = section.offsetTop - 100;
+      const sectionHeight = section.offsetHeight;
+      const sectionId = section.getAttribute("id");
+
+      if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+        navLinks.forEach((link) => {
+          link.classList.remove("is-active");
+          if (link.dataset.target === `#${sectionId}`) {
+            link.classList.add("is-active");
+          }
+        });
+      }
+    });
+  }
+
+  window.addEventListener("scroll", activateMenuItem);
+
+  // Автоактивация по URL при загрузке
+  const currentUrl = window.location.href.replace(/\/$/, "").split("#")[0];
+
+  navLinks.forEach((link) => {
+    const linkHref = link.href.replace(/\/$/, "").split("#")[0];
+
+    if (currentUrl === linkHref) {
+      link.classList.add("is-active");
+    }
+  });
 });
+
+// **************
 
 document.addEventListener("DOMContentLoaded", function () {
   const pagination = document.querySelector(".pag-proj");
@@ -195,7 +243,7 @@ initMap();
 
 // аккардеон
 document.addEventListener("DOMContentLoaded", function () {
-  const accordions = document.querySelectorAll("details.accordion");
+  const accordions = document.querySelectorAll(".accordion");
 
   accordions.forEach((accordion) => {
     accordion.addEventListener("click", function () {

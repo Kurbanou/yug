@@ -84,10 +84,10 @@
       $title = get_sub_field('title');
       $content = get_sub_field('content');
     ?>
-      <details class="accordion">
-        <summary class="accordion-title"><?php echo esc_html($title); ?></summary>
+      <div class="accordion">
+        <div class="accordion-title"><?php echo esc_html($title); ?></div>
         <div class="accordion-content"><?php echo $content; ?></div>
-      </details>
+      </div>
     <?php endwhile; ?>
   </div>
 </section>

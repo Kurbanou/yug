@@ -39,7 +39,7 @@
           </li>
           <li class="main-nav__item">
             <a
-              href="<?php echo esc_url(home_url('#articles')); ?>"
+              href="<?php echo esc_url(home_url('/articles')); ?>"
               data-target="#articles"
               class="main-nav__link"
               >Статьи</a
