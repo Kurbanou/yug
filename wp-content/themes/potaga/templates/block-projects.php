@@ -78,17 +78,6 @@
 
         </div>
     </div>
-
-    <!-- <div class="pag-proj">
-        <span class="active"></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-    </div> -->
-
-        
-
         
     <div class="container">
         <button class="section-button" onclick="location.href='/project'">Все проекты</button>        
