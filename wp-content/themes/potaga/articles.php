@@ -5,9 +5,20 @@
 ?>
 
 <?php
-$query = new WP_Query( [
-    'post_type'      =>
-'post', 'posts_per_page' => 12 ] ); ?>
+
+$paged = get_query_var('paged') ? get_query_var('paged') : 1;
+
+$query = new WP_Query([
+  'post_type'      => 'post',
+  'posts_per_page' => 3,
+  'orderby'        => 'date',
+  'order'          => 'DESC',
+  'paged'          => $paged 
+  
+]);
+?>
+
+
 
 <section class="arhiv_blog ">
   <div class="container">
@@ -30,14 +41,10 @@ $query = new WP_Query( [
       </h2>
     </div>
 
-    <div class="articles_blog">
-      <?php
-                $query = new WP_Query([
-                    'post_type'      =>
-      'post', 'posts_per_page' => 12, 'orderby' => 'date', 'order' => 'DESC' ]);
-      ?>
+    <div class="articles_blog">     
 
       <?php while ($query->have_posts()) : $query->the_post(); ?>
+     
       <div class="article-card">
         <?php
                     // Изображение записи
@@ -48,9 +55,10 @@ $query = new WP_Query( [
      <div class="article-card__image" style="background-image: url('<?php echo esc_url($img_url); ?>');">
 </div>
         <?php endif; ?>
+         
 
         <div class="article-card__content">
-          <div class="article-card__title"><?php the_title(); ?></div>
+          <div class="article-card__title"><?php the_title(); ?>(копия <?php echo $i + 1; ?>)</div>
 
           <?php
                 // Дата в формате "9 октября, 2024 год"
@@ -110,30 +118,50 @@ $query = new WP_Query( [
           </div>
         </a>
       </div>
-      <?php endwhile; ?>
+       
+      <?php endwhile;  ?>
       <?php wp_reset_postdata(); ?>
-    </div>
+    </div>    
+
       <?php
-          $pagination_links = paginate_links([
+        $pagination_links = paginate_links([
             'total'     => $query->max_num_pages,
             'current'   => $paged,
-            'prev_text' => '<svg width="8" height="12" viewBox="0 0 8 12" fill="none" >
+            'prev_text' => '<svg width="8" height="12" viewBox="0 0 8 12" fill="none">
                               <path fill-rule="evenodd" clip-rule="evenodd" d="M5.25067 5.70679L0.628891 9.99952L2.04297 11.4136L7.75 5.70656L2.04297 -2.49462e-07L0.628891 1.41408L5.25067 5.70679Z" fill="white"/>
                             </svg>',
-            'next_text' => '<svg width="8" height="12" viewBox="0 0 8 12" fill="none" >
+            'next_text' => '<svg width="8" height="12" viewBox="0 0 8 12" fill="none">
                               <path fill-rule="evenodd" clip-rule="evenodd" d="M5.25067 5.70679L0.628891 9.99952L2.04297 11.4136L7.75 5.70656L2.04297 -2.49462e-07L0.628891 1.41408L5.25067 5.70679Z" fill="white"/>
                             </svg>',
-            'type'      => 'array'  
-          ]);
+            'type'      => 'array',
+            'mid_size'  => 1,    // Сколько страниц показывать вокруг текущей
+            'end_size'  => 2     // Сколько страниц показывать в начале и конце
+        ]);
 
-          if ($pagination_links) :
-          ?>
+        if ($pagination_links) :
+            // Фильтруем массив, оставляя только одно многоточие с каждой стороны
+            $filtered_links = [];
+            $dots_added = false;
+            
+            foreach ($pagination_links as $link) {
+                // Если это многоточие и мы еще не добавляли его
+                if (strpos($link, 'dots') !== false || strpos($link, '…') !== false) {
+                    if (!$dots_added) {
+                        $filtered_links[] = $link;
+                        $dots_added = true;
+                    }
+                } else {
+                    $filtered_links[] = $link;
+                    $dots_added = false; // Сбрасываем флаг после не-многоточия
+                }
+            }
+        ?>
             <ul class="custom-pagination">
-              <?php foreach ($pagination_links as $link) : ?>
-                <li class="custom-pagination__item"><?php echo $link; ?></li>
-              <?php endforeach; ?>
+                <?php foreach ($filtered_links as $link) : ?>
+                    <li class="custom-pagination__item"><?php echo $link; ?></li>
+                <?php endforeach; ?>
             </ul>
-      <?php endif; ?>
+        <?php endif; ?>
    
   </div>
 </section>
