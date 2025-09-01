@@ -972,6 +972,13 @@ button:hover svg path {
   }
 }
 
+@media (max-width: 600px) {
+  .decor-img {
+    width: 90%;
+    margin-left: auto;
+  }
+}
+
 /* ****************************** */
 /* services */
 
@@ -1210,7 +1217,7 @@ button:hover svg path {
   top: 20px;
   left: 50%;
   transform: translateX(-50%);
-  width: 266px;
+  max-width: 266px;
   font-family: "Ubuntu", sans-serif;
   font-weight: 400;
   font-size: 22px;
@@ -1218,6 +1225,8 @@ button:hover svg path {
   letter-spacing: 0;
   text-align: center;
   z-index: 3;
+  word-break: break-word;
+  hyphens: auto;
 }
 
 .decor {
@@ -1324,7 +1333,7 @@ button:hover svg path {
   flex-shrink: 0;
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1200px) {
   .project__image {
     position: relative;
     flex: 0 0 calc((100vw - 4 * 34px) / 5); /* ширина 1 карточки */
@@ -1619,7 +1628,7 @@ button:hover svg path {
   width: 100%;
   height: 100%;
   background: no-repeat;
-  background-position: left top;
+  background-position: top;
   border-radius: 8px;
 
   transition: all 0.3s linear;
@@ -2564,6 +2573,7 @@ span.wpcf7-not-valid-tip {
   background-color: rgba(255, 95, 61, 1);
   background-repeat: no-repeat;
   background-position: center;
+  cursor: pointer;
 }
 
 .accordion.open::after {

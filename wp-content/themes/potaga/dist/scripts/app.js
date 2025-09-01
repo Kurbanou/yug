@@ -69,92 +69,132 @@ document.addEventListener("DOMContentLoaded", function () {
 // **************
 
 // galery
+// document.addEventListener("DOMContentLoaded", function () {
+//   const slider = document.querySelector(".gallery-sec__content");
+//   const leftBtn = document.querySelector(".left");
+//   const rightBtn = document.querySelector(".right");
+
+//   if (!slider || !leftBtn || !rightBtn) return;
+
+//   const cardWidth = 547;
+//   const gap = 24;
+//   const step = cardWidth + gap;
+//   const cards = slider.querySelectorAll(".gallery-sec__content_item");
+//   const totalCards = cards.length;
+//   const maxOffset = -(step * totalCards - gap);
+
+//   let currentOffset = 0;
+//   let interval = null;
+
+//   slider.style.transform = `translateX(${currentOffset}px)`;
+//   slider.style.transition = "transform 0.2s ease";
+
+//   function updateTransform() {
+//     slider.style.transform = `translateX(${currentOffset}px)`;
+//     updateButtons();
+//   }
+
+//   function updateButtons() {
+//     if (currentOffset >= 0) {
+//       leftBtn.classList.add("inactive");
+//     } else {
+//       leftBtn.classList.remove("inactive");
+//     }
+
+//     if (currentOffset <= maxOffset) {
+//       rightBtn.classList.add("inactive");
+//     } else {
+//       rightBtn.classList.remove("inactive");
+//     }
+//   }
+
+//   function startScroll(direction) {
+//     if (interval) return;
+//     interval = setInterval(() => {
+//       if (direction === "left" && currentOffset < 0) {
+//         currentOffset += step;
+//         if (currentOffset > 0) currentOffset = 0;
+//         updateTransform();
+//       }
+//       if (direction === "right" && currentOffset > maxOffset) {
+//         currentOffset -= step;
+//         if (currentOffset < maxOffset) currentOffset = maxOffset;
+//         updateTransform();
+//       }
+//     }, 100);
+//   }
+
+//   function stopScroll() {
+//     clearInterval(interval);
+//     interval = null;
+//   }
+
+//   leftBtn.addEventListener("mousedown", () => startScroll("left"));
+//   rightBtn.addEventListener("mousedown", () => startScroll("right"));
+
+//   document.addEventListener("mouseup", stopScroll);
+//   leftBtn.addEventListener("mouseleave", stopScroll);
+//   rightBtn.addEventListener("mouseleave", stopScroll);
+
+//   leftBtn.addEventListener("click", () => {
+//     if (interval) return; // если уже удерживается — игнорируем
+//     if (currentOffset < 0) {
+//       currentOffset += step;
+//       if (currentOffset > 0) currentOffset = 0;
+//       updateTransform();
+//     }
+//   });
+
+//   rightBtn.addEventListener("click", () => {
+//     if (interval) return;
+//     if (currentOffset > maxOffset) {
+//       currentOffset -= step;
+//       if (currentOffset < maxOffset) currentOffset = maxOffset;
+//       updateTransform();
+//     }
+//   });
+
+//   updateButtons(); // ← вызов при инициализации
+// });
 document.addEventListener("DOMContentLoaded", function () {
   const slider = document.querySelector(".gallery-sec__content");
-  const leftBtn = document.querySelector(".left");
   const rightBtn = document.querySelector(".right");
+  const leftBtn = document.querySelector(".left");
 
-  if (!slider || !leftBtn || !rightBtn) return;
-
-  const cardWidth = 547;
-  const gap = 24;
-  const step = cardWidth + gap;
-  const cards = slider.querySelectorAll(".gallery-sec__content_item");
-  const totalCards = cards.length;
-  const maxOffset = -(step * totalCards - gap);
+  if (!slider || !rightBtn || !leftBtn) return;
 
   let currentOffset = 0;
-  let interval = null;
+  const step = window.innerWidth + 24;
 
-  slider.style.transform = `translateX(${currentOffset}px)`;
-  slider.style.transition = "transform 0.2s ease";
+  function getSliderWidth() {
+    return slider.scrollWidth;
+  }
 
   function updateTransform() {
-    slider.style.transform = `translateX(${currentOffset}px)`;
-    updateButtons();
+    slider.style.transform = `translateX(-${currentOffset}px)`;
+    slider.style.transition = "transform 0.3s ease";
   }
-
-  function updateButtons() {
-    if (currentOffset >= 0) {
-      leftBtn.classList.add("inactive");
-    } else {
-      leftBtn.classList.remove("inactive");
-    }
-
-    if (currentOffset <= maxOffset) {
-      rightBtn.classList.add("inactive");
-    } else {
-      rightBtn.classList.remove("inactive");
-    }
-  }
-
-  function startScroll(direction) {
-    if (interval) return;
-    interval = setInterval(() => {
-      if (direction === "left" && currentOffset < 0) {
-        currentOffset += step;
-        if (currentOffset > 0) currentOffset = 0;
-        updateTransform();
-      }
-      if (direction === "right" && currentOffset > maxOffset) {
-        currentOffset -= step;
-        if (currentOffset < maxOffset) currentOffset = maxOffset;
-        updateTransform();
-      }
-    }, 100);
-  }
-
-  function stopScroll() {
-    clearInterval(interval);
-    interval = null;
-  }
-
-  leftBtn.addEventListener("mousedown", () => startScroll("left"));
-  rightBtn.addEventListener("mousedown", () => startScroll("right"));
-
-  document.addEventListener("mouseup", stopScroll);
-  leftBtn.addEventListener("mouseleave", stopScroll);
-  rightBtn.addEventListener("mouseleave", stopScroll);
-
-  leftBtn.addEventListener("click", () => {
-    if (interval) return; // если уже удерживается — игнорируем
-    if (currentOffset < 0) {
-      currentOffset += step;
-      if (currentOffset > 0) currentOffset = 0;
-      updateTransform();
-    }
-  });
 
   rightBtn.addEventListener("click", () => {
-    if (interval) return;
+    const maxOffset = getSliderWidth() - window.innerWidth;
+    currentOffset += step;
+    if (currentOffset > maxOffset) currentOffset = maxOffset;
+    updateTransform();
+  });
+
+  leftBtn.addEventListener("click", () => {
+    currentOffset -= step;
+    if (currentOffset < 0) currentOffset = 0;
+    updateTransform();
+  });
+
+  window.addEventListener("resize", () => {
+    const maxOffset = getSliderWidth() - window.innerWidth;
     if (currentOffset > maxOffset) {
-      currentOffset -= step;
-      if (currentOffset < maxOffset) currentOffset = maxOffset;
+      currentOffset = maxOffset;
       updateTransform();
     }
   });
-
-  updateButtons(); // ← вызов при инициализации
 });
 
 // map
@@ -272,9 +312,11 @@ document.addEventListener("DOMContentLoaded", function () {
 // slider projects
 
 document.addEventListener("DOMContentLoaded", function () {
-  if (window.innerWidth >= 1024) {
+  if (window.innerWidth >= 1200) {
     const slider = document.querySelector(".proj__content");
+    if (!slider) return;
     const container = document.querySelector(".slider-over");
+    if (!container) return;
     const slides = slider.querySelectorAll(".project__image");
     const slidesPerPage = 5;
     const totalPages = Math.ceil(slides.length / slidesPerPage);
