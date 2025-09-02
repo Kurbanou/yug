@@ -1225,8 +1225,8 @@ button:hover svg path {
   letter-spacing: 0;
   text-align: center;
   z-index: 3;
-  word-break: break-word;
-  hyphens: auto;
+  /* word-break: break-word;
+  hyphens: auto; */
 }
 
 .decor {
