@@ -1,3 +1,25 @@
+<?php
+add_filter('nav_menu_css_class', 'add_active_class_to_menu_item', 10, 2);
+
+function add_active_class_to_menu_item($classes, $item) {
+    global $wp;
+    $current_url = home_url(add_query_arg([], $wp->request));
+
+    if (in_array('current-menu-item', $classes) || in_array('current_page_item', $classes)) {
+        $classes[] = 'is-active';
+    }
+
+    // Дополнительная проверка по URL
+    if (rtrim($item->url, '/') === rtrim($current_url, '/')) {
+        $classes[] = 'is-active';
+    }
+
+    return $classes;
+}
+
+
+?>
+
 <header class="site-header">
   <div class="container">
     <div class="site-header_content">
