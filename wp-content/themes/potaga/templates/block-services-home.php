@@ -1,4 +1,4 @@
-<section class="serv blick" id="services">
+<section class="serv blick svg-section" id="services">
     <div class="container">
 
         <div class="section-title">

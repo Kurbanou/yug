@@ -362,3 +362,71 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 });
+
+// при скроле анимация svg
+
+// document.addEventListener("DOMContentLoaded", () => {
+//   const section = document.querySelector(".svg-section");
+//   const paths = section.querySelectorAll("svg path");
+//   let animated = false;
+
+//   const observer = new IntersectionObserver(
+//     (entries) => {
+//       entries.forEach((entry) => {
+//         if (entry.isIntersecting && !animated) {
+//           paths.forEach((path) => {
+//             path.style.strokeDashoffset = "0";
+//           });
+//           animated = true; // блокируем повторную анимацию
+//         }
+//       });
+//     },
+//     {
+//       threshold: 0.3, // когда 30% секции в зоне видимости
+//     }
+//   );
+
+//   observer.observe(section);
+// });
+
+document.addEventListener("DOMContentLoaded", () => {
+  const section = document.querySelector(".svg-section");
+  if (!section) return;
+
+  const svgs = section.querySelectorAll("svg");
+  let animated = false;
+  const totalDuration = 4000; // общая длительность анимации для каждого SVG
+
+  svgs.forEach((svg) => {
+    const paths = svg.querySelectorAll("path");
+    paths.forEach((path) => {
+      const length = path.getTotalLength();
+      path.style.strokeDasharray = length;
+      path.style.strokeDashoffset = length;
+    });
+  });
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting && !animated) {
+          svgs.forEach((svg) => {
+            const paths = svg.querySelectorAll("path");
+            const delayStep = totalDuration / paths.length;
+
+            paths.forEach((path, index) => {
+              setTimeout(() => {
+                path.style.transition = `stroke-dashoffset ${delayStep}ms ease-out`;
+                path.style.strokeDashoffset = "0";
+              }, index * delayStep);
+            });
+          });
+          animated = true;
+        }
+      });
+    },
+    { threshold: 0.3 }
+  );
+
+  observer.observe(section);
+});
