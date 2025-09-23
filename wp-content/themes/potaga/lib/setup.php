@@ -115,25 +115,36 @@ function assets()
   // Общие стили
   wp_enqueue_style('sage/header', Assets\asset_path('styles/header.css'), [], null);
   wp_enqueue_style('sage/footer', Assets\asset_path('styles/footer.css'), [], null);
-  wp_enqueue_style('sage/form', Assets\asset_path('styles/form.css'), [], null);
-  wp_enqueue_script('sage/front', Assets\asset_path('scripts/app.js'), [], null, true);
+
 
 
   // Спец-шаблоны страниц
   if (in_array($current_template, $custom_templates, true)) {
     wp_enqueue_style('sage/front', Assets\asset_path('styles/main-style.css'), [], null);
+    wp_enqueue_style('sage/form', Assets\asset_path('styles/form.css'), [], null);
+    wp_enqueue_script('sage/front', Assets\asset_path('scripts/app.js'), [], null, true);
   }
 
   // Записи типа project или service
   else if (is_singular(['project', 'service'])) {
     wp_enqueue_style('sage/main', Assets\asset_path('styles/main.css'), [], null);
+    wp_enqueue_style('sage/form', Assets\asset_path('styles/form.css'), [], null);
     wp_enqueue_script('sage/main', Assets\asset_path('scripts/main.js'), ['jquery'], null, true);
     wp_enqueue_script('sage/form', Assets\asset_path('scripts/form.js'), ['jquery'], null, true);
-  }
-
-  // Все остальные одиночные записи
-  else if (is_single()) {
+  } else if (is_single()) {
     wp_enqueue_style('single/front', Assets\asset_path('styles/main-style.css'), [], null);
+    wp_enqueue_style('sage/form', Assets\asset_path('styles/form.css'), [], null);
+    wp_enqueue_script('sage/front', Assets\asset_path('scripts/app.js'), [], null, true);
+  } else if (is_post_type_archive('project')) {
+    wp_enqueue_style('sage/main', Assets\asset_path('styles/main.css'), [], null);
+    wp_enqueue_style('sage/form', Assets\asset_path('styles/form.css'), [], null);
+    wp_enqueue_script('sage/main', Assets\asset_path('scripts/main.js'), ['jquery'], null, true);
+    wp_enqueue_script('sage/form', Assets\asset_path('scripts/form.js'), ['jquery'], null, true);
+  } else  if (is_page('gallery')) {
+    wp_enqueue_style('sage/main', Assets\asset_path('styles/main.css'), [], null);
+    wp_enqueue_style('sage/form', Assets\asset_path('styles/form.css'), [], null);
+    wp_enqueue_script('sage/main', Assets\asset_path('scripts/main.js'), ['jquery'], null, true);
+    wp_enqueue_script('sage/form', Assets\asset_path('scripts/form.js'), ['jquery'], null, true);
   }
 }
 
