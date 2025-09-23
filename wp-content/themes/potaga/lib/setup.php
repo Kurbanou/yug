@@ -109,7 +109,7 @@ function assets()
   wp_deregister_style('contact-form-7');
 
   // Шаблоны, для которых нужны специальные стили и скрипты
-  $custom_templates = ['potaga.php', 'articles.php'];
+  $custom_templates = ['potaga.php', 'articles.php', 'single.php'];
 
   if (is_page_template($custom_templates)) {
     wp_enqueue_style('sage/header', Assets\asset_path('styles/header.css'), [], null);
