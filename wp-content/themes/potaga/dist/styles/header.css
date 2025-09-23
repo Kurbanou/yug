@@ -109,6 +109,7 @@ input[type="submit"].button:hover {
   display: flex;
   align-items: center;
   gap: 22px;
+  list-style: none;
 }
 
 .site-header .contacts__block,
@@ -117,6 +118,7 @@ input[type="submit"].button:hover {
 }
 
 .main-nav__link {
+  text-decoration: none;
   font-family: "Ubuntu", sans-serif;
   font-weight: 400;
   font-style: normal;
@@ -130,6 +132,7 @@ input[type="submit"].button:hover {
 }
 
 .main-nav__link:hover {
+  text-decoration: none;
   color: var(--link-color);
 }
 .container-w {
@@ -139,6 +142,9 @@ input[type="submit"].button:hover {
   padding: 0 20px;
 }
 .site-header_content .logo {
+  color: rgba(53, 59, 85, 1);
+
+  text-decoration: none;
   width: fit-content;
   display: flex;
   gap: 10px;

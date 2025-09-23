@@ -62,7 +62,7 @@
 
 
 
-  <div class="container-w_logo">
+  <div class="container_logo">
     <a href="<?php echo home_url(); ?>" class="logo ">
       <img
         src="<?php echo get_template_directory_uri(); ?>/dist/images/logo.svg"
