@@ -1,0 +1,46 @@
+{
+  "name": "sage",
+  "homepage": "https://roots.io/sage/",
+  "authors": [
+    "Ben Word <ben@benword.com>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "bootstrap-sass": "3.3.6",
+    "device.js": "~0.0.3",
+    "owl.carousel": "owl-carousel2#~2.0.0-beta.3",
+    "parallax.js": "~1.4.2",
+    "vivus": "~0.3.0",
+    "smoothscroll-for-websites": "~1.4.2",
+    "sweetalert": "~1.1.3",
+    "jquery-form": "~3.46.0"
+  },
+  "overrides": {
+    "bootstrap-sass": {
+      "main": [
+        "./assets/stylesheets/_bootstrap.scss",
+        "./assets/javascripts/bootstrap/transition.js",
+        "./assets/javascripts/bootstrap/button.js",
+        "./assets/javascripts/bootstrap/modal.js",
+        "./assets/javascripts/bootstrap/collapse.js",
+        "./assets/javascripts/bootstrap/scrollspy.js",
+        "./assets/javascripts/bootstrap/tab.js",
+        "./assets/javascripts/bootstrap/affix.js"
+      ]
+    },
+    "owl.carousel": {
+      "main": [
+        "./dist/owl.carousel.js"
+      ]
+    },
+    "vivus": {
+      "main": [
+        "./dist/vivus.js"
+      ]
+    }
+  },
+  "devDependencies": {
+    "breakpoint-sass": "~2.7.0"
+  }
+}
