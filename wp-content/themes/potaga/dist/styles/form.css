@@ -1,0 +1,162 @@
+/* forma */
+
+.form-actions {
+  position: relative;
+}
+.ajax-loader {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+}
+.feedback h2 {
+  margin-bottom: 30px;
+  text-align: center;
+  hyphens: none;
+}
+
+form br {
+  display: none;
+}
+
+form .button {
+  margin-top: 30px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.form-row {
+  width: 100%;
+  display: flex;
+  row-gap: 30px;
+  column-gap: 24px;
+  margin-bottom: 24px;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.form-field {
+  flex: 1 1 100%;
+}
+
+.form-field label {
+  display: block;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 22px;
+  line-height: 1;
+  letter-spacing: 0;
+  color: rgba(0, 0, 0, 0.5);
+  margin-bottom: 8px;
+  padding: 0;
+}
+
+.form-input {
+  width: 100%;
+  height: 54px;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  box-sizing: border-box;
+  padding: 20px 18px;
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 16px;
+  line-height: 1;
+  letter-spacing: 0;
+}
+
+.form-input::placeholder,
+textarea::placeholder {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+textarea {
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 16px;
+  line-height: 1;
+  letter-spacing: 0;
+  width: 100%;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  box-sizing: border-box;
+  padding: 20px 18px;
+  width: 100%;
+  aspect-ratio: 3.6;
+  min-height: 114px;
+  max-height: 305px;
+  resize: none;
+}
+
+/* Общее сообщение об ошибке */
+.wpcf7 form.invalid .wpcf7-response-output {
+  color: #d93025;
+  background-color: #ffe6e6;
+  border: 1px solid #d93025;
+  padding: 12px;
+  margin-top: 16px;
+  border-radius: 4px;
+}
+
+/* Успешная отправка */
+.wpcf7 form.sent .wpcf7-response-output {
+  color: #2e7d32;
+  background-color: #e6f4ea;
+  border: 1px solid #2e7d32;
+  padding: 12px;
+  margin-top: 16px;
+  border-radius: 4px;
+}
+
+/* Ошибка в конкретном поле */
+span.wpcf7-not-valid-tip {
+  display: block;
+  margin-top: 6px;
+  font-size: 13px;
+  color: #d93025;
+}
+
+/* Подсветка поля с ошибкой */
+.form-input.wpcf7-not-valid {
+  border-color: #d93025;
+  background-color: #fff5f5;
+}
+.container-w {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1160px;
+  padding: 0 20px;
+}
+
+@media (max-width: 375px) {
+  .container-w {
+    padding: 0 10px;
+  }
+}
+
+@media (min-width: 768px) {
+  form .button {
+    margin-top: 80px;
+  }
+  .form-row {
+    row-gap: 17px;
+    margin-bottom: 17px;
+  }
+  .form-field {
+    flex: 1 1 48%;
+  }
+  textarea {
+    aspect-ratio: 3.4;
+  }
+}
+input,
+textarea {
+  background-color: var(--whitecolor);
+}
+
+.bid .button {
+  margin-left: auto;
+  margin-right: auto;
+}
