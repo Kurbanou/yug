@@ -4,32 +4,7 @@
   --whitecolor: rgba(255, 255, 255, 1);
 }
 
-/* === Base Reset === */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-ol,
-ul {
-  margin-bottom: 0;
-}
-blockquote {
-  padding: unset;
-  margin: unset;
-  font-size: inherit;
-  border-left: unset;
-}
-
-blockquote ol:last-child,
-blockquote p:last-child,
-blockquote ul:last-child {
-  margin-bottom: unset;
-}
-svg path {
+.site-header svg path {
   fill: unset;
   stroke: unset;
   stroke-width: unset;
@@ -40,68 +15,9 @@ svg path {
   animation: unset;
 }
 
-/* === HTML & Body === */
-html {
-  scroll-behavior: smooth;
-  -webkit-text-size-adjust: 100%;
-  scrollbar-gutter: stable;
-}
-
-/* === Media === */
-img,
-picture,
-video,
-canvas,
-svg {
-  display: block;
-  max-width: 100%;
-  height: auto;
-}
-
-/* === Forms === */
-input,
-button,
-textarea,
-select {
-  font: inherit;
-  color: inherit;
-  background: none;
-  border: none;
-  outline: none;
-}
-
-/* === Lists === */
-ul,
-ol {
-  list-style: none;
-}
-
-/* === Headings === */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-weight: inherit;
-  font-size: inherit;
-}
-
-/* === Links === */
-a {
-  text-decoration: none;
-  color: inherit;
-}
-
-/* === Tables === */
-table {
-  border-collapse: collapse;
-  width: 100%;
-}
-
 /* buttons */
-button,
-a.button,
+.site-header button,
+.site-header a.button,
 input[type="submit"].button {
   width: fit-content;
   height: 52px;
@@ -127,29 +43,29 @@ input[type="submit"].button {
   user-select: none;
 }
 
-button svg {
+.site-header button svg {
   width: 24px;
   flex-shrink: 0;
 }
 
-button.has-icon {
+.site-header button.has-icon {
   padding: 14px 26px 14px 30px;
 }
 
-button.lite {
+.site-header button.lite {
   border: 2px solid var(--whitecolor);
   background-color: transparent;
 }
 
-button:hover,
-.button:hover,
+.site-header button:hover,
+.site-header .button:hover,
 input[type="submit"].button:hover {
   background-color: var(--whitecolor);
   color: var(--link-color);
   fill: var(--link-color);
 }
 
-button:hover svg path {
+.site-header button:hover svg path {
   stroke: var(--link-color);
 }
 /* header */
