@@ -104,34 +104,41 @@ function display_sidebar()
 
 function assets()
 {
-  // Отключаем CF7 в любом случае
+  // Отключаем CF7
   wp_deregister_script('contact-form-7');
   wp_deregister_style('contact-form-7');
 
-  // Шаблоны, для которых нужны специальные стили и скрипты
-  $custom_templates = ['potaga.php', 'articles.php', 'single.php'];
+  // Получаем имя шаблона
+  $current_template = basename(get_page_template());
+  $custom_templates = ['potaga.php', 'articles.php'];
 
-  if (is_page_template($custom_templates)) {
-    wp_enqueue_style('sage/header', Assets\asset_path('styles/header.css'), [], null);
-    wp_enqueue_style('sage/footer', Assets\asset_path('styles/footer.css'), [], null);
-    wp_enqueue_style('sage/front', Assets\asset_path('styles/main-style.css'), [], null);
-    wp_enqueue_style('sage/form', Assets\asset_path('styles/form.css'), [], null);
-
-    wp_enqueue_script('sage/front', Assets\asset_path('scripts/app.js'), [], null, true);
-    return; // Прерываем, чтобы не подключать глобальные стили
-  }
-
-  // Глобальные стили
+  // Общие стили
   wp_enqueue_style('sage/header', Assets\asset_path('styles/header.css'), [], null);
   wp_enqueue_style('sage/footer', Assets\asset_path('styles/footer.css'), [], null);
-  wp_enqueue_style('sage/main', Assets\asset_path('styles/main.css'), [], null);
   wp_enqueue_style('sage/form', Assets\asset_path('styles/form.css'), [], null);
+  wp_enqueue_script('sage/front', Assets\asset_path('scripts/app.js'), [], null, true);
 
-  // Глобальные скрипты
-  wp_enqueue_script('sage/main', Assets\asset_path('scripts/main.js'), ['jquery'], null, true);
-  wp_enqueue_script('sage/app', Assets\asset_path('scripts/app.js'), [], null, true);
-  wp_enqueue_script('sage/form', Assets\asset_path('scripts/form.js'), ['jquery'], null, true);
+  // Спец-шаблоны страниц
+  if (in_array($current_template, $custom_templates, true)) {
+    wp_enqueue_style('sage/front', Assets\asset_path('styles/main-style.css'), [], null);
+  }
+
+  // Одиночные записи
+  else if (is_single()) {
+    wp_enqueue_style('single/front', Assets\asset_path('styles/main-style.css'), [], null);
+  }
+
+  // Записи типа project или service
+  else if (is_singular(['project', 'service'])) {
+    wp_enqueue_style('sage/main', Assets\asset_path('styles/main.css'), [], null);
+    wp_enqueue_script('sage/main', Assets\asset_path('scripts/main.js'), ['jquery'], null, true);
+    wp_enqueue_script('sage/form', Assets\asset_path('scripts/form.js'), ['jquery'], null, true);
+  }
 }
+
+
+
+
 
 
 

@@ -3,10 +3,7 @@
   $bg_url = get_field('potinni-post-header');
   $style = $bg_url ? ' style="background-image: url(' . esc_url($bg_url) . ');"' : '';
   ?>
-
   <div class="singl-post__top" <?php echo $style; ?>>
-
-
     <div class="container-w singl-post__top_content">
       <div class="singl-post__top_content_meta">
         <?php
@@ -40,7 +37,6 @@
           </div>
         <?php endif; ?>
         <h1><?php the_title(); ?></h1>
-
       </div>
       <div class="singl-post__top_content_autor">
         <div class="foto__autor">
@@ -65,21 +61,15 @@
       </div>
     </div>
   </div>
-
 </section>
-
-
-
-
 <section class="singl-post__content">
-  <div class="container">
+  <div class="container-w">
     <?php the_content(); ?>
   </div>
 </section>
-
 <?php if (have_rows('accordion_blocks')) : ?>
   <section style="padding-top:0;">
-    <div class="container">
+    <div class="container-w">
       <?php while (have_rows('accordion_blocks')) : the_row();
         $title = get_sub_field('title');
         $content = get_sub_field('content');
@@ -92,7 +82,5 @@
     </div>
   </section>
 <?php endif; ?>
-
-
 <?php get_template_part('templates/home/block-services'); ?>
 <?php get_template_part('templates/home/block-connect'); ?>
