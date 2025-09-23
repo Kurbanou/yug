@@ -295,7 +295,10 @@ button:hover svg path {
   width: 24px;
 }
 
-main > *:not(:empty):first-of-type {
+/* main > *:not(:empty):first-of-type {
+  padding-top: 100px;
+} */
+main {
   padding-top: 100px;
 }
 
@@ -340,7 +343,7 @@ main > *:not(:empty):first-of-type {
   .site-header {
     height: 80px;
   }
-  main > *:not(:empty):first-of-type {
+  main {
     padding-top: 80px;
   }
   .logo {

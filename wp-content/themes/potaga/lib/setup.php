@@ -112,19 +112,20 @@ function assets()
 
   // Главная страница (шаблон potaga.php)
   if (is_page_template('potaga.php')) {
-    wp_enqueue_style('potaga/front', Assets\asset_path('styles/main-style.css'), [], null);
     wp_enqueue_style('sage/header', Assets\asset_path('styles/header.css'), [], null);
     wp_enqueue_style('sage/footer', Assets\asset_path('styles/footer.css'), [], null);
     wp_enqueue_style('sage/form', Assets\asset_path('styles/form.css'), [], null);
+    wp_enqueue_style('potaga/front', Assets\asset_path('styles/main-style.css'), [], null);
     wp_enqueue_script('potaga/front', Assets\asset_path('scripts/app.js'), [], null, true);
     return; // Прерываем, чтобы не подключать глобальные стили
   }
 
   // Глобальные стили
-  wp_enqueue_style('sage/main', Assets\asset_path('styles/main.css'), [], null);
+
   wp_enqueue_style('sage/header', Assets\asset_path('styles/header.css'), [], null);
   wp_enqueue_style('sage/footer', Assets\asset_path('styles/footer.css'), [], null);
   wp_enqueue_style('sage/form', Assets\asset_path('styles/form.css'), [], null);
+  wp_enqueue_style('sage/main', Assets\asset_path('styles/main.css'), [], null);
 
   // Глобальные скрипты
   wp_enqueue_script('potaga/main', Assets\asset_path('scripts/main.js'), ['jquery'], null, true);
