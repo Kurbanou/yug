@@ -1,11 +1,92 @@
 <?php
-if( function_exists('acf_add_local_field_group') ):
+if (function_exists('acf_add_local_field_group')):
+    acf_add_local_field_group([
+        'key' => 'group_post_accordion',
+        'title' => 'Аккордеоны в записи',
+        'fields' => [
+            [
+                'key' => 'field_post_accordion_blocks',
+                'label' => 'Аккордеоны',
+                'name' => 'accordion_blocks',
+                'type' => 'flexible_content',
+                'layouts' => [
+                    [
+                        'key' => 'layout_accordion_item',
+                        'name' => 'accordion_item',
+                        'label' => 'Блок аккордеона',
+                        'display' => 'block',
+                        'sub_fields' => [
+                            [
+                                'key' => 'field_accordion_title',
+                                'label' => 'Заголовок',
+                                'name' => 'title',
+                                'type' => 'text',
+                            ],
+                            [
+                                'key' => 'field_accordion_content',
+                                'label' => 'Содержимое',
+                                'name' => 'content',
+                                'type' => 'wysiwyg',
+                            ],
+                        ],
+                    ],
+                ],
+                'button_label' => 'Добавить аккордеон',
+            ],
+        ],
+        'location' => [
+            [
+                [
+                    'param' => 'post_type',
+                    'operator' => '==',
+                    'value' => 'post',
+                ],
+            ],
+        ],
+    ]);
+    acf_add_local_field_group([
+        'key' => 'group_author_avatar',
+        'title' => 'Фото автора',
+        'fields' => [
+            [
+                'key' => 'field_author_avatar',
+                'label' => 'Фото',
+                'name' => 'profile_image',
+                'type' => 'image',
+                'return_format' => 'array',
+                'preview_size' => 'thumbnail',
+            ],
+            [
+                'key' => 'field_author_full_name',
+                'label' => 'ФИО',
+                'name' => 'full_name',
+                'type' => 'text',
+            ],
+            [
+                'key' => 'field_author_position',
+                'label' => 'Должность',
+                'name' => 'position',
+                'type' => 'text',
+            ],
+        ],
+        'location' => [
+            [
+                [
+                    'param' => 'user_role',
+                    'operator' => '==',
+                    'value' => 'author',
+                ],
+            ],
+        ],
+    ]);
 
-    acf_add_local_field_group(array (
+
+
+    acf_add_local_field_group(array(
         'key' => 'group_55ebc364bb613',
         'title' => 'Конструктор страницы',
-        'fields' => array (
-            array (
+        'fields' => array(
+            array(
                 'key' => 'field_55ebc36f4be80',
                 'label' => 'Добавьте необходимые блоки на страницу',
                 'name' => 'ptg-builder',
@@ -13,7 +94,7 @@ if( function_exists('acf_add_local_field_group') ):
                 'instructions' => '',
                 'required' => 0,
                 'conditional_logic' => 0,
-                'wrapper' => array (
+                'wrapper' => array(
                     'width' => '',
                     'class' => '',
                     'id' => '',
@@ -21,14 +102,14 @@ if( function_exists('acf_add_local_field_group') ):
                 'button_label' => 'Добавить',
                 'min' => '',
                 'max' => '',
-                'layouts' => array (
-                    array (
+                'layouts' => array(
+                    array(
                         'key' => '55ebc3861f2ed',
                         'name' => 'ptg-spoiler',
                         'label' => 'Спойлер',
                         'display' => 'block',
-                        'sub_fields' => array (
-                            array (
+                        'sub_fields' => array(
+                            array(
                                 'key' => 'field_55ebc3a64be81',
                                 'label' => 'Заголовок',
                                 'name' => 'spoiler-title',
@@ -36,7 +117,7 @@ if( function_exists('acf_add_local_field_group') ):
                                 'instructions' => '',
                                 'required' => 0,
                                 'conditional_logic' => 0,
-                                'wrapper' => array (
+                                'wrapper' => array(
                                     'width' => '',
                                     'class' => '',
                                     'id' => '',
@@ -49,7 +130,7 @@ if( function_exists('acf_add_local_field_group') ):
                                 'readonly' => 0,
                                 'disabled' => 0,
                             ),
-                            array (
+                            array(
                                 'key' => 'field_55ebc3b34be82',
                                 'label' => 'Количество колонок',
                                 'name' => 'spoiler-columns',
@@ -57,12 +138,12 @@ if( function_exists('acf_add_local_field_group') ):
                                 'instructions' => '',
                                 'required' => 1,
                                 'conditional_logic' => 0,
-                                'wrapper' => array (
+                                'wrapper' => array(
                                     'width' => '',
                                     'class' => '',
                                     'id' => '',
                                 ),
-                                'choices' => array (
+                                'choices' => array(
                                     'one' => 'Одна',
                                     'two' => 'Две',
                                 ),
@@ -71,23 +152,23 @@ if( function_exists('acf_add_local_field_group') ):
                                 'default_value' => '',
                                 'layout' => 'vertical',
                             ),
-                            array (
+                            array(
                                 'key' => 'field_55ebc3f44be83',
                                 'label' => 'Контент',
                                 'name' => 'spoiler-content',
                                 'type' => 'wysiwyg',
                                 'instructions' => '',
                                 'required' => 0,
-                                'conditional_logic' => array (
-                                    array (
-                                        array (
+                                'conditional_logic' => array(
+                                    array(
+                                        array(
                                             'field' => 'field_55ebc3b34be82',
                                             'operator' => '==',
                                             'value' => 'one',
                                         ),
                                     ),
                                 ),
-                                'wrapper' => array (
+                                'wrapper' => array(
                                     'width' => '',
                                     'class' => '',
                                     'id' => '',
@@ -97,23 +178,23 @@ if( function_exists('acf_add_local_field_group') ):
                                 'toolbar' => 'full',
                                 'media_upload' => 1,
                             ),
-                            array (
+                            array(
                                 'key' => 'field_55ebc4074be84',
                                 'label' => 'Левая колонка',
                                 'name' => 'spoiler-content-left',
                                 'type' => 'wysiwyg',
                                 'instructions' => '',
                                 'required' => 0,
-                                'conditional_logic' => array (
-                                    array (
-                                        array (
+                                'conditional_logic' => array(
+                                    array(
+                                        array(
                                             'field' => 'field_55ebc3b34be82',
                                             'operator' => '==',
                                             'value' => 'two',
                                         ),
                                     ),
                                 ),
-                                'wrapper' => array (
+                                'wrapper' => array(
                                     'width' => '',
                                     'class' => '',
                                     'id' => '',
@@ -123,23 +204,23 @@ if( function_exists('acf_add_local_field_group') ):
                                 'toolbar' => 'full',
                                 'media_upload' => 1,
                             ),
-                            array (
+                            array(
                                 'key' => 'field_55ebc41e4be85',
                                 'label' => 'Правая колонка',
                                 'name' => 'spoiler-content-right',
                                 'type' => 'wysiwyg',
                                 'instructions' => '',
                                 'required' => 0,
-                                'conditional_logic' => array (
-                                    array (
-                                        array (
+                                'conditional_logic' => array(
+                                    array(
+                                        array(
                                             'field' => 'field_55ebc3b34be82',
                                             'operator' => '==',
                                             'value' => 'two',
                                         ),
                                     ),
                                 ),
-                                'wrapper' => array (
+                                'wrapper' => array(
                                     'width' => '',
                                     'class' => '',
                                     'id' => '',
@@ -153,13 +234,13 @@ if( function_exists('acf_add_local_field_group') ):
                         'min' => '',
                         'max' => '',
                     ),
-                    array (
+                    array(
                         'key' => '55ebc6a29dc47',
                         'name' => 'ptg-text',
                         'label' => 'Текст',
                         'display' => 'block',
-                        'sub_fields' => array (
-                            array (
+                        'sub_fields' => array(
+                            array(
                                 'key' => 'field_55ebc6b79dc48',
                                 'label' => 'Показывать заголовок?',
                                 'name' => 'text-title-boolean',
@@ -167,7 +248,7 @@ if( function_exists('acf_add_local_field_group') ):
                                 'instructions' => '',
                                 'required' => 0,
                                 'conditional_logic' => 0,
-                                'wrapper' => array (
+                                'wrapper' => array(
                                     'width' => '',
                                     'class' => '',
                                     'id' => '',
@@ -175,23 +256,23 @@ if( function_exists('acf_add_local_field_group') ):
                                 'message' => '',
                                 'default_value' => 1,
                             ),
-                            array (
+                            array(
                                 'key' => 'field_55ebc7909dc49',
                                 'label' => 'Заголовок',
                                 'name' => 'text-title',
                                 'type' => 'text',
                                 'instructions' => '',
                                 'required' => 0,
-                                'conditional_logic' => array (
-                                    array (
-                                        array (
+                                'conditional_logic' => array(
+                                    array(
+                                        array(
                                             'field' => 'field_55ebc6b79dc48',
                                             'operator' => '==',
                                             'value' => '1',
                                         ),
                                     ),
                                 ),
-                                'wrapper' => array (
+                                'wrapper' => array(
                                     'width' => '',
                                     'class' => '',
                                     'id' => '',
@@ -204,7 +285,7 @@ if( function_exists('acf_add_local_field_group') ):
                                 'readonly' => 0,
                                 'disabled' => 0,
                             ),
-                            array (
+                            array(
                                 'key' => 'field_56d6c77fb7375',
                                 'label' => 'Отображать рамку снизу?',
                                 'name' => 'border-bottom-boolean',
@@ -212,7 +293,7 @@ if( function_exists('acf_add_local_field_group') ):
                                 'instructions' => '',
                                 'required' => 0,
                                 'conditional_logic' => 0,
-                                'wrapper' => array (
+                                'wrapper' => array(
                                     'width' => '',
                                     'class' => '',
                                     'id' => '',
@@ -220,7 +301,7 @@ if( function_exists('acf_add_local_field_group') ):
                                 'message' => '',
                                 'default_value' => 0,
                             ),
-                            array (
+                            array(
                                 'key' => 'field_55ebc7cc9dc4a',
                                 'label' => 'Количество колонок',
                                 'name' => 'text-columns',
@@ -228,12 +309,12 @@ if( function_exists('acf_add_local_field_group') ):
                                 'instructions' => '',
                                 'required' => 1,
                                 'conditional_logic' => 0,
-                                'wrapper' => array (
+                                'wrapper' => array(
                                     'width' => '',
                                     'class' => '',
                                     'id' => '',
                                 ),
-                                'choices' => array (
+                                'choices' => array(
                                     'one' => 'Одна',
                                     'two' => 'Две',
                                 ),
@@ -242,23 +323,23 @@ if( function_exists('acf_add_local_field_group') ):
                                 'default_value' => '',
                                 'layout' => 'vertical',
                             ),
-                            array (
+                            array(
                                 'key' => 'field_55ebc7ff9dc4b',
                                 'label' => 'Контент',
                                 'name' => 'text-content',
                                 'type' => 'wysiwyg',
                                 'instructions' => '',
                                 'required' => 0,
-                                'conditional_logic' => array (
-                                    array (
-                                        array (
+                                'conditional_logic' => array(
+                                    array(
+                                        array(
                                             'field' => 'field_55ebc7cc9dc4a',
                                             'operator' => '==',
                                             'value' => 'one',
                                         ),
                                     ),
                                 ),
-                                'wrapper' => array (
+                                'wrapper' => array(
                                     'width' => '',
                                     'class' => '',
                                     'id' => '',
@@ -268,23 +349,23 @@ if( function_exists('acf_add_local_field_group') ):
                                 'toolbar' => 'full',
                                 'media_upload' => 1,
                             ),
-                            array (
+                            array(
                                 'key' => 'field_55ebc83a9dc4d',
                                 'label' => 'Левая колонка',
                                 'name' => 'text-content-left',
                                 'type' => 'wysiwyg',
                                 'instructions' => '',
                                 'required' => 0,
-                                'conditional_logic' => array (
-                                    array (
-                                        array (
+                                'conditional_logic' => array(
+                                    array(
+                                        array(
                                             'field' => 'field_55ebc7cc9dc4a',
                                             'operator' => '==',
                                             'value' => 'two',
                                         ),
                                     ),
                                 ),
-                                'wrapper' => array (
+                                'wrapper' => array(
                                     'width' => '',
                                     'class' => '',
                                     'id' => '',
@@ -294,23 +375,23 @@ if( function_exists('acf_add_local_field_group') ):
                                 'toolbar' => 'full',
                                 'media_upload' => 1,
                             ),
-                            array (
+                            array(
                                 'key' => 'field_55ebc8559dc4e',
                                 'label' => 'Правая колонка',
                                 'name' => 'text-content-right',
                                 'type' => 'wysiwyg',
                                 'instructions' => '',
                                 'required' => 0,
-                                'conditional_logic' => array (
-                                    array (
-                                        array (
+                                'conditional_logic' => array(
+                                    array(
+                                        array(
                                             'field' => 'field_55ebc7cc9dc4a',
                                             'operator' => '==',
                                             'value' => 'two',
                                         ),
                                     ),
                                 ),
-                                'wrapper' => array (
+                                'wrapper' => array(
                                     'width' => '',
                                     'class' => '',
                                     'id' => '',
@@ -324,13 +405,13 @@ if( function_exists('acf_add_local_field_group') ):
                         'min' => '',
                         'max' => '',
                     ),
-                    array (
+                    array(
                         'key' => '56c307f205184',
                         'name' => 'ptg-contacts',
                         'label' => 'Контакты',
                         'display' => 'block',
-                        'sub_fields' => array (
-                            array (
+                        'sub_fields' => array(
+                            array(
                                 'key' => 'field_56c307f205186',
                                 'label' => 'Заголовок',
                                 'name' => 'contacts-title',
@@ -338,7 +419,7 @@ if( function_exists('acf_add_local_field_group') ):
                                 'instructions' => '',
                                 'required' => 0,
                                 'conditional_logic' => 0,
-                                'wrapper' => array (
+                                'wrapper' => array(
                                     'width' => '',
                                     'class' => '',
                                     'id' => '',
@@ -351,7 +432,7 @@ if( function_exists('acf_add_local_field_group') ):
                                 'readonly' => 0,
                                 'disabled' => 0,
                             ),
-                            array (
+                            array(
                                 'key' => 'field_56c308320518b',
                                 'label' => 'Карта',
                                 'name' => 'contacts-map',
@@ -359,7 +440,7 @@ if( function_exists('acf_add_local_field_group') ):
                                 'instructions' => '',
                                 'required' => 0,
                                 'conditional_logic' => 0,
-                                'wrapper' => array (
+                                'wrapper' => array(
                                     'width' => '',
                                     'class' => '',
                                     'id' => '',
@@ -369,7 +450,7 @@ if( function_exists('acf_add_local_field_group') ):
                                 'zoom' => '',
                                 'height' => '',
                             ),
-                            array (
+                            array(
                                 'key' => 'field_56c308510518c',
                                 'label' => 'Телефон',
                                 'name' => 'contacts-phone',
@@ -377,7 +458,7 @@ if( function_exists('acf_add_local_field_group') ):
                                 'instructions' => '',
                                 'required' => 0,
                                 'conditional_logic' => 0,
-                                'wrapper' => array (
+                                'wrapper' => array(
                                     'width' => '',
                                     'class' => '',
                                     'id' => '',
@@ -390,7 +471,7 @@ if( function_exists('acf_add_local_field_group') ):
                                 'readonly' => 0,
                                 'disabled' => 0,
                             ),
-                            array (
+                            array(
                                 'key' => 'field_56c308600518d',
                                 'label' => 'E-mail',
                                 'name' => 'contacts-email',
@@ -398,7 +479,7 @@ if( function_exists('acf_add_local_field_group') ):
                                 'instructions' => '',
                                 'required' => 0,
                                 'conditional_logic' => 0,
-                                'wrapper' => array (
+                                'wrapper' => array(
                                     'width' => '',
                                     'class' => '',
                                     'id' => '',
@@ -411,7 +492,7 @@ if( function_exists('acf_add_local_field_group') ):
                                 'readonly' => 0,
                                 'disabled' => 0,
                             ),
-                            array (
+                            array(
                                 'key' => 'field_56c308850518e',
                                 'label' => 'Адрес',
                                 'name' => 'contacts-address',
@@ -419,7 +500,7 @@ if( function_exists('acf_add_local_field_group') ):
                                 'instructions' => '',
                                 'required' => 0,
                                 'conditional_logic' => 0,
-                                'wrapper' => array (
+                                'wrapper' => array(
                                     'width' => '',
                                     'class' => '',
                                     'id' => '',
@@ -436,13 +517,13 @@ if( function_exists('acf_add_local_field_group') ):
                         'min' => '',
                         'max' => '',
                     ),
-                    array (
+                    array(
                         'key' => '56c308e30518f',
                         'name' => 'ptg-jumbotron',
                         'label' => 'Банер',
                         'display' => 'block',
-                        'sub_fields' => array (
-                            array (
+                        'sub_fields' => array(
+                            array(
                                 'key' => 'field_56c308e305190',
                                 'label' => 'Заголовок',
                                 'name' => 'jumbotron-title',
@@ -450,7 +531,7 @@ if( function_exists('acf_add_local_field_group') ):
                                 'instructions' => '',
                                 'required' => 0,
                                 'conditional_logic' => 0,
-                                'wrapper' => array (
+                                'wrapper' => array(
                                     'width' => '',
                                     'class' => '',
                                     'id' => '',
@@ -463,7 +544,7 @@ if( function_exists('acf_add_local_field_group') ):
                                 'readonly' => 0,
                                 'disabled' => 0,
                             ),
-                            array (
+                            array(
                                 'key' => 'field_56c308e305191',
                                 'label' => 'Описание',
                                 'name' => 'jumbotron-description',
@@ -471,7 +552,7 @@ if( function_exists('acf_add_local_field_group') ):
                                 'instructions' => '',
                                 'required' => 0,
                                 'conditional_logic' => 0,
-                                'wrapper' => array (
+                                'wrapper' => array(
                                     'width' => '',
                                     'class' => '',
                                     'id' => '',
@@ -484,7 +565,7 @@ if( function_exists('acf_add_local_field_group') ):
                                 'readonly' => 0,
                                 'disabled' => 0,
                             ),
-                            array (
+                            array(
                                 'key' => 'field_56c308e305192',
                                 'label' => 'Файл',
                                 'name' => 'jumbotron-file',
@@ -492,7 +573,7 @@ if( function_exists('acf_add_local_field_group') ):
                                 'instructions' => '',
                                 'required' => 0,
                                 'conditional_logic' => 0,
-                                'wrapper' => array (
+                                'wrapper' => array(
                                     'width' => '',
                                     'class' => '',
                                     'id' => '',
@@ -507,13 +588,13 @@ if( function_exists('acf_add_local_field_group') ):
                         'min' => '',
                         'max' => '',
                     ),
-                    array (
+                    array(
                         'key' => '56c3095a05195',
                         'name' => 'ptg-incut',
                         'label' => 'Врезка',
                         'display' => 'block',
-                        'sub_fields' => array (
-                            array (
+                        'sub_fields' => array(
+                            array(
                                 'key' => 'field_56c3095a05196',
                                 'label' => 'Контент',
                                 'name' => 'incut-content',
@@ -521,7 +602,7 @@ if( function_exists('acf_add_local_field_group') ):
                                 'instructions' => '',
                                 'required' => 0,
                                 'conditional_logic' => 0,
-                                'wrapper' => array (
+                                'wrapper' => array(
                                     'width' => '',
                                     'class' => '',
                                     'id' => '',
@@ -535,13 +616,13 @@ if( function_exists('acf_add_local_field_group') ):
                         'min' => '',
                         'max' => '',
                     ),
-                    array (
+                    array(
                         'key' => '56c3099805199',
                         'name' => 'ptg-articles',
                         'label' => 'Статьи',
                         'display' => 'block',
-                        'sub_fields' => array (
-                            array (
+                        'sub_fields' => array(
+                            array(
                                 'key' => 'field_56c309980519a',
                                 'label' => 'Заголовок',
                                 'name' => 'articles-title',
@@ -549,7 +630,7 @@ if( function_exists('acf_add_local_field_group') ):
                                 'instructions' => '',
                                 'required' => 0,
                                 'conditional_logic' => 0,
-                                'wrapper' => array (
+                                'wrapper' => array(
                                     'width' => '',
                                     'class' => '',
                                     'id' => '',
@@ -566,13 +647,13 @@ if( function_exists('acf_add_local_field_group') ):
                         'min' => '',
                         'max' => '',
                     ),
-                    array (
+                    array(
                         'key' => '56c30ddf4da02',
                         'name' => 'ptg-partners',
                         'label' => 'Партнеры',
                         'display' => 'block',
-                        'sub_fields' => array (
-                            array (
+                        'sub_fields' => array(
+                            array(
                                 'key' => 'field_56c30ddf4da03',
                                 'label' => 'Заголовок',
                                 'name' => 'partners-title',
@@ -580,7 +661,7 @@ if( function_exists('acf_add_local_field_group') ):
                                 'instructions' => '',
                                 'required' => 0,
                                 'conditional_logic' => 0,
-                                'wrapper' => array (
+                                'wrapper' => array(
                                     'width' => '',
                                     'class' => '',
                                     'id' => '',
@@ -593,7 +674,7 @@ if( function_exists('acf_add_local_field_group') ):
                                 'readonly' => 0,
                                 'disabled' => 0,
                             ),
-                            array (
+                            array(
                                 'key' => 'field_56c30dff4da04',
                                 'label' => 'Изображения',
                                 'name' => 'partners-images',
@@ -601,7 +682,7 @@ if( function_exists('acf_add_local_field_group') ):
                                 'instructions' => '',
                                 'required' => 0,
                                 'conditional_logic' => 0,
-                                'wrapper' => array (
+                                'wrapper' => array(
                                     'width' => '',
                                     'class' => '',
                                     'id' => '',
@@ -622,13 +703,13 @@ if( function_exists('acf_add_local_field_group') ):
                         'min' => '',
                         'max' => '',
                     ),
-                    array (
+                    array(
                         'key' => '56c30e5d4da05',
                         'name' => 'ptg-clients',
                         'label' => 'Клиенты',
                         'display' => 'block',
-                        'sub_fields' => array (
-                            array (
+                        'sub_fields' => array(
+                            array(
                                 'key' => 'field_56c30e5d4da06',
                                 'label' => 'Заголовок',
                                 'name' => 'clients-title',
@@ -636,7 +717,7 @@ if( function_exists('acf_add_local_field_group') ):
                                 'instructions' => '',
                                 'required' => 0,
                                 'conditional_logic' => 0,
-                                'wrapper' => array (
+                                'wrapper' => array(
                                     'width' => '',
                                     'class' => '',
                                     'id' => '',
@@ -649,7 +730,7 @@ if( function_exists('acf_add_local_field_group') ):
                                 'readonly' => 0,
                                 'disabled' => 0,
                             ),
-                            array (
+                            array(
                                 'key' => 'field_56c30e5d4da07',
                                 'label' => 'Изображения',
                                 'name' => 'clients-images',
@@ -657,7 +738,7 @@ if( function_exists('acf_add_local_field_group') ):
                                 'instructions' => '',
                                 'required' => 0,
                                 'conditional_logic' => 0,
-                                'wrapper' => array (
+                                'wrapper' => array(
                                     'width' => '',
                                     'class' => '',
                                     'id' => '',
@@ -678,13 +759,13 @@ if( function_exists('acf_add_local_field_group') ):
                         'min' => '',
                         'max' => '',
                     ),
-                    array (
+                    array(
                         'key' => '56c30e9f4da08',
                         'name' => 'ptg-video',
                         'label' => 'Видео',
                         'display' => 'block',
-                        'sub_fields' => array (
-                            array (
+                        'sub_fields' => array(
+                            array(
                                 'key' => 'field_56c30e9f4da09',
                                 'label' => 'Заголовок',
                                 'name' => 'video-title',
@@ -692,7 +773,7 @@ if( function_exists('acf_add_local_field_group') ):
                                 'instructions' => '',
                                 'required' => 0,
                                 'conditional_logic' => 0,
-                                'wrapper' => array (
+                                'wrapper' => array(
                                     'width' => '',
                                     'class' => '',
                                     'id' => '',
@@ -709,13 +790,13 @@ if( function_exists('acf_add_local_field_group') ):
                         'min' => '',
                         'max' => '',
                     ),
-                    array (
+                    array(
                         'key' => '56c30ebf4da0b',
                         'name' => 'ptg-projects',
                         'label' => 'Проекты',
                         'display' => 'block',
-                        'sub_fields' => array (
-                            array (
+                        'sub_fields' => array(
+                            array(
                                 'key' => 'field_56c30ebf4da0c',
                                 'label' => 'Заголовок',
                                 'name' => 'projects-title',
@@ -723,7 +804,7 @@ if( function_exists('acf_add_local_field_group') ):
                                 'instructions' => '',
                                 'required' => 0,
                                 'conditional_logic' => 0,
-                                'wrapper' => array (
+                                'wrapper' => array(
                                     'width' => '',
                                     'class' => '',
                                     'id' => '',
@@ -740,13 +821,13 @@ if( function_exists('acf_add_local_field_group') ):
                         'min' => '',
                         'max' => '',
                     ),
-                    array (
+                    array(
                         'key' => '56c30edd4da0d',
                         'name' => 'ptg-gallery',
                         'label' => 'Фотогалерея',
                         'display' => 'block',
-                        'sub_fields' => array (
-                            array (
+                        'sub_fields' => array(
+                            array(
                                 'key' => 'field_56da8eafee787',
                                 'label' => 'Показывать заголовок?',
                                 'name' => 'gallery-title-boolean',
@@ -754,7 +835,7 @@ if( function_exists('acf_add_local_field_group') ):
                                 'instructions' => '',
                                 'required' => 0,
                                 'conditional_logic' => 0,
-                                'wrapper' => array (
+                                'wrapper' => array(
                                     'width' => '',
                                     'class' => '',
                                     'id' => '',
@@ -762,23 +843,23 @@ if( function_exists('acf_add_local_field_group') ):
                                 'message' => '',
                                 'default_value' => 1,
                             ),
-                            array (
+                            array(
                                 'key' => 'field_56c30edd4da0e',
                                 'label' => 'Заголовок',
                                 'name' => 'gallery-title',
                                 'type' => 'text',
                                 'instructions' => '',
                                 'required' => 0,
-                                'conditional_logic' => array (
-                                    array (
-                                        array (
+                                'conditional_logic' => array(
+                                    array(
+                                        array(
                                             'field' => 'field_56da8eafee787',
                                             'operator' => '==',
                                             'value' => '1',
                                         ),
                                     ),
                                 ),
-                                'wrapper' => array (
+                                'wrapper' => array(
                                     'width' => '',
                                     'class' => '',
                                     'id' => '',
@@ -791,7 +872,7 @@ if( function_exists('acf_add_local_field_group') ):
                                 'readonly' => 0,
                                 'disabled' => 0,
                             ),
-                            array (
+                            array(
                                 'key' => 'field_56c30f074da0f',
                                 'label' => 'Изображения',
                                 'name' => 'gallery-images',
@@ -799,7 +880,7 @@ if( function_exists('acf_add_local_field_group') ):
                                 'instructions' => '',
                                 'required' => 0,
                                 'conditional_logic' => 0,
-                                'wrapper' => array (
+                                'wrapper' => array(
                                     'width' => '',
                                     'class' => '',
                                     'id' => '',
@@ -820,13 +901,13 @@ if( function_exists('acf_add_local_field_group') ):
                         'min' => '',
                         'max' => '',
                     ),
-                    array (
+                    array(
                         'key' => '56c30f414da10',
                         'name' => 'ptg-services',
                         'label' => 'Услуги',
                         'display' => 'block',
-                        'sub_fields' => array (
-                            array (
+                        'sub_fields' => array(
+                            array(
                                 'key' => 'field_56c30f414da11',
                                 'label' => 'Заголовок',
                                 'name' => 'services-title',
@@ -834,7 +915,7 @@ if( function_exists('acf_add_local_field_group') ):
                                 'instructions' => '',
                                 'required' => 0,
                                 'conditional_logic' => 0,
-                                'wrapper' => array (
+                                'wrapper' => array(
                                     'width' => '',
                                     'class' => '',
                                     'id' => '',
@@ -851,13 +932,13 @@ if( function_exists('acf_add_local_field_group') ):
                         'min' => '',
                         'max' => '',
                     ),
-                    array (
+                    array(
                         'key' => '56c30f784da13',
                         'name' => 'ptg-feedback',
                         'label' => 'Форма',
                         'display' => 'row',
-                        'sub_fields' => array (
-                            array (
+                        'sub_fields' => array(
+                            array(
                                 'key' => 'field_56d97e8e1d3a5',
                                 'label' => 'Показывать заголовок?',
                                 'name' => 'feedback-title-boolean',
@@ -865,7 +946,7 @@ if( function_exists('acf_add_local_field_group') ):
                                 'instructions' => '',
                                 'required' => 0,
                                 'conditional_logic' => 0,
-                                'wrapper' => array (
+                                'wrapper' => array(
                                     'width' => '',
                                     'class' => '',
                                     'id' => '',
@@ -873,23 +954,23 @@ if( function_exists('acf_add_local_field_group') ):
                                 'message' => '',
                                 'default_value' => 1,
                             ),
-                            array (
+                            array(
                                 'key' => 'field_56c30f784da14',
                                 'label' => 'Заголовок',
                                 'name' => 'feedback-title',
                                 'type' => 'text',
                                 'instructions' => '',
                                 'required' => 0,
-                                'conditional_logic' => array (
-                                    array (
-                                        array (
+                                'conditional_logic' => array(
+                                    array(
+                                        array(
                                             'field' => 'field_56d97e8e1d3a5',
                                             'operator' => '==',
                                             'value' => '1',
                                         ),
                                     ),
                                 ),
-                                'wrapper' => array (
+                                'wrapper' => array(
                                     'width' => '',
                                     'class' => '',
                                     'id' => '',
@@ -902,7 +983,7 @@ if( function_exists('acf_add_local_field_group') ):
                                 'readonly' => 0,
                                 'disabled' => 0,
                             ),
-                            array (
+                            array(
                                 'key' => 'field_56d97edb1d3a6',
                                 'label' => 'Показывать подзаголовок?',
                                 'name' => 'feedback-subtitle-boolean',
@@ -910,7 +991,7 @@ if( function_exists('acf_add_local_field_group') ):
                                 'instructions' => '',
                                 'required' => 0,
                                 'conditional_logic' => 0,
-                                'wrapper' => array (
+                                'wrapper' => array(
                                     'width' => '',
                                     'class' => '',
                                     'id' => '',
@@ -918,23 +999,23 @@ if( function_exists('acf_add_local_field_group') ):
                                 'message' => '',
                                 'default_value' => 0,
                             ),
-                            array (
+                            array(
                                 'key' => 'field_56d97e301d3a4',
                                 'label' => 'Подзаголовок',
                                 'name' => 'feedback-subtitle',
                                 'type' => 'text',
                                 'instructions' => '',
                                 'required' => 0,
-                                'conditional_logic' => array (
-                                    array (
-                                        array (
+                                'conditional_logic' => array(
+                                    array(
+                                        array(
                                             'field' => 'field_56d97edb1d3a6',
                                             'operator' => '==',
                                             'value' => '1',
                                         ),
                                     ),
                                 ),
-                                'wrapper' => array (
+                                'wrapper' => array(
                                     'width' => '',
                                     'class' => '',
                                     'id' => '',
@@ -947,7 +1028,7 @@ if( function_exists('acf_add_local_field_group') ):
                                 'readonly' => 0,
                                 'disabled' => 0,
                             ),
-                            array (
+                            array(
                                 'key' => 'field_56c31edc956c4',
                                 'label' => 'Выберите форму',
                                 'name' => 'feedback-form',
@@ -955,16 +1036,15 @@ if( function_exists('acf_add_local_field_group') ):
                                 'instructions' => '',
                                 'required' => 0,
                                 'conditional_logic' => 0,
-                                'wrapper' => array (
+                                'wrapper' => array(
                                     'width' => '',
                                     'class' => '',
                                     'id' => '',
                                 ),
-                                'post_type' => array (
+                                'post_type' => array(
                                     0 => 'wpcf7_contact_form',
                                 ),
-                                'taxonomy' => array (
-                                ),
+                                'taxonomy' => array(),
                                 'allow_null' => 0,
                                 'multiple' => 0,
                                 'return_format' => 'id',
@@ -974,13 +1054,13 @@ if( function_exists('acf_add_local_field_group') ):
                         'min' => '',
                         'max' => '',
                     ),
-                    array (
+                    array(
                         'key' => '56c31f9bb5d81',
                         'name' => 'ptg-section',
                         'label' => 'Секция',
                         'display' => 'block',
-                        'sub_fields' => array (
-                            array (
+                        'sub_fields' => array(
+                            array(
                                 'key' => 'field_56c31f9bb5d82',
                                 'label' => 'Заголовок',
                                 'name' => 'section-title',
@@ -988,7 +1068,7 @@ if( function_exists('acf_add_local_field_group') ):
                                 'instructions' => '',
                                 'required' => 0,
                                 'conditional_logic' => 0,
-                                'wrapper' => array (
+                                'wrapper' => array(
                                     'width' => '',
                                     'class' => '',
                                     'id' => '',
@@ -1001,7 +1081,7 @@ if( function_exists('acf_add_local_field_group') ):
                                 'readonly' => 0,
                                 'disabled' => 0,
                             ),
-                            array (
+                            array(
                                 'key' => 'field_56c323ce2db81',
                                 'label' => 'Содержимое секции',
                                 'name' => 'section-content',
@@ -1009,19 +1089,19 @@ if( function_exists('acf_add_local_field_group') ):
                                 'instructions' => '',
                                 'required' => 1,
                                 'conditional_logic' => 0,
-                                'wrapper' => array (
+                                'wrapper' => array(
                                     'width' => '',
                                     'class' => '',
                                     'id' => '',
                                 ),
-                                'choices' => array (
+                                'choices' => array(
                                     'text' => 'Текст',
                                     'spoiler' => 'Спойлер',
                                     'carousel' => 'Карусель',
                                     'slider' => 'Слайдер',
                                     'form' => 'Форма',
                                 ),
-                                'default_value' => array (
+                                'default_value' => array(
                                     '' => '',
                                 ),
                                 'allow_null' => 0,
@@ -1032,23 +1112,23 @@ if( function_exists('acf_add_local_field_group') ):
                                 'disabled' => 0,
                                 'readonly' => 0,
                             ),
-                            array (
+                            array(
                                 'key' => 'field_56c325022db82',
                                 'label' => 'Карусель',
                                 'name' => 'carousel',
                                 'type' => 'gallery',
                                 'instructions' => '',
                                 'required' => 0,
-                                'conditional_logic' => array (
-                                    array (
-                                        array (
+                                'conditional_logic' => array(
+                                    array(
+                                        array(
                                             'field' => 'field_56c323ce2db81',
                                             'operator' => '==',
                                             'value' => 'carousel',
                                         ),
                                     ),
                                 ),
-                                'wrapper' => array (
+                                'wrapper' => array(
                                     'width' => '',
                                     'class' => '',
                                     'id' => '',
@@ -1065,23 +1145,23 @@ if( function_exists('acf_add_local_field_group') ):
                                 'max_size' => '',
                                 'mime_types' => '',
                             ),
-                            array (
+                            array(
                                 'key' => 'field_56c325512db83',
                                 'label' => 'Слайдер',
                                 'name' => 'slider',
                                 'type' => 'gallery',
                                 'instructions' => '',
                                 'required' => 0,
-                                'conditional_logic' => array (
-                                    array (
-                                        array (
+                                'conditional_logic' => array(
+                                    array(
+                                        array(
                                             'field' => 'field_56c323ce2db81',
                                             'operator' => '==',
                                             'value' => 'slider',
                                         ),
                                     ),
                                 ),
-                                'wrapper' => array (
+                                'wrapper' => array(
                                     'width' => '',
                                     'class' => '',
                                     'id' => '',
@@ -1098,23 +1178,23 @@ if( function_exists('acf_add_local_field_group') ):
                                 'max_size' => '',
                                 'mime_types' => '',
                             ),
-                            array (
+                            array(
                                 'key' => 'field_56c325842db84',
                                 'label' => 'Спойлер',
                                 'name' => 'spoiler',
                                 'type' => 'flexible_content',
                                 'instructions' => '',
                                 'required' => 0,
-                                'conditional_logic' => array (
-                                    array (
-                                        array (
+                                'conditional_logic' => array(
+                                    array(
+                                        array(
                                             'field' => 'field_56c323ce2db81',
                                             'operator' => '==',
                                             'value' => 'spoiler',
                                         ),
                                     ),
                                 ),
-                                'wrapper' => array (
+                                'wrapper' => array(
                                     'width' => '',
                                     'class' => '',
                                     'id' => '',
@@ -1122,14 +1202,14 @@ if( function_exists('acf_add_local_field_group') ):
                                 'button_label' => 'Добавить',
                                 'min' => '',
                                 'max' => '',
-                                'layouts' => array (
-                                    array (
+                                'layouts' => array(
+                                    array(
                                         'key' => '56c3260461596',
                                         'name' => 'spoiler-settings',
                                         'label' => 'Настройки спойлера',
                                         'display' => 'block',
-                                        'sub_fields' => array (
-                                            array (
+                                        'sub_fields' => array(
+                                            array(
                                                 'key' => 'field_56c3264b2db85',
                                                 'label' => 'Заголовок',
                                                 'name' => 'spoiler-title',
@@ -1137,7 +1217,7 @@ if( function_exists('acf_add_local_field_group') ):
                                                 'instructions' => '',
                                                 'required' => 0,
                                                 'conditional_logic' => 0,
-                                                'wrapper' => array (
+                                                'wrapper' => array(
                                                     'width' => '',
                                                     'class' => '',
                                                     'id' => '',
@@ -1150,7 +1230,7 @@ if( function_exists('acf_add_local_field_group') ):
                                                 'readonly' => 0,
                                                 'disabled' => 0,
                                             ),
-                                            array (
+                                            array(
                                                 'key' => 'field_56c326602db86',
                                                 'label' => 'Количество колонок',
                                                 'name' => 'spoiler-columns',
@@ -1158,12 +1238,12 @@ if( function_exists('acf_add_local_field_group') ):
                                                 'instructions' => '',
                                                 'required' => 0,
                                                 'conditional_logic' => 0,
-                                                'wrapper' => array (
+                                                'wrapper' => array(
                                                     'width' => '',
                                                     'class' => '',
                                                     'id' => '',
                                                 ),
-                                                'choices' => array (
+                                                'choices' => array(
                                                     'one' => 'Одна',
                                                     'two' => 'Две',
                                                 ),
@@ -1172,7 +1252,7 @@ if( function_exists('acf_add_local_field_group') ):
                                                 'default_value' => '',
                                                 'layout' => 'vertical',
                                             ),
-                                            array (
+                                            array(
                                                 'key' => 'field_56c326b02db87',
                                                 'label' => 'Контент',
                                                 'name' => 'spoiler-content',
@@ -1180,7 +1260,7 @@ if( function_exists('acf_add_local_field_group') ):
                                                 'instructions' => '',
                                                 'required' => 0,
                                                 'conditional_logic' => 0,
-                                                'wrapper' => array (
+                                                'wrapper' => array(
                                                     'width' => '',
                                                     'class' => '',
                                                     'id' => '',
@@ -1190,7 +1270,7 @@ if( function_exists('acf_add_local_field_group') ):
                                                 'toolbar' => 'full',
                                                 'media_upload' => 1,
                                             ),
-                                            array (
+                                            array(
                                                 'key' => 'field_56c326d22db88',
                                                 'label' => 'Левая колонка',
                                                 'name' => 'spoiler-content-left',
@@ -1198,7 +1278,7 @@ if( function_exists('acf_add_local_field_group') ):
                                                 'instructions' => '',
                                                 'required' => 0,
                                                 'conditional_logic' => 0,
-                                                'wrapper' => array (
+                                                'wrapper' => array(
                                                     'width' => '',
                                                     'class' => '',
                                                     'id' => '',
@@ -1208,7 +1288,7 @@ if( function_exists('acf_add_local_field_group') ):
                                                 'toolbar' => 'full',
                                                 'media_upload' => 1,
                                             ),
-                                            array (
+                                            array(
                                                 'key' => 'field_56c326e52db89',
                                                 'label' => 'Правая колонка',
                                                 'name' => 'spoiler-content-right',
@@ -1216,7 +1296,7 @@ if( function_exists('acf_add_local_field_group') ):
                                                 'instructions' => '',
                                                 'required' => 0,
                                                 'conditional_logic' => 0,
-                                                'wrapper' => array (
+                                                'wrapper' => array(
                                                     'width' => '',
                                                     'class' => '',
                                                     'id' => '',
@@ -1236,13 +1316,13 @@ if( function_exists('acf_add_local_field_group') ):
                         'min' => '',
                         'max' => '',
                     ),
-                    array (
+                    array(
                         'key' => '56c70c47c6927',
                         'name' => 'ptg-alert',
                         'label' => 'Рамка',
                         'display' => 'block',
-                        'sub_fields' => array (
-                            array (
+                        'sub_fields' => array(
+                            array(
                                 'key' => 'field_56c70c6ac6932',
                                 'label' => 'Содержимое',
                                 'name' => 'alert-content',
@@ -1250,7 +1330,7 @@ if( function_exists('acf_add_local_field_group') ):
                                 'instructions' => '',
                                 'required' => 0,
                                 'conditional_logic' => 0,
-                                'wrapper' => array (
+                                'wrapper' => array(
                                     'width' => '',
                                     'class' => '',
                                     'id' => '',
@@ -1264,13 +1344,13 @@ if( function_exists('acf_add_local_field_group') ):
                         'min' => '',
                         'max' => '',
                     ),
-                    array (
+                    array(
                         'key' => '56da9db382bf3',
                         'name' => 'ptg-about',
                         'label' => 'О нас',
                         'display' => 'block',
-                        'sub_fields' => array (
-                            array (
+                        'sub_fields' => array(
+                            array(
                                 'key' => 'field_56da9dc882bf5',
                                 'label' => 'Заголовок',
                                 'name' => 'about-title',
@@ -1278,7 +1358,7 @@ if( function_exists('acf_add_local_field_group') ):
                                 'instructions' => '',
                                 'required' => 0,
                                 'conditional_logic' => 0,
-                                'wrapper' => array (
+                                'wrapper' => array(
                                     'width' => '',
                                     'class' => '',
                                     'id' => '',
@@ -1291,7 +1371,7 @@ if( function_exists('acf_add_local_field_group') ):
                                 'readonly' => 0,
                                 'disabled' => 0,
                             ),
-                            array (
+                            array(
                                 'key' => 'field_56da9dd782bf6',
                                 'label' => 'Контент',
                                 'name' => 'about-content',
@@ -1299,7 +1379,7 @@ if( function_exists('acf_add_local_field_group') ):
                                 'instructions' => '',
                                 'required' => 0,
                                 'conditional_logic' => 0,
-                                'wrapper' => array (
+                                'wrapper' => array(
                                     'width' => '',
                                     'class' => '',
                                     'id' => '',
@@ -1309,38 +1389,41 @@ if( function_exists('acf_add_local_field_group') ):
                                 'toolbar' => 'full',
                                 'media_upload' => 1,
                             ),
-                            array (
+                            array(
                                 'key' => 'field_56da9df382bf7',
-                                'label' => 'Рамка',
-                                'name' => 'about-attention',
-                                'type' => 'textarea',
+                                'label' => 'Изображение',
+                                'name' => 'about-img',
+                                'type' => 'image',
                                 'instructions' => '',
                                 'required' => 0,
                                 'conditional_logic' => 0,
-                                'wrapper' => array (
+                                'wrapper' => array(
                                     'width' => '',
                                     'class' => '',
                                     'id' => '',
                                 ),
-                                'default_value' => '',
-                                'placeholder' => '',
-                                'maxlength' => '',
-                                'rows' => '',
-                                'new_lines' => 'wpautop',
-                                'readonly' => 0,
-                                'disabled' => 0,
+                                'return_format' => 'url',
+                                'preview_size' => 'full',
+                                'library' => 'all',
+                                'min_width' => '',
+                                'min_height' => '',
+                                'min_size' => '',
+                                'max_width' => '',
+                                'max_height' => '',
+                                'max_size' => '',
+                                'mime_types' => '',
                             ),
                         ),
                         'min' => '',
                         'max' => '',
                     ),
-                    array (
+                    array(
                         'key' => '56daba500668a',
                         'name' => 'ptg-discover',
                         'label' => 'Узнать',
                         'display' => 'block',
-                        'sub_fields' => array (
-                            array (
+                        'sub_fields' => array(
+                            array(
                                 'key' => 'field_56daba500668b',
                                 'label' => 'Заголовок',
                                 'name' => 'discover-title',
@@ -1348,7 +1431,7 @@ if( function_exists('acf_add_local_field_group') ):
                                 'instructions' => '',
                                 'required' => 0,
                                 'conditional_logic' => 0,
-                                'wrapper' => array (
+                                'wrapper' => array(
                                     'width' => '',
                                     'class' => '',
                                     'id' => '',
@@ -1361,7 +1444,7 @@ if( function_exists('acf_add_local_field_group') ):
                                 'readonly' => 0,
                                 'disabled' => 0,
                             ),
-                            array (
+                            array(
                                 'key' => 'field_56daba500668c',
                                 'label' => 'Изображение',
                                 'name' => 'discover-image',
@@ -1369,7 +1452,7 @@ if( function_exists('acf_add_local_field_group') ):
                                 'instructions' => '',
                                 'required' => 0,
                                 'conditional_logic' => 0,
-                                'wrapper' => array (
+                                'wrapper' => array(
                                     'width' => '',
                                     'class' => '',
                                     'id' => '',
@@ -1392,23 +1475,23 @@ if( function_exists('acf_add_local_field_group') ):
                 ),
             ),
         ),
-        'location' => array (
-            array (
-                array (
+        'location' => array(
+            array(
+                array(
                     'param' => 'post_type',
                     'operator' => '==',
                     'value' => 'project',
                 ),
             ),
-            array (
-                array (
+            array(
+                array(
                     'param' => 'post_type',
                     'operator' => '==',
                     'value' => 'service',
                 ),
             ),
-            array (
-                array (
+            array(
+                array(
                     'param' => 'page_template',
                     'operator' => '==',
                     'value' => 'potaga.php',
@@ -1420,16 +1503,16 @@ if( function_exists('acf_add_local_field_group') ):
         'style' => 'default',
         'label_placement' => 'top',
         'instruction_placement' => 'label',
-        'hide_on_screen' => array (
+        'hide_on_screen' => array(
             0 => 'the_content',
         ),
     ));
 
-    acf_add_local_field_group(array (
+    acf_add_local_field_group(array(
         'key' => 'group_56beaf33310f3',
         'title' => 'Параметры видео',
-        'fields' => array (
-            array (
+        'fields' => array(
+            array(
                 'key' => 'field_56beaf3e69dc4',
                 'label' => 'Ссылка на видео',
                 'name' => 'ptg-video',
@@ -1437,7 +1520,7 @@ if( function_exists('acf_add_local_field_group') ):
                 'instructions' => '',
                 'required' => 0,
                 'conditional_logic' => 0,
-                'wrapper' => array (
+                'wrapper' => array(
                     'width' => '',
                     'class' => '',
                     'id' => '',
@@ -1450,7 +1533,7 @@ if( function_exists('acf_add_local_field_group') ):
                 'readonly' => 0,
                 'disabled' => 0,
             ),
-            array (
+            array(
                 'key' => 'field_56beaf8b21ba9',
                 'label' => 'Миниатюра видео',
                 'name' => 'ptg-video-thumbnail',
@@ -1458,7 +1541,7 @@ if( function_exists('acf_add_local_field_group') ):
                 'instructions' => '',
                 'required' => 0,
                 'conditional_logic' => 0,
-                'wrapper' => array (
+                'wrapper' => array(
                     'width' => '',
                     'class' => '',
                     'id' => '',
@@ -1475,9 +1558,9 @@ if( function_exists('acf_add_local_field_group') ):
                 'mime_types' => '',
             ),
         ),
-        'location' => array (
-            array (
-                array (
+        'location' => array(
+            array(
+                array(
                     'param' => 'post_type',
                     'operator' => '==',
                     'value' => 'video',
@@ -1492,11 +1575,11 @@ if( function_exists('acf_add_local_field_group') ):
         'hide_on_screen' => '',
     ));
 
-    acf_add_local_field_group(array (
+    acf_add_local_field_group(array(
         'key' => 'group_55ddb13110a16',
         'title' => 'Параметры проекта',
-        'fields' => array (
-            array (
+        'fields' => array(
+            array(
                 'key' => 'field_55e1865b911df',
                 'label' => 'Изображение шапки',
                 'name' => 'potinni-project-header',
@@ -1504,7 +1587,7 @@ if( function_exists('acf_add_local_field_group') ):
                 'instructions' => '',
                 'required' => 0,
                 'conditional_logic' => 0,
-                'wrapper' => array (
+                'wrapper' => array(
                     'width' => '',
                     'class' => '',
                     'id' => '',
@@ -1520,7 +1603,7 @@ if( function_exists('acf_add_local_field_group') ):
                 'max_size' => '',
                 'mime_types' => '',
             ),
-            array (
+            array(
                 'key' => 'field_55f02b0ceca5d',
                 'label' => 'Миниатюра проекта',
                 'name' => 'potinni-project-thumbnail',
@@ -1528,7 +1611,7 @@ if( function_exists('acf_add_local_field_group') ):
                 'instructions' => '',
                 'required' => 0,
                 'conditional_logic' => 0,
-                'wrapper' => array (
+                'wrapper' => array(
                     'width' => '',
                     'class' => '',
                     'id' => '',
@@ -1545,9 +1628,9 @@ if( function_exists('acf_add_local_field_group') ):
                 'mime_types' => '',
             ),
         ),
-        'location' => array (
-            array (
-                array (
+        'location' => array(
+            array(
+                array(
                     'param' => 'post_type',
                     'operator' => '==',
                     'value' => 'project',
@@ -1559,16 +1642,16 @@ if( function_exists('acf_add_local_field_group') ):
         'style' => 'default',
         'label_placement' => 'top',
         'instruction_placement' => 'label',
-        'hide_on_screen' => array (
+        'hide_on_screen' => array(
             0 => 'the_content',
         ),
     ));
 
-    acf_add_local_field_group(array (
+    acf_add_local_field_group(array(
         'key' => 'group_55e18ddc5231c',
         'title' => 'Параметры статьи',
-        'fields' => array (
-            array (
+        'fields' => array(
+            array(
                 'key' => 'field_55e18de436ddb',
                 'label' => 'Изображение шапки',
                 'name' => 'potinni-post-header',
@@ -1576,7 +1659,7 @@ if( function_exists('acf_add_local_field_group') ):
                 'instructions' => '',
                 'required' => 0,
                 'conditional_logic' => 0,
-                'wrapper' => array (
+                'wrapper' => array(
                     'width' => '',
                     'class' => '',
                     'id' => '',
@@ -1593,9 +1676,9 @@ if( function_exists('acf_add_local_field_group') ):
                 'mime_types' => '',
             ),
         ),
-        'location' => array (
-            array (
-                array (
+        'location' => array(
+            array(
+                array(
                     'param' => 'post_type',
                     'operator' => '==',
                     'value' => 'post',
@@ -1610,11 +1693,11 @@ if( function_exists('acf_add_local_field_group') ):
         'hide_on_screen' => '',
     ));
 
-    acf_add_local_field_group(array (
+    acf_add_local_field_group(array(
         'key' => 'group_55dddb8568808',
         'title' => 'Параметры услуги',
-        'fields' => array (
-            array (
+        'fields' => array(
+            array(
                 'key' => 'field_55dddb980cd26',
                 'label' => 'Описание',
                 'name' => 'ptg-service-description',
@@ -1622,7 +1705,7 @@ if( function_exists('acf_add_local_field_group') ):
                 'instructions' => '',
                 'required' => 0,
                 'conditional_logic' => 0,
-                'wrapper' => array (
+                'wrapper' => array(
                     'width' => '',
                     'class' => '',
                     'id' => '',
@@ -1632,7 +1715,24 @@ if( function_exists('acf_add_local_field_group') ):
                 'toolbar' => 'full',
                 'media_upload' => 1,
             ),
-            array (
+            array(
+                'key' => 'field_svg_code',
+                'label' => 'SVG-анимация',
+                'name' => 'ptg-service-svg',
+                'type' => 'textarea',
+                'instructions' => 'Вставьте SVG-код с анимацией',
+                'required' => 0,
+                'conditional_logic' => 0,
+                'wrapper' => array(
+                    'width' => '',
+                    'class' => '',
+                    'id' => '',
+                ),
+                'default_value' => '',
+                'rows' => 8,
+                'new_lines' => '', // не оборачивать в <p>
+            ),
+            array(
                 'key' => 'field_55e5abe19ebd6',
                 'label' => 'Изображение шапки',
                 'name' => 'ptg-service-header',
@@ -1640,7 +1740,7 @@ if( function_exists('acf_add_local_field_group') ):
                 'instructions' => '',
                 'required' => 0,
                 'conditional_logic' => 0,
-                'wrapper' => array (
+                'wrapper' => array(
                     'width' => '',
                     'class' => '',
                     'id' => '',
@@ -1656,7 +1756,7 @@ if( function_exists('acf_add_local_field_group') ):
                 'max_size' => '',
                 'mime_types' => '',
             ),
-            array (
+            array(
                 'key' => 'field_55ebee836dc4d',
                 'label' => 'Изображение услуги',
                 'name' => 'ptg-service-image',
@@ -1664,7 +1764,7 @@ if( function_exists('acf_add_local_field_group') ):
                 'instructions' => '',
                 'required' => 0,
                 'conditional_logic' => 0,
-                'wrapper' => array (
+                'wrapper' => array(
                     'width' => '',
                     'class' => '',
                     'id' => '',
@@ -1681,9 +1781,9 @@ if( function_exists('acf_add_local_field_group') ):
                 'mime_types' => '',
             ),
         ),
-        'location' => array (
-            array (
-                array (
+        'location' => array(
+            array(
+                array(
                     'param' => 'post_type',
                     'operator' => '==',
                     'value' => 'service',
@@ -1695,7 +1795,7 @@ if( function_exists('acf_add_local_field_group') ):
         'style' => 'default',
         'label_placement' => 'top',
         'instruction_placement' => 'label',
-        'hide_on_screen' => array (
+        'hide_on_screen' => array(
             0 => 'the_content',
         ),
     ));
