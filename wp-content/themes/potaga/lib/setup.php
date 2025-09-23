@@ -145,6 +145,11 @@ function assets()
     wp_enqueue_style('sage/form', Assets\asset_path('styles/form.css'), [], null);
     wp_enqueue_script('sage/main', Assets\asset_path('scripts/main.js'), ['jquery'], null, true);
     wp_enqueue_script('sage/form', Assets\asset_path('scripts/form.js'), ['jquery'], null, true);
+  } else  if (is_post_type_archive('video')) {
+    wp_enqueue_style('sage/main', Assets\asset_path('styles/main.css'), [], null);
+    wp_enqueue_style('sage/form', Assets\asset_path('styles/form.css'), [], null);
+    wp_enqueue_script('sage/main', Assets\asset_path('scripts/main.js'), ['jquery'], null, true);
+    wp_enqueue_script('sage/form', Assets\asset_path('scripts/form.js'), ['jquery'], null, true);
   }
 }
 
