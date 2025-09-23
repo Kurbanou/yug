@@ -1,47 +1,168 @@
 <?php
+
 /**
  * Template Name: Articles Template
  */
 ?>
 
-<?php get_template_part( 'templates/page', 'header' ); ?>
-
-<?php if ( ! have_posts() ) : ?>
-    <?php get_template_part( 'templates/content', '404' ); ?>
-<?php endif; ?>
-
 <?php
-$query = new WP_Query( [
-    'post_type'      => 'post',
-    'posts_per_page' => 12
-] );
+
+$paged = get_query_var('paged') ? get_query_var('paged') : 1;
+
+$query = new WP_Query([
+  'post_type'      => 'post',
+  'posts_per_page' => 12,
+  'orderby'        => 'date',
+  'order'          => 'DESC',
+  'paged'          => $paged
+
+]);
 ?>
 
-    <div class="page__content">
-        <div class="container-fluid">
-            <div class="row">
-                <?php while ( $query->have_posts() ) : $query->the_post(); ?>
-                    <?php get_template_part( 'templates/content', get_post_type() != 'post' ? get_post_type() : get_post_format() ); ?>
-                <?php endwhile; ?>
+
+
+<section class="arhiv_blog ">
+  <div class="container-w">
+    <div class="arhiv_blog__title">
+      <div class="section-title">
+        <div class="section-title_icon">
+          <svg width="25" height="24" viewBox="0 0 25 24">
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M6.25 3.00391C5.45435 3.00391 4.69129 3.31998 4.12868 3.88259C3.56607 4.4452 3.25 5.20826 3.25 6.00391V18.0039C3.25 18.7996 3.56607 19.5626 4.12868 20.1252C4.69129 20.6878 5.45435 21.0039 6.25 21.0039H18.25C19.0456 21.0039 19.8087 20.6878 20.3713 20.1252C20.9339 19.5626 21.25 18.7996 21.25 18.0039V6.00391C21.25 5.20826 20.9339 4.4452 20.3713 3.88259C19.8087 3.31998 19.0456 3.00391 18.25 3.00391H6.25ZM10.25 8.00391C10.25 7.73869 10.3554 7.48434 10.5429 7.2968C10.7304 7.10926 10.9848 7.00391 11.25 7.00391H17.25C17.5152 7.00391 17.7696 7.10926 17.9571 7.2968C18.1446 7.48434 18.25 7.73869 18.25 8.00391C18.25 8.26912 18.1446 8.52348 17.9571 8.71101C17.7696 8.89855 17.5152 9.00391 17.25 9.00391H11.25C10.9848 9.00391 10.7304 8.89855 10.5429 8.71101C10.3554 8.52348 10.25 8.26912 10.25 8.00391ZM10.25 12.0039C10.25 11.7387 10.3554 11.4843 10.5429 11.2968C10.7304 11.1093 10.9848 11.0039 11.25 11.0039H17.25C17.5152 11.0039 17.7696 11.1093 17.9571 11.2968C18.1446 11.4843 18.25 11.7387 18.25 12.0039C18.25 12.2691 18.1446 12.5235 17.9571 12.711C17.7696 12.8985 17.5152 13.0039 17.25 13.0039H11.25C10.9848 13.0039 10.7304 12.8985 10.5429 12.711C10.3554 12.5235 10.25 12.2691 10.25 12.0039ZM10.25 16.0039C10.25 15.7387 10.3554 15.4843 10.5429 15.2968C10.7304 15.1093 10.9848 15.0039 11.25 15.0039H17.25C17.5152 15.0039 17.7696 15.1093 17.9571 15.2968C18.1446 15.4843 18.25 15.7387 18.25 16.0039C18.25 16.2691 18.1446 16.5235 17.9571 16.711C17.7696 16.8986 17.5152 17.0039 17.25 17.0039H11.25C10.9848 17.0039 10.7304 16.8986 10.5429 16.711C10.3554 16.5235 10.25 16.2691 10.25 16.0039ZM7.25 7.00391C6.98478 7.00391 6.73043 7.10926 6.54289 7.2968C6.35536 7.48434 6.25 7.73869 6.25 8.00391C6.25 8.26912 6.35536 8.52348 6.54289 8.71101C6.73043 8.89855 6.98478 9.00391 7.25 9.00391C7.51522 9.00391 7.77057 8.89855 7.95811 8.71101C8.14564 8.52348 8.251 8.26912 8.251 8.00391C8.251 7.73869 8.14564 7.48434 7.95811 7.2968C7.77057 7.10926 7.51522 7.00391 7.25 7.00391ZM6.25 12.0039C6.25 11.7387 6.35536 11.4843 6.54289 11.2968C6.73043 11.1093 6.98478 11.0039 7.25 11.0039C7.51522 11.0039 7.77057 11.1093 7.95811 11.2968C8.14564 11.4843 8.251 11.7387 8.251 12.0039C8.251 12.2691 8.14564 12.5235 7.95811 12.711C7.77057 12.8985 7.51622 13.0039 7.251 13.0039C6.98578 13.0039 6.73043 12.8985 6.54289 12.711C6.35536 12.5235 6.25 12.2691 6.25 12.0039ZM7.25 15.0039C6.98478 15.0039 6.73043 15.1093 6.54289 15.2968C6.35536 15.4843 6.25 15.7387 6.25 16.0039C6.25 16.2691 6.35536 16.5235 6.54289 16.711C6.73043 16.8986 6.98478 17.0039 7.25 17.0039C7.51522 17.0039 7.77057 16.8986 7.95811 16.711C8.14564 16.5235 8.251 16.2691 8.251 16.0039C8.251 15.7387 8.14564 15.4843 7.95811 15.2968C7.77057 15.1093 7.51522 15.0039 7.25 15.0039Z" />
+          </svg>
+        </div>
+        наш блог
+      </div>
+      <h2>
+        Собранные в одном месте статьи, обзоры и рекомендации по выбору,
+        эксплуатации и модернизации пневмотранспортных систем.
+      </h2>
+    </div>
+
+    <div class="articles_blog">
+
+      <?php while ($query->have_posts()) : $query->the_post(); ?>
+
+        <div class="article-card">
+          <?php
+          // Изображение записи
+          if (has_post_thumbnail()) :
+            $img_url = get_the_post_thumbnail_url(get_the_ID(), 'full');
+            $img_alt = get_the_title();
+          ?>
+            <div class="article-card__image" style="background-image: url('<?php echo esc_url($img_url); ?>');">
             </div>
+          <?php endif; ?>
+
+
+          <div class="article-card__content">
+            <div class="article-card__title"><?php the_title(); ?>(копия <?php echo $i + 1; ?>)</div>
+
+            <?php
+            // Дата в формате "9 октября, 2024 год"
+            $date = get_the_date('j F, Y');
+            $date = str_replace(
+              ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+              ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'],
+              $date
+            );
+            ?>
+            <div class="article-card__date">
+              <?php echo esc_html($date); ?>
+              год
+            </div>
+
+            <?php
+            // Метки: История, Рекомендации и т.д.                    
+            $tags = get_the_tags();
+            if ($tags) :
+            ?>
+              <div class="article-card__tags">
+                <?php foreach ($tags as $tag) : ?>
+                  <span class="tag"><?php echo esc_html($tag->name); ?></span>
+                <?php endforeach; ?>
+              </div>
+            <?php else : ?>
+              <div class="article-card__tags">
+                <span class="tag">История</span>
+                <span class="tag">Рекомендации</span>
+              </div>
+            <?php endif; ?>
+
+            <?php
+            // Первый абзац.
+            $content = apply_filters('the_content', get_the_content());
+            preg_match('/<p>(.*?)<\/p>/', $content, $matches);
+            $first_paragraph = isset($matches[1]) ? $matches[1] : ''; ?>
+
+            <?php if ($first_paragraph) : ?>
+              <p class="article-card__excerpt">
+                <?php echo esc_html($first_paragraph); ?>
+              </p>
+            <?php endif; ?>
+          </div>
+          <a href="<?php the_permalink(); ?>" class="article-card__link">
+            <div class="article__more">
+              Подробнее
+              <div class="icon">
+                <svg width="12" height="11" viewBox="0 0 12 11">
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M2.00763 10.6565L9.19934 3.46477L9.19934 8.12173L11.1992 8.12173L11.1992 0.0507736L3.12852 0.0511051L3.12852 2.05091L7.78505 2.05061L0.59341 9.24226L2.00763 10.6565Z" />
+                </svg>
+              </div>
+            </div>
+          </a>
         </div>
+
+      <?php endwhile;  ?>
+      <?php wp_reset_postdata(); ?>
     </div>
 
-<?php if ( $query->max_num_pages > 1 ) : ?>
-    <div class="page__footer">
-        <div class="container-fluid">
-            <script>
-                var ajaxurl = '<?php echo site_url(); ?>/wp-admin/admin-ajax.php',
-                    posts = '<?php echo serialize( $query->query_vars ); ?>',
-                    current_page = <?php echo ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1; ?>,
-                    max_pages = <?php echo $query->max_num_pages; ?>;
-            </script>
-            <div id="more" class="button button--rounded button--orange button--more">Еще статьи</div>
-        </div>
-    </div>
-<?php endif; ?>
+    <?php
+    $pagination_links = paginate_links([
+      'total'     => $query->max_num_pages,
+      'current'   => $paged,
+      'prev_text' => '<svg width="8" height="12" viewBox="0 0 8 12" fill="none">
+                              <path fill-rule="evenodd" clip-rule="evenodd" d="M5.25067 5.70679L0.628891 9.99952L2.04297 11.4136L7.75 5.70656L2.04297 -2.49462e-07L0.628891 1.41408L5.25067 5.70679Z" fill="white"/>
+                            </svg>',
+      'next_text' => '<svg width="8" height="12" viewBox="0 0 8 12" fill="none">
+                              <path fill-rule="evenodd" clip-rule="evenodd" d="M5.25067 5.70679L0.628891 9.99952L2.04297 11.4136L7.75 5.70656L2.04297 -2.49462e-07L0.628891 1.41408L5.25067 5.70679Z" fill="white"/>
+                            </svg>',
+      'type'      => 'array',
+      'mid_size'  => 1,    // Сколько страниц показывать вокруг текущей
+      'end_size'  => 2     // Сколько страниц показывать в начале и конце
+    ]);
+
+    if ($pagination_links) :
+      // Фильтруем массив, оставляя только одно многоточие с каждой стороны
+      $filtered_links = [];
+      $dots_added = false;
+
+      foreach ($pagination_links as $link) {
+        // Если это многоточие и мы еще не добавляли его
+        if (strpos($link, 'dots') !== false || strpos($link, '…') !== false) {
+          if (!$dots_added) {
+            $filtered_links[] = $link;
+            $dots_added = true;
+          }
+        } else {
+          $filtered_links[] = $link;
+          $dots_added = false; // Сбрасываем флаг после не-многоточия
+        }
+      }
+    ?>
+      <ul class="custom-pagination">
+        <?php foreach ($filtered_links as $link) : ?>
+          <li class="custom-pagination__item"><?php echo $link; ?></li>
+        <?php endforeach; ?>
+      </ul>
+    <?php endif; ?>
+
+  </div>
+</section>
+
 <?php wp_reset_postdata(); ?>
-
-<?php //get_template_part('templates/component', 'breadcrumbs'); ?>
-
-<?php get_template_part( 'templates/block', 'order' ); ?>

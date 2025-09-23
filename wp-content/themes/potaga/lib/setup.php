@@ -100,9 +100,7 @@ function display_sidebar()
 /**
  * Theme assets
  */
-add_action('wp_enqueue_scripts', 'assets');
 
-add_action('wp_enqueue_scripts', 'assets');
 
 function assets()
 {
@@ -110,28 +108,31 @@ function assets()
   wp_deregister_script('contact-form-7');
   wp_deregister_style('contact-form-7');
 
-  // Главная страница (шаблон potaga.php)
-  if (is_page_template('potaga.php')) {
+  // Шаблоны, для которых нужны специальные стили и скрипты
+  $custom_templates = ['potaga.php', 'articles.php'];
+
+  if (is_page_template($custom_templates)) {
     wp_enqueue_style('sage/header', Assets\asset_path('styles/header.css'), [], null);
     wp_enqueue_style('sage/footer', Assets\asset_path('styles/footer.css'), [], null);
-    wp_enqueue_style('potaga/front', Assets\asset_path('styles/main-style.css'), [], null);
+    wp_enqueue_style('sage/front', Assets\asset_path('styles/main-style.css'), [], null);
     wp_enqueue_style('sage/form', Assets\asset_path('styles/form.css'), [], null);
-    wp_enqueue_script('potaga/front', Assets\asset_path('scripts/app.js'), [], null, true);
+
+    wp_enqueue_script('sage/front', Assets\asset_path('scripts/app.js'), [], null, true);
     return; // Прерываем, чтобы не подключать глобальные стили
   }
 
   // Глобальные стили
-
   wp_enqueue_style('sage/header', Assets\asset_path('styles/header.css'), [], null);
   wp_enqueue_style('sage/footer', Assets\asset_path('styles/footer.css'), [], null);
   wp_enqueue_style('sage/main', Assets\asset_path('styles/main.css'), [], null);
   wp_enqueue_style('sage/form', Assets\asset_path('styles/form.css'), [], null);
 
   // Глобальные скрипты
-  wp_enqueue_script('potaga/main', Assets\asset_path('scripts/main.js'), ['jquery'], null, true);
-  wp_enqueue_script('potaga/app', Assets\asset_path('scripts/app.js'), [], null, true);
-  wp_enqueue_script('potaga/form', Assets\asset_path('scripts/form.js'), ['jquery'], null, true);
+  wp_enqueue_script('sage/main', Assets\asset_path('scripts/main.js'), ['jquery'], null, true);
+  wp_enqueue_script('sage/app', Assets\asset_path('scripts/app.js'), [], null, true);
+  wp_enqueue_script('sage/form', Assets\asset_path('scripts/form.js'), ['jquery'], null, true);
 }
+
 
 
 add_action('wp_enqueue_scripts', __NAMESPACE__ . '\\assets', 100);
