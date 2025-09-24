@@ -174,7 +174,7 @@ input[type="submit"].button:hover {
   width: 48px;
 }
 
-.contacts__block_item {
+.site-header_content .contacts__block_item {
   max-width: 315px;
   display: flex;
   align-items: center;
@@ -186,7 +186,7 @@ input[type="submit"].button:hover {
   line-height: 24px;
 }
 
-.contacts_icon {
+.site-header_content .contacts_icon {
   background-color: transparent;
   width: 46px;
   height: 46px;
@@ -199,7 +199,7 @@ input[type="submit"].button:hover {
   flex-shrink: 0;
 }
 
-.contacts {
+.site-header_content .contacts {
   display: flex;
   align-items: center;
   gap: 18px;
@@ -211,7 +211,7 @@ input[type="submit"].button:hover {
   background-color: var(--whitecolor);
 }
 
-.contacts_icon svg {
+.site-header_content .contacts_icon svg {
   display: block;
   fill: var(--link-color);
   width: 24px;

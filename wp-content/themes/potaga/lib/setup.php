@@ -131,6 +131,7 @@ function assets()
     wp_enqueue_style('sage/form', Assets\asset_path('styles/form.css'), [], null);
     wp_enqueue_script('sage/main', Assets\asset_path('scripts/main.js'), ['jquery'], null, true);
     wp_enqueue_script('sage/form', Assets\asset_path('scripts/form.js'), ['jquery'], null, true);
+    wp_enqueue_script('sage/front', Assets\asset_path('scripts/app.js'), [], null, true);
   } else if (is_single()) {
     wp_enqueue_style('single/front', Assets\asset_path('styles/main-style.css'), [], null);
     wp_enqueue_style('sage/form', Assets\asset_path('styles/form.css'), [], null);
@@ -140,16 +141,19 @@ function assets()
     wp_enqueue_style('sage/form', Assets\asset_path('styles/form.css'), [], null);
     wp_enqueue_script('sage/main', Assets\asset_path('scripts/main.js'), ['jquery'], null, true);
     wp_enqueue_script('sage/form', Assets\asset_path('scripts/form.js'), ['jquery'], null, true);
+    wp_enqueue_script('sage/front', Assets\asset_path('scripts/app.js'), [], null, true);
   } else  if (is_page('gallery')) {
     wp_enqueue_style('sage/main', Assets\asset_path('styles/main.css'), [], null);
     wp_enqueue_style('sage/form', Assets\asset_path('styles/form.css'), [], null);
     wp_enqueue_script('sage/main', Assets\asset_path('scripts/main.js'), ['jquery'], null, true);
     wp_enqueue_script('sage/form', Assets\asset_path('scripts/form.js'), ['jquery'], null, true);
+    wp_enqueue_script('sage/front', Assets\asset_path('scripts/app.js'), [], null, true);
   } else  if (is_post_type_archive('video')) {
     wp_enqueue_style('sage/main', Assets\asset_path('styles/main.css'), [], null);
     wp_enqueue_style('sage/form', Assets\asset_path('styles/form.css'), [], null);
     wp_enqueue_script('sage/main', Assets\asset_path('scripts/main.js'), ['jquery'], null, true);
     wp_enqueue_script('sage/form', Assets\asset_path('scripts/form.js'), ['jquery'], null, true);
+    wp_enqueue_script('sage/front', Assets\asset_path('scripts/app.js'), [], null, true);
   }
 }
 

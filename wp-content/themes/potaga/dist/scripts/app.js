@@ -67,95 +67,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 // **************
-
-// galery
-// document.addEventListener("DOMContentLoaded", function () {
-//   const slider = document.querySelector(".gallery-sec__content");
-//   const leftBtn = document.querySelector(".left");
-//   const rightBtn = document.querySelector(".right");
-
-//   if (!slider || !leftBtn || !rightBtn) return;
-
-//   const cardWidth = 547;
-//   const gap = 24;
-//   const step = cardWidth + gap;
-//   const cards = slider.querySelectorAll(".gallery-sec__content_item");
-//   const totalCards = cards.length;
-//   const maxOffset = -(step * totalCards - gap);
-
-//   let currentOffset = 0;
-//   let interval = null;
-
-//   slider.style.transform = `translateX(${currentOffset}px)`;
-//   slider.style.transition = "transform 0.2s ease";
-
-//   function updateTransform() {
-//     slider.style.transform = `translateX(${currentOffset}px)`;
-//     updateButtons();
-//   }
-
-//   function updateButtons() {
-//     if (currentOffset >= 0) {
-//       leftBtn.classList.add("inactive");
-//     } else {
-//       leftBtn.classList.remove("inactive");
-//     }
-
-//     if (currentOffset <= maxOffset) {
-//       rightBtn.classList.add("inactive");
-//     } else {
-//       rightBtn.classList.remove("inactive");
-//     }
-//   }
-
-//   function startScroll(direction) {
-//     if (interval) return;
-//     interval = setInterval(() => {
-//       if (direction === "left" && currentOffset < 0) {
-//         currentOffset += step;
-//         if (currentOffset > 0) currentOffset = 0;
-//         updateTransform();
-//       }
-//       if (direction === "right" && currentOffset > maxOffset) {
-//         currentOffset -= step;
-//         if (currentOffset < maxOffset) currentOffset = maxOffset;
-//         updateTransform();
-//       }
-//     }, 100);
-//   }
-
-//   function stopScroll() {
-//     clearInterval(interval);
-//     interval = null;
-//   }
-
-//   leftBtn.addEventListener("mousedown", () => startScroll("left"));
-//   rightBtn.addEventListener("mousedown", () => startScroll("right"));
-
-//   document.addEventListener("mouseup", stopScroll);
-//   leftBtn.addEventListener("mouseleave", stopScroll);
-//   rightBtn.addEventListener("mouseleave", stopScroll);
-
-//   leftBtn.addEventListener("click", () => {
-//     if (interval) return; // если уже удерживается — игнорируем
-//     if (currentOffset < 0) {
-//       currentOffset += step;
-//       if (currentOffset > 0) currentOffset = 0;
-//       updateTransform();
-//     }
-//   });
-
-//   rightBtn.addEventListener("click", () => {
-//     if (interval) return;
-//     if (currentOffset > maxOffset) {
-//       currentOffset -= step;
-//       if (currentOffset < maxOffset) currentOffset = maxOffset;
-//       updateTransform();
-//     }
-//   });
-
-//   updateButtons(); // ← вызов при инициализации
-// });
+// gallery
 document.addEventListener("DOMContentLoaded", function () {
   const slider = document.querySelector(".gallery-sec__content");
   const rightBtn = document.querySelector(".right");
@@ -199,11 +111,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // map
 async function initMap() {
+  const maps = document.querySelectorAll(".map");
+  if (!maps) return;
+
   const { Map, InfoWindow } = await google.maps.importLibrary("maps");
   const { LatLngBounds } = await google.maps.importLibrary("core");
   const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
 
-  const maps = document.querySelectorAll(".map");
+  // const maps = document.querySelectorAll(".map");
 
   maps.forEach((mapElement) => {
     const markerElements = mapElement.querySelectorAll(".marker");
@@ -263,6 +178,7 @@ initMap();
 // аккардеон
 document.addEventListener("DOMContentLoaded", function () {
   const accordions = document.querySelectorAll(".accordion");
+  if (!accordions) return;
 
   accordions.forEach((accordion) => {
     accordion.addEventListener("click", function () {
@@ -279,6 +195,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // img lightbox
 document.addEventListener("DOMContentLoaded", function () {
+  const lightboxItems = document.querySelectorAll("[data-lightbox]");
+  if (!lightboxItems.length) return; // Прерываем, если нет lightbox-элементов
+
   const body = document.body;
   const overlay = document.createElement("div");
   overlay.id = "lightbox-overlay";
@@ -290,7 +209,7 @@ document.addEventListener("DOMContentLoaded", function () {
   `;
   document.body.appendChild(overlay);
 
-  document.querySelectorAll("[data-lightbox]").forEach((item) => {
+  lightboxItems.forEach((item) => {
     item.addEventListener("click", function (e) {
       e.preventDefault();
       const imgSrc = this.getAttribute("data-lightbox");
@@ -362,32 +281,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 });
-
-// при скроле анимация svg
-
-// document.addEventListener("DOMContentLoaded", () => {
-//   const section = document.querySelector(".svg-section");
-//   const paths = section.querySelectorAll("svg path");
-//   let animated = false;
-
-//   const observer = new IntersectionObserver(
-//     (entries) => {
-//       entries.forEach((entry) => {
-//         if (entry.isIntersecting && !animated) {
-//           paths.forEach((path) => {
-//             path.style.strokeDashoffset = "0";
-//           });
-//           animated = true; // блокируем повторную анимацию
-//         }
-//       });
-//     },
-//     {
-//       threshold: 0.3, // когда 30% секции в зоне видимости
-//     }
-//   );
-
-//   observer.observe(section);
-// });
 
 document.addEventListener("DOMContentLoaded", () => {
   const section = document.querySelector(".svg-section");
